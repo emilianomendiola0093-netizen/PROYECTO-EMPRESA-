@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Óleum Natura – Velas Artesanales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================ NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-flame">🕯️</span>
+        <span class="logo-text">Óleum <span class="accent">Natura</span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================ HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Velas Artesanales Ecológicas</p>
+      <h1 class="hero-title">Óleum <span class="gold">Natura</span></h1>
+      <p class="hero-slogan">"Que la grasa engorde tu cartera"</p>
+      <p class="hero-desc">
+        Transformamos aceites y mantecas reciclados del hogar en velas artesanales
+        únicas. Cuidamos el planeta mientras iluminamos tu espacio con aromas increíbles.
+      </p>
+      <div class="hero-cta">
+        <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+        <a href="#nosotros" class="btn btn-outline">Nuestra Historia</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><span>♻️</span> 100% Reciclado</div>
+        <div class="badge"><span>🌿</span> Eco-amigable</div>
+        <div class="badge"><span>🤲</span> Hecho a mano</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="candle-scene">
+        <div class="candle c1">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="candle c2">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="candle c3">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="surface"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ NOSOTROS -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestra Misión</span>
+        <h2>¿Quiénes somos?</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🌍</div>
+          <h3>Impacto Ambiental</h3>
+          <p>Reducimos la huella ecológica reutilizando aceites y grasas domésticas que de otro modo contaminarían el agua y el suelo.</p>
+        </div>
+        <div class="about-card featured">
+          <div class="about-icon">🕯️</div>
+          <h3>Arte & Propósito</h3>
+          <p>Cada vela es elaborada a mano con ingredientes naturales, combinando técnica artesanal con conciencia ambiental. El resultado: un producto único, sostenible y lleno de carácter.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💰</div>
+          <h3>Economía Circular</h3>
+          <p>Convertimos residuos en oportunidad de negocio, demostrando que ser sostenible también puede ser rentable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ STATS -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Ingredientes reciclados</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Residuos generados</span></div>
+      <div class="stat"><span class="stat-num">+50h</span><span class="stat-label">Duración promedio</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Amor artesanal</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CATÁLOGO -->
+  <section class="catalog" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestros Productos</span>
+        <h2>Catálogo de Velas</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Cada vela está elaborada con aceites y grasas recicladas del hogar, perfumadas con esencias naturales. Elige la tuya.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="florales">Florales</button>
+        <button class="filter-btn" data-filter="aromaticas">Aromáticas</button>
+        <button class="filter-btn" data-filter="especiadas">Especiadas</button>
+        <button class="filter-btn" data-filter="frescas">Frescas</button>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+
+        <!-- FLORALES -->
+        <div class="product-card" data-category="florales">
+          <div class="product-badge">Más vendida</div>
+          <div class="product-img-wrap">
+            <div class="product-img florales-1">
+              <div class="img-candle">🌹</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Rosa & Jazmín</h3>
+            <p class="product-desc">Un romance floral que llena el ambiente con dulzura y elegancia. Ideal para momentos de relajación y romance. Notas de pétalo fresco y jazmín nocturno.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~55 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$85</span>
+                <span class="price">$65</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Rosa & Jazmín', 65)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="florales">
+          <div class="product-img-wrap">
+            <div class="product-img florales-2">
+              <div class="img-candle">🌸</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Lavanda Pura</h3>
+            <p class="product-desc">La fragancia clásica de la provenza francesa. Perfecta para el dormitorio, reduce el estrés y promueve el sueño tranquilo con su aroma suave y herbal.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~60 horas</span>
+              <span class="detail">🧪 160 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$60</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Lavanda Pura', 60)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="florales">
+          <div class="product-img-wrap">
+            <div class="product-img florales-3">
+              <div class="img-candle">🌺</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Gardenia & Ylang</h3>
+            <p class="product-desc">Sensual y profunda. El ylang ylang añade una nota exótica a la suavidad de la gardenia, creando una atmósfera íntima y cálida.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 140 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$70</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Gardenia & Ylang', 70)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AROMÁTICAS -->
+        <div class="product-card" data-category="aromaticas">
+          <div class="product-badge eco">Eco Hit</div>
+          <div class="product-img-wrap">
+            <div class="product-img aromaticas-1">
+              <div class="img-candle">🌿</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Eucalipto & Menta</h3>
+            <p class="product-desc">Revitalizante y purificadora. La combinación de eucalipto fresco con menta crea una sensación de limpieza y energía. Perfecta para espacios de trabajo.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 130 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$75</span>
+                <span class="price">$55</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Eucalipto & Menta', 55)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="aromaticas">
+          <div class="product-img-wrap">
+            <div class="product-img aromaticas-2">
+              <div class="img-candle">🌳</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Sándalo & Cedro</h3>
+            <p class="product-desc">Un lujo amaderado con profundidad y carácter. El sándalo aporta calidez terrosa mientras el cedro añade frescura silvestre. Una vela para todo el día.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~65 horas</span>
+              <span class="detail">🧪 180 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$80</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Sándalo & Cedro', 80)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="aromaticas">
+          <div class="product-img-wrap">
+            <div class="product-img aromaticas-3">
+              <div class="img-candle">🍃</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Romero & Salvia</h3>
+            <p class="product-desc">Herbal y reconfortante. El romero estimula la mente mientras la salvia purifica el espacio con su aroma antiguo y poderoso. Ideal para meditación.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$65</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Romero & Salvia', 65)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESPECIADAS -->
+        <div class="product-card" data-category="especiadas">
+          <div class="product-badge nuevo">Nuevo</div>
+          <div class="product-img-wrap">
+            <div class="product-img especiadas-1">
+              <div class="img-candle">🍂</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Canela & Naranja</h3>
+            <p class="product-desc">El clásico otoñal que evoca recuerdos cálidos. La canela envuelve con su dulzura picante mientras la naranja añade frescura cítrica. Un abrazo en forma de aroma.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~55 horas</span>
+              <span class="detail">🧪 160 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$70</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Canela & Naranja', 70)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="especiadas">
+          <div class="product-img-wrap">
+            <div class="product-img especiadas-2">
+              <div class="img-candle">☕</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Vainilla & Café</h3>
+            <p class="product-desc">Una combinación irresistible para los amantes del café. La vainilla suaviza la intensidad del café tostado creando un ambiente acogedor y estimulante a la vez.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~60 horas</span>
+              <span class="detail">🧪 170 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$80</span>
+                <span class="price">$68</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Vainilla & Café', 68)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="especiadas">
+          <div class="product-img-wrap">
+            <div class="product-img especiadas-3">
+              <div class="img-candle">🫚</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Jengibre & Clavo</h3>
+            <p class="product-desc">Picante, cálido y misterioso. El jengibre aporta energía mientras el clavo añade profundidad especiada. Una vela perfecta para noches frías.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 140 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$62</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Jengibre & Clavo', 62)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRESCAS -->
+        <div class="product-card" data-category="frescas">
+          <div class="product-img-wrap">
+            <div class="product-img frescas-1">
+              <div class="img-candle">🍋</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Limón & Albahaca</h3>
+            <p class="product-desc">Vibrante y llena de vida. El limón despeja la mente con su acidez brillante mientras la albahaca añade una nota herbal sofisticada. Para cocinas y espacios sociales.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~40 horas</span>
+              <span class="detail">🧪 130 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$58</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Limón & Albahaca', 58)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="frescas">
+          <div class="product-badge">Popular</div>
+          <div class="product-img-wrap">
+            <div class="product-img frescas-2">
+              <div class="img-candle">🌊</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Brisa Marina</h3>
+            <p class="product-desc">Cierra los ojos y escucha el mar. Sal marina, notas acuáticas y un toque de coco crean la ilusión perfecta de estar frente al océano. Fresca e irresistible.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$72</span>
+                <span class="price">$60</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Brisa Marina', 60)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="frescas">
+          <div class="product-img-wrap">
+            <div class="product-img frescas-3">
+              <div class="img-candle">🍃</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Verde Té & Pepino</h3>
+            <p class="product-desc">Minimalista y zen. El té verde japonés combinado con pepino fresco crea una fragancia limpia, serena y perfecta para espacios de bienestar y meditación.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 135 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$55</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Verde Té & Pepino', 55)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================ PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Transparencia Total</span>
+        <h2>¿Cómo hacemos tus velas?</h2>
+        <div class="divider gold-div"></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-icon">🫙</div>
+          <h3>Recolección</h3>
+          <p>Recolectamos aceites y grasas usadas del hogar (aceite de cocina, manteca vegetal) que de otro modo irían al drenaje.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-icon">🔥</div>
+          <h3>Purificación</h3>
+          <p>Filtramos y tratamos los aceites para eliminar impurezas y olores, obteniendo una base limpia y lista para la vela.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-icon">🌺</div>
+          <h3>Aromatización</h3>
+          <p>Agregamos esencias naturales seleccionadas cuidadosamente para crear fragancias únicas y duraderas.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-icon">🕯️</div>
+          <h3>Moldeo & Acabado</h3>
+          <p>Vertemos la mezcla en moldes artesanales, colocamos la mecha y dejamos solidificar lentamente para garantizar calidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ TESTIMONIOS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lo que dicen</span>
+        <h2>Clientes felices</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"La vela de Lavanda Pura es increíble. Desde que la tengo en mi cuarto duermo muchísimo mejor. El aroma dura toda la noche y es muy suave."</p>
+          <div class="testi-author"><div class="author-avatar">A</div><div><strong>Ana García</strong><span>Ciudad de México</span></div></div>
+        </div>
+        <div class="testi-card featured">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Me encanta saber que son hechas con aceites reciclados. Además de oler increíble, me siento bien contribuyendo al medio ambiente. La Canela & Naranja es mi favorita."</p>
+          <div class="testi-author"><div class="author-avatar">M</div><div><strong>María López</strong><span>Guadalajara</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Pedí un set de regalo para mi mamá y quedó encantada. La presentación es hermosa y los aromas son genuinos, no artificiales. Definitivamente vuelvo a comprar."</p>
+          <div class="testi-author"><div class="author-avatar">C</div><div><strong>Carlos Ruiz</strong><span>Monterrey</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container contact-wrap">
+      <div class="contact-info">
+        <span class="section-tag">Escríbenos</span>
+        <h2>¿Tienes alguna pregunta?</h2>
+        <p>Nos encanta escucharte. Escríbenos para pedidos personalizados, pedidos al mayoreo o simplemente para saber más sobre nuestras velas.</p>
+        <div class="contact-items">
+          <div class="contact-item"><span>📱</span><div><strong>WhatsApp</strong><p>+52 55 1234-5678</p></div></div>
+          <div class="contact-item"><span>📧</span><div><strong>Email</strong><p>hola@oleumnatura.mx</p></div></div>
+          <div class="contact-item"><span>📍</span><div><strong>Ubicación</strong><p>Entrega a domicilio en toda la ciudad</p></div></div>
+          <div class="contact-item"><span>🕐</span><div><strong>Horario</strong><p>Lun – Sáb, 9:00 a 20:00</p></div></div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>Teléfono (opcional)</label>
+          <input type="tel" placeholder="+52 55 0000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="¿En qué podemos ayudarte? Cuéntanos sobre tu pedido..." rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary full">Enviar Mensaje 🕯️</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-flame">🕯️</span><span class="logo-text">Óleum <span class="accent">Natura</span></span></div>
+        <p>"Que la grasa engorde tu cartera"</p>
+        <p class="footer-sub">Transformando residuos en luz y aroma desde 2024.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#catalogo">Florales</a></li>
+          <li><a href="#catalogo">Aromáticas</a></li>
+          <li><a href="#catalogo">Especiadas</a></li>
+          <li><a href="#catalogo">Frescas</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Síguenos</h4>
+        <div class="social-links">
+          <a href="#" class="social-btn">📸 Instagram</a>
+          <a href="#" class="social-btn">🎵 TikTok</a>
+          <a href="#" class="social-btn">📘 Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Óleum Natura · Todos los derechos reservados · Hecho con ♻️ y ❤️</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ CART TOAST -->
+  <div class="cart-toast" id="cart-toast">
+    <span id="toast-msg">¡Producto agregado!</span>
+  </div>
+
+  <!-- ============================================================ CART BUTTON -->
+  <button class="cart-fab" id="cart-fab" onclick="toggleCart()">
+    🛒 <span class="cart-count" id="cart-count">0</span>
+  </button>
+
+  <!-- ============================================================ CART PANEL -->
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+      <h3>🛒 Tu carrito</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="cart-empty">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cart-total">$0</strong></div>
+      <button class="btn btn-primary full" onclick="checkout()">Pedir por WhatsApp 📱</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
