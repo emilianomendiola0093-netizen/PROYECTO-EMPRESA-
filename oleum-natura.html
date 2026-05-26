@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Óleum Natura – Velas Artesanales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+/* ================================================================
+   ÓLEUM NATURA — Estilos principales
+   ================================================================ */
+
+:root {
+  --gold:        #D4A017;
+  --gold-light:  #F0C842;
+  --gold-dark:   #A07810;
+  --cream:       #FDF8EF;
+  --cream-dark:  #F5EDD8;
+  --brown:       #5C3D11;
+  --brown-light: #8B6230;
+  --dark:        #1A1208;
+  --dark2:       #2C1E0A;
+  --green:       #2D6A4F;
+  --green-light: #52B788;
+  --white:       #FFFFFF;
+  --text:        #3D2B0A;
+  --text-light:  #7A5C2A;
+  --shadow:      0 8px 32px rgba(90,50,0,.15);
+  --shadow-deep: 0 20px 60px rgba(90,50,0,.25);
+  --radius:      16px;
+  --radius-sm:   10px;
+  --transition:  .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+ul { list-style: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(26,18,8,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212,160,23,.2);
+  transition: var(--transition);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.logo-flame { font-size: 1.6rem; }
+.logo-text .accent { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+
+.nav-links a {
+  color: rgba(253,248,239,.8);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 100%;
+  height: 2px;
+  background: var(--gold);
+  transition: right var(--transition);
+}
+
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { right: 0; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 30% 50%, #3D2410 0%, #1A0E04 60%, #0D0803 100%);
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(212,160,23,.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(212,160,23,.05) 0%, transparent 40%);
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  padding: 60px 24px 60px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.hero-title .gold { color: var(--gold); }
+
+.hero-slogan {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: rgba(253,248,239,.7);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212,160,23,.12);
+  border: 1px solid rgba(212,160,23,.25);
+  color: var(--gold-light);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 60px 60px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Candle Scene --- */
+.candle-scene {
+  position: relative;
+  width: 320px;
+  height: 380px;
+  filter: drop-shadow(0 0 40px rgba(212,160,23,.3));
+}
+
+.candle {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candle-body {
+  border-radius: 8px 8px 4px 4px;
+  position: relative;
+}
+
+.candle-flame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.c1 { left: 50%; transform: translateX(-50%); bottom: 60px; z-index: 3; }
+.c1 .candle-body { width: 60px; height: 200px; background: linear-gradient(135deg, #F5EDD8 0%, #D4A017 50%, #A07810 100%); }
+.c1 .candle-flame { width: 20px; height: 40px; bottom: 0; }
+.c1 .candle-flame::before { content: ''; position: absolute; bottom: 0; width: 14px; height: 36px; background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFB830 40%, #FF6B00 80%, transparent); border-radius: 50% 50% 30% 30%; animation: flicker1 1.2s infinite alternate ease-in-out; }
+.c1 .flame-inner { position: absolute; bottom: 4px; width: 6px; height: 16px; background: radial-gradient(ellipse, white, #FFF5A0); border-radius: 50%; z-index: 1; animation: flicker1 1.2s infinite alternate ease-in-out; }
+
+.c2 { left: 20%; bottom: 60px; z-index: 2; }
+.c2 .candle-body { width: 46px; height: 150px; background: linear-gradient(135deg, #FDF8EF 0%, #C8956A 50%, #8B5E3C 100%); }
+.c2 .candle-flame { width: 16px; height: 32px; }
+.c2 .candle-flame::before { content: ''; position: absolute; bottom: 0; width: 12px; height: 28px; background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFB830 40%, #FF6B00 80%, transparent); border-radius: 50% 50% 30% 30%; animation: flicker2 1.5s infinite alternate ease-in-out; }
+.c2 .flame-inner { position: absolute; bottom: 4px; width: 5px; height: 12px; background: radial-gradient(ellipse, white, #FFF5A0); border-radius: 50%; z-index: 1; animation: flicker2 1.5s infinite alternate; }
+
+.c3 { right: 20%; bottom: 60px; z-index: 2; }
+.c3 .candle-body { width: 40px; height: 120px; background: linear-gradient(135deg, #FBEEDD 0%, #B8860B 50%, #7A5C1A 100%); }
+.c3 .candle-flame { width: 14px; height: 28px; }
+.c3 .candle-flame::before { content: ''; position: absolute; bottom: 0; width: 10px; height: 24px; background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFB830 40%, #FF6B00 80%, transparent); border-radius: 50% 50% 30% 30%; animation: flicker3 .9s infinite alternate ease-in-out; }
+.c3 .flame-inner { position: absolute; bottom: 3px; width: 4px; height: 10px; background: radial-gradient(ellipse, white, #FFF5A0); border-radius: 50%; z-index: 1; animation: flicker3 .9s infinite alternate; }
+
+.candle-glow {
+  position: absolute;
+  top: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, rgba(255,180,30,.4), transparent 70%);
+  border-radius: 50%;
+  animation: glow-pulse 2s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.surface {
+  position: absolute;
+  bottom: 40px; left: 0; right: 0;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,.15), rgba(212,160,23,.3), rgba(212,160,23,.15), transparent);
+  border-radius: 4px;
+}
+
+@keyframes flicker1 {
+  0%   { transform: scaleX(1)   scaleY(1)   translateX(0); }
+  33%  { transform: scaleX(.9)  scaleY(1.1) translateX(1px); }
+  66%  { transform: scaleX(1.1) scaleY(.95) translateX(-1px); }
+  100% { transform: scaleX(.95) scaleY(1.05) translateX(.5px); }
+}
+@keyframes flicker2 {
+  0%   { transform: scaleX(1)   scaleY(1)   translateX(.5px); }
+  50%  { transform: scaleX(1.1) scaleY(.9)  translateX(-1px); }
+  100% { transform: scaleX(.9)  scaleY(1.1) translateX(0); }
+}
+@keyframes flicker3 {
+  0%   { transform: scaleX(.95) scaleY(1.05) translateX(0); }
+  40%  { transform: scaleX(1.1) scaleY(.95) translateX(1px); }
+  100% { transform: scaleX(1)   scaleY(1)   translateX(-.5px); }
+}
+@keyframes glow-pulse {
+  0%   { opacity: .5; transform: scale(1); }
+  100% { opacity: 1;  transform: scale(1.4); }
+}
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  box-shadow: 0 4px 20px rgba(212,160,23,.35);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212,160,23,.5);
+  filter: brightness(1.1);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(212,160,23,.5);
+  color: var(--cream);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: rgba(212,160,23,.1);
+  transform: translateY(-2px);
+}
+
+.btn.full { width: 100%; justify-content: center; }
+
+/* ================================================================
+   SECTION HEADERS
+   ================================================================ */
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.section-header.light h2 { color: var(--cream); }
+
+.section-tag {
+  display: inline-block;
+  background: rgba(212,160,23,.15);
+  color: var(--gold-dark);
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border: 1px solid rgba(212,160,23,.3);
+}
+
+.section-header.light .section-tag {
+  background: rgba(212,160,23,.15);
+  color: var(--gold-light);
+  border-color: rgba(212,160,23,.3);
+}
+
+.section-desc {
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin: 0 auto 20px;
+  border-radius: 2px;
+}
+
+.gold-div { background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark)); }
+
+/* ================================================================
+   ABOUT
+   ================================================================ */
+.about {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(212,160,23,.1);
+}
+
+.about-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-deep); }
+
+.about-card.featured {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark2) 100%);
+  color: var(--cream);
+  border-color: var(--gold);
+}
+
+.about-card.featured h3 { color: var(--gold-light); }
+.about-card.featured p  { color: rgba(253,248,239,.8); }
+
+.about-icon { font-size: 2.5rem; margin-bottom: 16px; }
+
+.about-card h3 {
+  font-size: 1.3rem;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
+
+.about-card p { color: var(--text-light); line-height: 1.7; }
+
+/* ================================================================
+   STATS BAR
+   ================================================================ */
+.stats-bar {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark2) 100%);
+  padding: 48px 24px;
+  border-top: 1px solid rgba(212,160,23,.2);
+  border-bottom: 1px solid rgba(212,160,23,.2);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.stat { padding: 16px; }
+
+.stat-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: .85rem;
+  color: rgba(253,248,239,.7);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   CATALOG
+   ================================================================ */
+.catalog {
+  padding: 100px 0;
+  background: var(--cream-dark);
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 100px;
+  border: 2px solid rgba(92,61,17,.2);
+  background: transparent;
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: .05em;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 4px 16px rgba(212,160,23,.3);
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(212,160,23,.08);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-deep);
+  border-color: rgba(212,160,23,.25);
+}
+
+.product-card.hidden { display: none; }
+
+.product-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.product-badge.eco { background: linear-gradient(135deg, var(--green-light), var(--green)); color: white; }
+.product-badge.nuevo { background: linear-gradient(135deg, #a855f7, #7c3aed); color: white; }
+
+.product-img-wrap { position: relative; overflow: hidden; }
+
+.product-img {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Category colour themes */
+.florales-1  { background: linear-gradient(135deg, #FFE4F0, #FFCCE0); }
+.florales-2  { background: linear-gradient(135deg, #EDE7FF, #D8CCFF); }
+.florales-3  { background: linear-gradient(135deg, #FFF0CC, #FFE09A); }
+.aromaticas-1 { background: linear-gradient(135deg, #CCFFE8, #99EED3); }
+.aromaticas-2 { background: linear-gradient(135deg, #EEE4D8, #D4C4A8); }
+.aromaticas-3 { background: linear-gradient(135deg, #DCFCE7, #A7F3D0); }
+.especiadas-1 { background: linear-gradient(135deg, #FFF3D4, #FFDB88); }
+.especiadas-2 { background: linear-gradient(135deg, #F5E6CC, #E8C880); }
+.especiadas-3 { background: linear-gradient(135deg, #FFEDD5, #FED7AA); }
+.frescas-1   { background: linear-gradient(135deg, #FFFBCC, #FFF08A); }
+.frescas-2   { background: linear-gradient(135deg, #CCEEFF, #99DDFF); }
+.frescas-3   { background: linear-gradient(135deg, #D4F4D4, #A8E6A8); }
+
+.img-candle {
+  font-size: 4.5rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.15));
+  transition: var(--transition);
+}
+
+.product-card:hover .img-candle { transform: scale(1.15) rotate(-3deg); }
+
+.product-info { padding: 24px; }
+
+.product-category {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: rgba(212,160,23,.1);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(212,160,23,.2);
+}
+
+.product-info h3 {
+  font-size: 1.3rem;
+  color: var(--brown);
+  margin: 12px 0 8px;
+}
+
+.product-desc {
+  font-size: .88rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-details {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.detail {
+  font-size: .75rem;
+  color: var(--text-light);
+  background: var(--cream);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(92,61,17,.1);
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(92,61,17,.08);
+  padding-top: 16px;
+}
+
+.price-wrap { display: flex; align-items: baseline; gap: 8px; }
+
+.price-old {
+  font-size: .9rem;
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  color: var(--brown);
+}
+
+.btn-add {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  border: none;
+  border-radius: 100px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(212,160,23,.4);
+}
+
+.btn-add.added {
+  background: linear-gradient(135deg, var(--green-light), var(--green));
+  color: white;
+}
+
+/* ================================================================
+   PROCESS
+   ================================================================ */
+.process {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--dark2) 0%, #160D03 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212,160,23,.05), transparent 60%);
+}
+
+.steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 32px 20px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(212,160,23,.15);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.step:hover {
+  background: rgba(212,160,23,.08);
+  border-color: rgba(212,160,23,.4);
+  transform: translateY(-4px);
+}
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(212,160,23,.2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.step-icon { font-size: 2rem; margin-bottom: 12px; }
+
+.step h3 {
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: .88rem;
+  color: rgba(253,248,239,.6);
+  line-height: 1.6;
+}
+
+.step-arrow {
+  font-size: 2rem;
+  color: rgba(212,160,23,.4);
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   TESTIMONIALS
+   ================================================================ */
+.testimonials {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testi-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(212,160,23,.08);
+}
+
+.testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-deep); }
+
+.testi-card.featured {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark2) 100%);
+  border-color: var(--gold-dark);
+}
+
+.testi-card.featured p  { color: rgba(253,248,239,.85); }
+.testi-card.featured .testi-author strong { color: var(--gold-light); }
+.testi-card.featured .testi-author span   { color: rgba(253,248,239,.5); }
+
+.testi-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+
+.testi-card p {
+  font-size: .92rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: var(--dark);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.testi-author strong { display: block; color: var(--brown); font-size: .95rem; }
+.testi-author span   { font-size: .8rem; color: var(--text-light); }
+
+/* ================================================================
+   CONTACT
+   ================================================================ */
+.contact {
+  padding: 100px 0;
+  background: var(--cream-dark);
+}
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-info .section-tag { margin-bottom: 12px; display: inline-block; }
+
+.contact-info h2 {
+  font-size: 2.2rem;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.contact-info > p {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-items { display: flex; flex-direction: column; gap: 20px; }
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact-item > span { font-size: 1.5rem; flex-shrink: 0; }
+.contact-item strong { display: block; color: var(--brown); font-size: .95rem; margin-bottom: 2px; }
+.contact-item p { color: var(--text-light); font-size: .9rem; }
+
+.contact-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(212,160,23,.1);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 8px;
+  letter-spacing: .04em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(92,61,17,.12);
+  border-radius: var(--radius-sm);
+  font-family: 'Lato', sans-serif;
+  font-size: .95rem;
+  color: var(--text);
+  background: var(--cream);
+  transition: var(--transition);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(212,160,23,.08);
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer {
+  background: var(--dark);
+  padding: 64px 0 0;
+  border-top: 1px solid rgba(212,160,23,.15);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 48px;
+}
+
+.footer-brand .nav-logo { color: var(--cream); margin-bottom: 12px; }
+.footer-brand > p { color: var(--gold-light); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 8px; font-size: .95rem; }
+.footer-sub { color: rgba(253,248,239,.4); font-size: .85rem; }
+
+.footer-links h4 { color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 16px; font-size: 1rem; }
+.footer-links ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: rgba(253,248,239,.6); font-size: .9rem; transition: var(--transition); }
+.footer-links a:hover { color: var(--gold-light); padding-left: 4px; }
+
+.footer-social h4 { color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 16px; }
+.social-links { display: flex; flex-direction: column; gap: 10px; }
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(253,248,239,.7);
+  font-size: .88rem;
+  transition: var(--transition);
+  padding: 6px 0;
+}
+.social-btn:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(212,160,23,.1);
+  padding: 20px 24px;
+  text-align: center;
+  color: rgba(253,248,239,.35);
+  font-size: .82rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   CART
+   ================================================================ */
+.cart-toast {
+  position: fixed;
+  bottom: 100px; right: 24px;
+  background: var(--brown);
+  color: var(--gold-light);
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: .9rem;
+  z-index: 2000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .3s ease;
+  pointer-events: none;
+  border: 1px solid var(--gold-dark);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+
+.cart-toast.show { opacity: 1; transform: translateY(0); }
+
+.cart-fab {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  border: none;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1500;
+  box-shadow: 0 8px 24px rgba(212,160,23,.4);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.cart-fab:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(212,160,23,.6); }
+
+.cart-count {
+  background: var(--brown);
+  color: var(--gold-light);
+  border-radius: 50%;
+  width: 20px; height: 20px;
+  font-size: .7rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px; right: 4px;
+}
+
+.cart-panel {
+  position: fixed;
+  right: -400px;
+  top: 0; bottom: 0;
+  width: 380px;
+  background: var(--white);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0,0,0,.3);
+  transition: right .4s cubic-bezier(.4,0,.2,1);
+}
+
+.cart-panel.open { right: 0; }
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(92,61,17,.1);
+  background: var(--cream);
+}
+
+.cart-header h3 { font-family: 'Playfair Display', serif; color: var(--brown); }
+.cart-header button { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-light); }
+
+.cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.cart-empty { text-align: center; color: var(--text-light); padding: 40px 0; font-style: italic; }
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(92,61,17,.07);
+  gap: 12px;
+}
+
+.cart-item-name { font-weight: 700; color: var(--brown); font-size: .95rem; }
+.cart-item-price { color: var(--text-light); font-size: .85rem; }
+.cart-item-remove {
+  background: none; border: none;
+  color: #ccc; cursor: pointer; font-size: 1rem;
+  transition: var(--transition);
+}
+.cart-item-remove:hover { color: #e53e3e; }
+
+.cart-footer {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(92,61,17,.1);
+  background: var(--cream);
+}
+
+.cart-total {
+  font-size: 1.1rem;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+.cart-total strong { color: var(--gold-dark); font-size: 1.4rem; font-family: 'Playfair Display', serif; }
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+
+.cart-overlay.show { opacity: 1; pointer-events: all; }
+
+/* ================================================================
+   PARTICLES (decorative dots in hero)
+   ================================================================ */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(212,160,23,.6), transparent);
+  animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1); opacity: .8; }
+  100% { transform: translateY(-120vh) scale(.3); opacity: 0; }
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .products-grid  { grid-template-columns: repeat(2, 1fr); }
+  .about-grid     { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid    { grid-template-columns: 1fr 1fr; }
+  .steps          { flex-wrap: wrap; }
+  .step-arrow     { display: none; }
+  .step           { flex: 1 1 calc(50% - 16px); }
+}
+
+@media (max-width: 768px) {
+  .nav-links      { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(26,18,8,.97); padding: 20px; gap: 0; }
+  .nav-links.open a { padding: 14px 24px; border-bottom: 1px solid rgba(212,160,23,.1); }
+  .hamburger      { display: flex; }
+
+  .hero           { flex-direction: column; padding-top: 70px; }
+  .hero-content   { padding: 40px 24px 0; text-align: center; max-width: 100%; }
+  .hero-cta       { justify-content: center; }
+  .hero-badges    { justify-content: center; }
+  .hero-visual    { padding: 24px; }
+  .candle-scene   { width: 240px; height: 280px; }
+
+  .about-grid     { grid-template-columns: 1fr; }
+  .stats-grid     { grid-template-columns: repeat(2, 1fr); }
+  .products-grid  { grid-template-columns: 1fr; }
+  .testi-grid     { grid-template-columns: 1fr; }
+  .contact-wrap   { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid    { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .steps          { flex-direction: column; }
+  .step           { flex: 1 1 100%; }
+  .cart-panel     { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+  .filter-tabs { gap: 8px; }
+  .filter-btn  { padding: 8px 16px; font-size: .8rem; }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- ============================================================ NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-flame">🕯️</span>
+        <span class="logo-text">Óleum <span class="accent">Natura</span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================ HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Velas Artesanales Ecológicas</p>
+      <h1 class="hero-title">Óleum <span class="gold">Natura</span></h1>
+      <p class="hero-slogan">"Que la grasa engorde tu cartera"</p>
+      <p class="hero-desc">
+        Transformamos aceites y mantecas reciclados del hogar en velas artesanales
+        únicas. Cuidamos el planeta mientras iluminamos tu espacio con aromas increíbles.
+      </p>
+      <div class="hero-cta">
+        <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+        <a href="#nosotros" class="btn btn-outline">Nuestra Historia</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><span>♻️</span> 100% Reciclado</div>
+        <div class="badge"><span>🌿</span> Eco-amigable</div>
+        <div class="badge"><span>🤲</span> Hecho a mano</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="candle-scene">
+        <div class="candle c1">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="candle c2">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="candle c3">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="surface"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ NOSOTROS -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestra Misión</span>
+        <h2>¿Quiénes somos?</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🌍</div>
+          <h3>Impacto Ambiental</h3>
+          <p>Reducimos la huella ecológica reutilizando aceites y grasas domésticas que de otro modo contaminarían el agua y el suelo.</p>
+        </div>
+        <div class="about-card featured">
+          <div class="about-icon">🕯️</div>
+          <h3>Arte & Propósito</h3>
+          <p>Cada vela es elaborada a mano con ingredientes naturales, combinando técnica artesanal con conciencia ambiental. El resultado: un producto único, sostenible y lleno de carácter.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💰</div>
+          <h3>Economía Circular</h3>
+          <p>Convertimos residuos en oportunidad de negocio, demostrando que ser sostenible también puede ser rentable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ STATS -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Ingredientes reciclados</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Residuos generados</span></div>
+      <div class="stat"><span class="stat-num">+50h</span><span class="stat-label">Duración promedio</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Amor artesanal</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CATÁLOGO -->
+  <section class="catalog" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestros Productos</span>
+        <h2>Catálogo de Velas</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Cada vela está elaborada con aceites y grasas recicladas del hogar, perfumadas con esencias naturales. Elige la tuya.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="florales">Florales</button>
+        <button class="filter-btn" data-filter="aromaticas">Aromáticas</button>
+        <button class="filter-btn" data-filter="especiadas">Especiadas</button>
+        <button class="filter-btn" data-filter="frescas">Frescas</button>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+
+        <!-- FLORALES -->
+        <div class="product-card" data-category="florales">
+          <div class="product-badge">Más vendida</div>
+          <div class="product-img-wrap">
+            <div class="product-img florales-1">
+              <div class="img-candle">🌹</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Rosa & Jazmín</h3>
+            <p class="product-desc">Un romance floral que llena el ambiente con dulzura y elegancia. Ideal para momentos de relajación y romance. Notas de pétalo fresco y jazmín nocturno.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~55 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$85</span>
+                <span class="price">$65</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Rosa & Jazmín', 65)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="florales">
+          <div class="product-img-wrap">
+            <div class="product-img florales-2">
+              <div class="img-candle">🌸</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Lavanda Pura</h3>
+            <p class="product-desc">La fragancia clásica de la provenza francesa. Perfecta para el dormitorio, reduce el estrés y promueve el sueño tranquilo con su aroma suave y herbal.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~60 horas</span>
+              <span class="detail">🧪 160 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$60</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Lavanda Pura', 60)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="florales">
+          <div class="product-img-wrap">
+            <div class="product-img florales-3">
+              <div class="img-candle">🌺</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Gardenia & Ylang</h3>
+            <p class="product-desc">Sensual y profunda. El ylang ylang añade una nota exótica a la suavidad de la gardenia, creando una atmósfera íntima y cálida.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 140 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$70</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Gardenia & Ylang', 70)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AROMÁTICAS -->
+        <div class="product-card" data-category="aromaticas">
+          <div class="product-badge eco">Eco Hit</div>
+          <div class="product-img-wrap">
+            <div class="product-img aromaticas-1">
+              <div class="img-candle">🌿</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Eucalipto & Menta</h3>
+            <p class="product-desc">Revitalizante y purificadora. La combinación de eucalipto fresco con menta crea una sensación de limpieza y energía. Perfecta para espacios de trabajo.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 130 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$75</span>
+                <span class="price">$55</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Eucalipto & Menta', 55)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="aromaticas">
+          <div class="product-img-wrap">
+            <div class="product-img aromaticas-2">
+              <div class="img-candle">🌳</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Sándalo & Cedro</h3>
+            <p class="product-desc">Un lujo amaderado con profundidad y carácter. El sándalo aporta calidez terrosa mientras el cedro añade frescura silvestre. Una vela para todo el día.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~65 horas</span>
+              <span class="detail">🧪 180 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$80</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Sándalo & Cedro', 80)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="aromaticas">
+          <div class="product-img-wrap">
+            <div class="product-img aromaticas-3">
+              <div class="img-candle">🍃</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Romero & Salvia</h3>
+            <p class="product-desc">Herbal y reconfortante. El romero estimula la mente mientras la salvia purifica el espacio con su aroma antiguo y poderoso. Ideal para meditación.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$65</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Romero & Salvia', 65)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESPECIADAS -->
+        <div class="product-card" data-category="especiadas">
+          <div class="product-badge nuevo">Nuevo</div>
+          <div class="product-img-wrap">
+            <div class="product-img especiadas-1">
+              <div class="img-candle">🍂</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Canela & Naranja</h3>
+            <p class="product-desc">El clásico otoñal que evoca recuerdos cálidos. La canela envuelve con su dulzura picante mientras la naranja añade frescura cítrica. Un abrazo en forma de aroma.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~55 horas</span>
+              <span class="detail">🧪 160 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$70</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Canela & Naranja', 70)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="especiadas">
+          <div class="product-img-wrap">
+            <div class="product-img especiadas-2">
+              <div class="img-candle">☕</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Vainilla & Café</h3>
+            <p class="product-desc">Una combinación irresistible para los amantes del café. La vainilla suaviza la intensidad del café tostado creando un ambiente acogedor y estimulante a la vez.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~60 horas</span>
+              <span class="detail">🧪 170 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$80</span>
+                <span class="price">$68</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Vainilla & Café', 68)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="especiadas">
+          <div class="product-img-wrap">
+            <div class="product-img especiadas-3">
+              <div class="img-candle">🫚</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Jengibre & Clavo</h3>
+            <p class="product-desc">Picante, cálido y misterioso. El jengibre aporta energía mientras el clavo añade profundidad especiada. Una vela perfecta para noches frías.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 140 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$62</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Jengibre & Clavo', 62)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRESCAS -->
+        <div class="product-card" data-category="frescas">
+          <div class="product-img-wrap">
+            <div class="product-img frescas-1">
+              <div class="img-candle">🍋</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Limón & Albahaca</h3>
+            <p class="product-desc">Vibrante y llena de vida. El limón despeja la mente con su acidez brillante mientras la albahaca añade una nota herbal sofisticada. Para cocinas y espacios sociales.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~40 horas</span>
+              <span class="detail">🧪 130 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$58</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Limón & Albahaca', 58)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="frescas">
+          <div class="product-badge">Popular</div>
+          <div class="product-img-wrap">
+            <div class="product-img frescas-2">
+              <div class="img-candle">🌊</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Brisa Marina</h3>
+            <p class="product-desc">Cierra los ojos y escucha el mar. Sal marina, notas acuáticas y un toque de coco crean la ilusión perfecta de estar frente al océano. Fresca e irresistible.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$72</span>
+                <span class="price">$60</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Brisa Marina', 60)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="frescas">
+          <div class="product-img-wrap">
+            <div class="product-img frescas-3">
+              <div class="img-candle">🍃</div>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Verde Té & Pepino</h3>
+            <p class="product-desc">Minimalista y zen. El té verde japonés combinado con pepino fresco crea una fragancia limpia, serena y perfecta para espacios de bienestar y meditación.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 135 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$55</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Verde Té & Pepino', 55)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================ PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Transparencia Total</span>
+        <h2>¿Cómo hacemos tus velas?</h2>
+        <div class="divider gold-div"></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-icon">🫙</div>
+          <h3>Recolección</h3>
+          <p>Recolectamos aceites y grasas usadas del hogar (aceite de cocina, manteca vegetal) que de otro modo irían al drenaje.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-icon">🔥</div>
+          <h3>Purificación</h3>
+          <p>Filtramos y tratamos los aceites para eliminar impurezas y olores, obteniendo una base limpia y lista para la vela.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-icon">🌺</div>
+          <h3>Aromatización</h3>
+          <p>Agregamos esencias naturales seleccionadas cuidadosamente para crear fragancias únicas y duraderas.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-icon">🕯️</div>
+          <h3>Moldeo & Acabado</h3>
+          <p>Vertemos la mezcla en moldes artesanales, colocamos la mecha y dejamos solidificar lentamente para garantizar calidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ TESTIMONIOS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lo que dicen</span>
+        <h2>Clientes felices</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"La vela de Lavanda Pura es increíble. Desde que la tengo en mi cuarto duermo muchísimo mejor. El aroma dura toda la noche y es muy suave."</p>
+          <div class="testi-author"><div class="author-avatar">A</div><div><strong>Ana García</strong><span>Ciudad de México</span></div></div>
+        </div>
+        <div class="testi-card featured">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Me encanta saber que son hechas con aceites reciclados. Además de oler increíble, me siento bien contribuyendo al medio ambiente. La Canela & Naranja es mi favorita."</p>
+          <div class="testi-author"><div class="author-avatar">M</div><div><strong>María López</strong><span>Guadalajara</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Pedí un set de regalo para mi mamá y quedó encantada. La presentación es hermosa y los aromas son genuinos, no artificiales. Definitivamente vuelvo a comprar."</p>
+          <div class="testi-author"><div class="author-avatar">C</div><div><strong>Carlos Ruiz</strong><span>Monterrey</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container contact-wrap">
+      <div class="contact-info">
+        <span class="section-tag">Escríbenos</span>
+        <h2>¿Tienes alguna pregunta?</h2>
+        <p>Nos encanta escucharte. Escríbenos para pedidos personalizados, pedidos al mayoreo o simplemente para saber más sobre nuestras velas.</p>
+        <div class="contact-items">
+          <div class="contact-item"><span>📱</span><div><strong>WhatsApp</strong><p>+52 55 1234-5678</p></div></div>
+          <div class="contact-item"><span>📧</span><div><strong>Email</strong><p>hola@oleumnatura.mx</p></div></div>
+          <div class="contact-item"><span>📍</span><div><strong>Ubicación</strong><p>Entrega a domicilio en toda la ciudad</p></div></div>
+          <div class="contact-item"><span>🕐</span><div><strong>Horario</strong><p>Lun – Sáb, 9:00 a 20:00</p></div></div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>Teléfono (opcional)</label>
+          <input type="tel" placeholder="+52 55 0000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="¿En qué podemos ayudarte? Cuéntanos sobre tu pedido..." rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary full">Enviar Mensaje 🕯️</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-flame">🕯️</span><span class="logo-text">Óleum <span class="accent">Natura</span></span></div>
+        <p>"Que la grasa engorde tu cartera"</p>
+        <p class="footer-sub">Transformando residuos en luz y aroma desde 2024.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#catalogo">Florales</a></li>
+          <li><a href="#catalogo">Aromáticas</a></li>
+          <li><a href="#catalogo">Especiadas</a></li>
+          <li><a href="#catalogo">Frescas</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Síguenos</h4>
+        <div class="social-links">
+          <a href="#" class="social-btn">📸 Instagram</a>
+          <a href="#" class="social-btn">🎵 TikTok</a>
+          <a href="#" class="social-btn">📘 Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Óleum Natura · Todos los derechos reservados · Hecho con ♻️ y ❤️</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ CART TOAST -->
+  <div class="cart-toast" id="cart-toast">
+    <span id="toast-msg">¡Producto agregado!</span>
+  </div>
+
+  <!-- ============================================================ CART BUTTON -->
+  <button class="cart-fab" id="cart-fab" onclick="toggleCart()">
+    🛒 <span class="cart-count" id="cart-count">0</span>
+  </button>
+
+  <!-- ============================================================ CART PANEL -->
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+      <h3>🛒 Tu carrito</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="cart-empty">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cart-total">$0</strong></div>
+      <button class="btn btn-primary full" onclick="checkout()">Pedir por WhatsApp 📱</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+  <script>
+/* ================================================================
+   ÓLEUM NATURA — JavaScript
+   ================================================================ */
+
+/* ---------- Cart State ---------- */
+let cart = [];
+
+/* ---------- Navbar: scroll opacity & hamburger ---------- */
+const navbar    = document.querySelector('.navbar');
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.querySelector('.nav-links');
+
+window.addEventListener('scroll', () => {
+  navbar.style.background = window.scrollY > 40
+    ? 'rgba(26,18,8,.98)'
+    : 'rgba(26,18,8,.92)';
+});
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+  });
+});
+
+/* ---------- Smooth scroll for any anchor ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ---------- Hero Particles ---------- */
+function spawnParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+
+  function createParticle() {
+    const p    = document.createElement('div');
+    const size = Math.random() * 6 + 2;
+    p.classList.add('particle');
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random() * 100}%;
+      bottom:0;
+      animation-duration:${Math.random() * 8 + 6}s;
+      animation-delay:${Math.random() * 4}s;
+      opacity:${Math.random() * .6 + .2};
+    `;
+    container.appendChild(p);
+    setTimeout(() => p.remove(), 14000);
+  }
+
+  for (let i = 0; i < 20; i++) createParticle();
+  setInterval(createParticle, 700);
+}
+
+spawnParticles();
+
+/* ---------- Filter Tabs ---------- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards      = document.querySelectorAll('.product-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.classList.remove('hidden');
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'fadeInUp .4s ease forwards';
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+/* ---------- Add to Cart ---------- */
+function addToCart(btn, name, price) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  btn.textContent = '✓ Agregado';
+  btn.classList.add('added');
+  setTimeout(() => {
+    btn.textContent = 'Agregar';
+    btn.classList.remove('added');
+  }, 1800);
+
+  showToast(`¡${name} agregada al carrito!`);
+  updateCartUI();
+}
+
+function showToast(msg) {
+  const toast   = document.getElementById('cart-toast');
+  const toastMsg = document.getElementById('toast-msg');
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cart-count').textContent = count;
+
+  const itemsEl = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<p class="cart-empty">Tu carrito está vacío</p>';
+    totalEl.textContent = '$0';
+    return;
+  }
+
+  itemsEl.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div>
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">x${item.qty} · ${item.price * item.qty}</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${idx})">✕</button>
+    </div>
+  `).join('');
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  totalEl.textContent = `${total}`;
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCartUI();
+}
+
+/* ---------- Cart Panel Toggle ---------- */
+function toggleCart() {
+  const panel   = document.getElementById('cart-panel');
+  const overlay = document.getElementById('cart-overlay');
+  panel.classList.toggle('open');
+  overlay.classList.toggle('show');
+}
+
+/* ---------- Checkout via WhatsApp ---------- */
+function checkout() {
+  if (cart.length === 0) return;
+
+  const lines = cart.map(i => `• ${i.name} x${i.qty} = ${i.price * i.qty}`).join('\n');
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const msg   = encodeURIComponent(
+    `Hola Óleum Natura! 🕯️ Quiero hacer el siguiente pedido:\n\n${lines}\n\nTotal: ${total}\n\n¿Pueden confirmar disponibilidad?`
+  );
+
+  window.open(`https://wa.me/5215512345678?text=${msg}`, '_blank');
+}
+
+/* ---------- Contact Form ---------- */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✓ ¡Mensaje enviado!';
+  btn.style.background = 'linear-gradient(135deg, #52B788, #2D6A4F)';
+  setTimeout(() => {
+    btn.textContent = 'Enviar Mensaje 🕯️';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+/* ---------- Intersection Observer: fade-in on scroll ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity   = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(
+  '.product-card, .about-card, .testi-card, .step, .contact-item, .stat'
+).forEach(el => {
+  el.style.opacity   = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity .55s ease, transform .55s ease';
+  io.observe(el);
+});
+
+/* ---------- CSS fadeInUp keyframe (injected for filter) ---------- */
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+`;
+document.head.appendChild(style);
+
+</script>
+</body>
+</html>
