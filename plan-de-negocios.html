@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de Negocios – Óleum Natura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:   #D4A017;
+      --gold-light: #F0C842;
+      --gold-pale: #FDF0C0;
+      --brown:  #5C3D11;
+      --brown-dark: #3B2407;
+      --cream:  #FDF8EF;
+      --dark:   #1A1208;
+      --white:  #FFFFFF;
+      --gray:   #7A7062;
+      --gray-light: #EDE8DF;
+      --sidebar-w: 240px;
+      --content-max: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ===================== SIDEBAR NAV ===================== */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--brown-dark);
+      color: var(--cream);
+      overflow-y: auto;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 3px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .sidebar-header {
+      padding: 24px 16px 20px;
+      border-bottom: 1px solid rgba(212,160,23,0.3);
+      text-align: center;
+    }
+
+    .sidebar-header .flame { font-size: 2rem; display: block; margin-bottom: 6px; }
+
+    .sidebar-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      color: var(--gold);
+      line-height: 1.3;
+    }
+
+    .sidebar-header p {
+      font-size: 0.7rem;
+      color: rgba(253,248,239,0.6);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .sidebar nav { padding: 12px 0; flex: 1; }
+
+    .sidebar nav a {
+      display: block;
+      padding: 9px 16px;
+      color: rgba(253,248,239,0.85);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: background 0.2s, color 0.2s, padding-left 0.2s;
+      border-left: 3px solid transparent;
+      line-height: 1.3;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: rgba(212,160,23,0.15);
+      color: var(--gold-light);
+      border-left-color: var(--gold);
+      padding-left: 20px;
+    }
+
+    .sidebar nav a .num {
+      display: inline-block;
+      width: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.75rem;
+    }
+
+    .sidebar-footer {
+      padding: 16px;
+      border-top: 1px solid rgba(212,160,23,0.2);
+    }
+
+    .btn-back {
+      display: block;
+      text-align: center;
+      padding: 9px 14px;
+      background: var(--gold);
+      color: var(--brown-dark);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.78rem;
+      transition: background 0.2s;
+      margin-bottom: 8px;
+    }
+
+    .btn-back:hover { background: var(--gold-light); }
+
+    .btn-print {
+      display: block;
+      text-align: center;
+      padding: 9px 14px;
+      background: transparent;
+      color: rgba(253,248,239,0.7);
+      border: 1px solid rgba(212,160,23,0.4);
+      border-radius: 6px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-print:hover { background: rgba(212,160,23,0.15); color: var(--gold-light); }
+
+    /* ===================== MAIN CONTENT ===================== */
+    .main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+      padding: 40px 32px 80px;
+    }
+
+    .doc-wrapper {
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    /* ===================== COVER PAGE ===================== */
+    .cover {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(92,61,17,0.12);
+      padding: 60px 60px 50px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--brown);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 5px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .cover h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.6rem;
+      color: var(--brown);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .cover h1 span { color: var(--gold); }
+
+    .cover .slogan {
+      font-style: italic;
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 28px;
+    }
+
+    .cover-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--brown));
+      margin: 0 auto 28px;
+      border-radius: 2px;
+    }
+
+    .cover h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .cover-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 30px;
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+
+    .cover-meta dt {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      font-weight: 700;
+    }
+
+    .cover-meta dd {
+      font-size: 0.88rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .cover-meta dd.blank { border-bottom: 1px solid var(--gray); min-width: 120px; color: transparent; }
+
+    .cover-year {
+      font-size: 0.78rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===================== SECTION CARDS ===================== */
+    .section-card {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(92,61,17,0.09);
+      padding: 44px 52px;
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--gray-light);
+    }
+
+    .section-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+      font-weight: 900;
+      min-width: 48px;
+      opacity: 0.6;
+    }
+
+    .section-title-wrap { flex: 1; }
+
+    .section-title-wrap h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.55rem;
+      color: var(--brown);
+      line-height: 1.2;
+    }
+
+    .section-title-wrap p {
+      color: var(--gray);
+      font-size: 0.82rem;
+      margin-top: 3px;
+    }
+
+    /* ===================== TYPOGRAPHY ===================== */
+    h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.08rem;
+      color: var(--brown);
+      margin: 24px 0 10px;
+    }
+
+    h3:first-child { margin-top: 0; }
+
+    p { margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    li { margin-bottom: 5px; }
+
+    .blank-field {
+      display: inline-block;
+      border-bottom: 1.5px solid var(--brown);
+      min-width: 180px;
+      color: transparent;
+      user-select: none;
+    }
+
+    .blank-sm { min-width: 100px; }
+    .blank-lg { min-width: 280px; }
+
+    /* ===================== TABLES ===================== */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.87rem;
+    }
+
+    thead th {
+      background: var(--brown);
+      color: var(--gold-light);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tbody td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--gray-light);
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) { background: var(--cream); }
+
+    .td-bold { font-weight: 700; color: var(--brown); }
+    .td-total td { background: var(--gold-pale) !important; font-weight: 700; color: var(--brown-dark); }
+    .td-subtotal td { background: rgba(212,160,23,0.1) !important; font-style: italic; color: var(--brown); }
+
+    /* ===================== FODA ===================== */
+    .foda-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border: 2px solid var(--brown);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .foda-cell {
+      padding: 20px;
+      min-height: 200px;
+    }
+
+    .foda-f { background: #EAF5EA; }
+    .foda-d { background: #FFF0E8; }
+    .foda-o { background: #E8F0FF; }
+    .foda-a { background: #FFF0F0; }
+
+    .foda-label {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .foda-f .foda-label { color: #2E7D32; }
+    .foda-d .foda-label { color: #E65100; }
+    .foda-o .foda-label { color: #1565C0; }
+    .foda-a .foda-label { color: #C62828; }
+
+    .foda-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .foda-f .foda-icon { background: #2E7D32; }
+    .foda-d .foda-icon { background: #E65100; }
+    .foda-o .foda-icon { background: #1565C0; }
+    .foda-a .foda-icon { background: #C62828; }
+
+    .foda-cell ul {
+      padding-left: 16px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .foda-cell li { margin-bottom: 6px; }
+
+    /* ===================== FORMULA BOX ===================== */
+    .formula-box {
+      background: var(--brown-dark);
+      color: var(--gold-light);
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin: 16px 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .formula-box .formula-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(240,200,66,0.6);
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 6px;
+    }
+
+    .formula-box .result {
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      font-weight: 900;
+      margin-top: 6px;
+    }
+
+    /* ===================== HIGHLIGHT BOX ===================== */
+    .highlight-box {
+      background: var(--gold-pale);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight-box p { margin: 0; }
+    .highlight-box strong { color: var(--brown); }
+
+    /* ===================== INFO GRID ===================== */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .info-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .info-card .ic-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .info-card .ic-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brown);
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .info-card .ic-sub {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+
+    /* ===================== GANTT ===================== */
+    .gantt-table thead th { text-align: center; }
+    .gantt-table td { text-align: center; }
+    .gantt-table td:first-child { text-align: left; }
+    .gantt-active { background: var(--gold) !important; }
+    .gantt-active::after { content: '✓'; font-weight: 700; color: var(--brown-dark); }
+    .gantt-inactive { background: var(--gray-light); color: transparent; font-size: 0.1px; }
+
+    /* ===================== PENDING CARD ===================== */
+    .pending-card {
+      background: linear-gradient(135deg, #FFF8E1, #FFF3CD);
+      border: 2px dashed var(--gold);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .pending-icon { font-size: 3rem; margin-bottom: 16px; }
+
+    .pending-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .pending-card p {
+      color: var(--gray);
+      max-width: 400px;
+      margin: 0 auto;
+      font-size: 0.92rem;
+    }
+
+    .pending-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-top: 16px;
+    }
+
+    /* ===================== PRODUCT LINES ===================== */
+    .product-lines {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .product-line {
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: var(--cream);
+    }
+
+    .pl-title {
+      font-weight: 700;
+      color: var(--brown);
+      font-size: 0.88rem;
+      margin-bottom: 6px;
+    }
+
+    .pl-items {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    /* ===================== FINANCIAL SUMMARY ===================== */
+    .fin-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .fin-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .fin-card.highlight {
+      background: var(--brown);
+      border-color: var(--brown);
+    }
+
+    .fin-card.highlight .fc-label { color: rgba(212,160,23,0.7); }
+    .fin-card.highlight .fc-value { color: var(--gold-light); }
+
+    .fc-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .fc-value {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    /* ===================== MISC ===================== */
+    .section-card blockquote {
+      border-left: 4px solid var(--gold);
+      padding-left: 18px;
+      margin: 16px 0;
+      font-style: italic;
+      color: var(--brown);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .value-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .value-tag {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold);
+      color: var(--brown);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .vp-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .vp-list li {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 0.88rem;
+    }
+
+    .vp-list li:last-child { border-bottom: none; }
+
+    .vp-icon {
+      color: var(--gold);
+      font-size: 1rem;
+      flex-shrink: 0;
+      width: 20px;
+    }
+
+    .cliente-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .cliente-card {
+      background: var(--cream);
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .cc-title {
+      font-weight: 700;
+      color: var(--brown);
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .cc-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .pe-box {
+      background: var(--brown-dark);
+      color: var(--cream);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+
+    .pe-box .pe-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+
+    .pe-formula {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.95rem;
+      color: rgba(253,248,239,0.9);
+      margin-bottom: 6px;
+    }
+
+    .pe-result {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      font-weight: 900;
+      margin-top: 8px;
+    }
+
+    /* ===================== PRINT ===================== */
+    @media print {
+      .sidebar { display: none !important; }
+      .main { margin-left: 0 !important; padding: 0 !important; }
+      .doc-wrapper { max-width: 100% !important; }
+      .section-card, .cover { box-shadow: none !important; border: 1px solid #ddd; break-inside: avoid; }
+      .btn-back, .btn-print { display: none !important; }
+      body { font-size: 12px; background: white; }
+      .foda-grid { break-inside: avoid; }
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 768px) {
+      :root { --sidebar-w: 0px; }
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 20px 16px 60px; }
+      .section-card { padding: 28px 20px; }
+      .cover { padding: 36px 24px 32px; }
+      .cover-meta { grid-template-columns: 1fr; }
+      .foda-grid { grid-template-columns: 1fr; }
+      .info-grid, .product-lines, .cliente-grid { grid-template-columns: 1fr; }
+      .fin-summary { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================ SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="flame">🕯️</span>
+    <h2>Óleum Natura</h2>
+    <p>Plan de Negocios</p>
+  </div>
+  <nav>
+    <a href="#portada"><span class="num">·</span> Portada</a>
+    <a href="#sec1"><span class="num">1.</span> Datos Generales</a>
+    <a href="#sec2"><span class="num">2.</span> Resumen Ejecutivo</a>
+    <a href="#sec3"><span class="num">3.</span> Filosofía del Negocio</a>
+    <a href="#sec4"><span class="num">4.</span> Análisis de Mercado</a>
+    <a href="#sec5"><span class="num">5.</span> Plan de Mercadotecnia</a>
+    <a href="#sec6"><span class="num">6.</span> Plan de Operaciones</a>
+    <a href="#sec7"><span class="num">7.</span> Plan Financiero</a>
+    <a href="#sec8"><span class="num">8.</span> Cronograma</a>
+    <a href="#sec9"><span class="num">9.</span> Contribuciones Fiscales</a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html" class="btn-back">← Volver al Sitio</a>
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimir</button>
+  </div>
+</aside>
+
+<!-- ============================================================ MAIN -->
+<main class="main">
+  <div class="doc-wrapper">
+
+    <!-- PORTADA -->
+    <section class="cover" id="portada">
+      <div class="cover-badge">Microempresa Escolar · 2025</div>
+      <h1>Óleum <span>Natura</span></h1>
+      <p class="slogan">"Que la grasa engorde tu cartera"</p>
+      <div class="cover-divider"></div>
+      <h2>Plan de Negocios</h2>
+      <dl class="cover-meta">
+        <dt>Empresa</dt>
+        <dd>Óleum Natura S.A. de C.V.</dd>
+        <dt>Sector</dt>
+        <dd>Manufactura artesanal ecológica</dd>
+        <dt>Producto</dt>
+        <dd>Velas artesanales de aceites reciclados</dd>
+        <dt>Mercado</dt>
+        <dd>Local – comunidad escolar y colonias aledañas</dd>
+      </dl>
+      <p class="cover-year">Ciclo Escolar 2024 – 2025</p>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 1 -->
+    <section class="section-card" id="sec1">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title-wrap">
+          <h2>Datos Generales</h2>
+          <p>Información de identificación de la microempresa</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr>
+              <td class="td-bold" style="width:42%">Nombre de la Microempresa</td>
+              <td>Óleum Natura S.A. de C.V.</td>
+            </tr>
+            <tr>
+              <td class="td-bold">RFC</td>
+              <td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+            </tr>
+            <tr>
+              <td class="td-bold">Domicilio Fiscal</td>
+              <td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+            </tr>
+            <tr>
+              <td class="td-bold">Importe del Capital</td>
+              <td>$<span class="blank-field blank-sm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> MXN</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Grado y Grupo</td>
+              <td><span class="blank-field blank-sm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+            </tr>
+            <tr>
+              <td class="td-bold">Especialidad</td>
+              <td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+            </tr>
+            <tr>
+              <td class="td-bold">Módulo Profesional y Submódulo</td>
+              <td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+            </tr>
+            <tr>
+              <td class="td-bold">Docente</td>
+              <td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Integrantes / Socios</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre Completo</th>
+              <th>Cargo dentro de la Empresa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td><span class="blank-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+            <tr><td>2</td><td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td><span class="blank-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+            <tr><td>3</td><td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td><span class="blank-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+            <tr><td>4</td><td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td><span class="blank-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+            <tr><td>5</td><td><span class="blank-field blank-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td><span class="blank-field">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 2 -->
+    <section class="section-card" id="sec2">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title-wrap">
+          <h2>Resumen Ejecutivo</h2>
+          <p>Panorama general de la microempresa y su propuesta</p>
+        </div>
+      </div>
+
+      <p>
+        <strong>Óleum Natura S.A. de C.V.</strong> es una microempresa escolar dedicada a la fabricación y comercialización de velas artesanales elaboradas a partir de aceites y grasas de cocina recicladas. Surge como respuesta a una necesidad real del mercado: ofrecer productos decorativos, ecológicos y accesibles que reduzcan el impacto ambiental generado por el desecho inadecuado de residuos grasos domésticos.
+      </p>
+
+      <h3>Necesidad que Cubre</h3>
+      <p>
+        Miles de litros de aceite usado se desechan diariamente en hogares mexicanos, contaminando suelos y sistemas de drenaje. Al mismo tiempo, existe una demanda creciente de productos artesanales, sustentables y con identidad local. Óleum Natura atiende ambas problemáticas: transforma un residuo en un producto de valor agregado con una huella ecológica mínima.
+      </p>
+
+      <h3>Propuesta de Valor</h3>
+      <p>
+        Nuestras velas son <strong>100% elaboradas con aceites y grasas recicladas del hogar</strong>, aromatizadas con esencias naturales en cuatro líneas temáticas (Florales, Aromáticas, Especiadas y Frescas) y presentadas en vasos de vidrio reutilizados con etiquetas artesanales. Cada pieza es única, personalizable y disponible tanto en punto de venta físico como a través de nuestro canal digital propio.
+      </p>
+
+      <h3>Proyección de Ventas y Rentabilidad</h3>
+      <div class="fin-summary">
+        <div class="fin-card">
+          <div class="fc-label">Ventas estimadas / mes</div>
+          <div class="fc-value">50 velas</div>
+        </div>
+        <div class="fin-card">
+          <div class="fc-label">Precio promedio</div>
+          <div class="fc-value">$65.00 MXN</div>
+        </div>
+        <div class="fin-card">
+          <div class="fc-label">Ingresos mensuales</div>
+          <div class="fc-value">$3,250 MXN</div>
+        </div>
+        <div class="fin-card highlight">
+          <div class="fc-label">Utilidad neta est.</div>
+          <div class="fc-value">$2,295 MXN/mes</div>
+        </div>
+      </div>
+
+      <h3>Factores de Éxito</h3>
+      <ul>
+        <li><strong>Tendencia ecológica:</strong> el mercado de productos sustentables crece año con año; el consumidor mexicano valora cada vez más las opciones amigables con el medio ambiente.</li>
+        <li><strong>Personalización:</strong> el cliente puede elegir aroma, color y mensaje en su etiqueta, diferenciándonos de velas industriales genéricas.</li>
+        <li><strong>Canal digital propio:</strong> nuestro sitio web <em>oleumnatura.netlify.app</em> cuenta con catálogo completo, carrito de compra y pago vía Mercado Pago, alcanzando clientes más allá del plantel.</li>
+        <li><strong>Baja competencia directa:</strong> en el entorno escolar no existe otra microempresa con un producto ecológico equivalente ni con presencia digital.</li>
+        <li><strong>Costos de producción bajos:</strong> al reutilizar el insumo principal (aceite reciclado) prácticamente sin costo, el margen de utilidad supera el 270%.</li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 3 -->
+    <section class="section-card" id="sec3">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title-wrap">
+          <h2>Filosofía del Negocio</h2>
+          <p>Misión, visión, valores y propuesta de valor</p>
+        </div>
+      </div>
+
+      <h3>3.1 Misión</h3>
+      <blockquote>
+        "Transformar residuos de aceites y grasas domésticas en velas artesanales únicas y aromáticas, ofreciendo a nuestra comunidad un producto de calidad, ecológico y accesible, mientras generamos conciencia ambiental y un modelo de negocio sostenible."
+      </blockquote>
+
+      <h3>3.2 Visión</h3>
+      <blockquote>
+        "Convertirnos en la marca de velas artesanales ecológicas de referencia en nuestra comunidad escolar y colonias aledañas, expandiendo nuestra distribución mediante canales digitales y estableciendo alianzas con tiendas locales al finalizar el ciclo escolar."
+      </blockquote>
+
+      <h3>3.3 Valores</h3>
+      <div class="value-tags">
+        <span class="value-tag">♻️ Responsabilidad Ecológica</span>
+        <span class="value-tag">🤝 Honestidad</span>
+        <span class="value-tag">👥 Trabajo en Equipo</span>
+        <span class="value-tag">💡 Creatividad e Innovación</span>
+      </div>
+
+      <h3>3.4 Propuesta de Valor</h3>
+      <ul class="vp-list">
+        <li><span class="vp-icon">♻️</span><span><strong>Producto 100% ecológico:</strong> elaborado con aceites y grasas de cocina reciclados directamente del hogar.</span></li>
+        <li><span class="vp-icon">🌸</span><span><strong>Aromas únicos en 4 categorías:</strong> Florales, Aromáticas, Especiadas y Frescas, con 12 variedades distintas.</span></li>
+        <li><span class="vp-icon">🎨</span><span><strong>Presentación artesanal y personalizable:</strong> etiquetas con nombre y mensaje a petición del cliente, cinta decorativa y empaque de regalo.</span></li>
+        <li><span class="vp-icon">🌐</span><span><strong>Canal digital propio:</strong> sitio web con catálogo y tienda en línea en <em>oleumnatura.netlify.app</em>.</span></li>
+        <li><span class="vp-icon">🛵</span><span><strong>Entrega a domicilio</strong> en la zona escolar y colonias aledañas.</span></li>
+        <li><span class="vp-icon">🎁</span><span><strong>Campaña de reciclaje:</strong> descuento especial al cliente que devuelva el vaso vacío para su reutilización.</span></li>
+      </ul>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 4 -->
+    <section class="section-card" id="sec4">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title-wrap">
+          <h2>Análisis de Mercado</h2>
+          <p>Cliente objetivo y análisis FODA</p>
+        </div>
+      </div>
+
+      <h3>4.1 Cliente Objetivo</h3>
+      <div class="cliente-grid">
+        <div class="cliente-card">
+          <div class="cc-title">🏫 Comunidad Escolar</div>
+          <div class="cc-desc">Estudiantes y docentes que buscan velas para eventos, altares de Día de Muertos, decoración de salones y regalos entre compañeros.</div>
+        </div>
+        <div class="cliente-card">
+          <div class="cc-title">🏠 Familias Locales</div>
+          <div class="cc-desc">Hogares de las colonias aledañas con uso religioso, decorativo, en eventos y para emergencias ante cortes de luz.</div>
+        </div>
+        <div class="cliente-card">
+          <div class="cc-title">🏪 Pequeños Comercios</div>
+          <div class="cc-desc">Tienditas, papelerías y puestos de mercado interesados en revender velas artesanales locales con surtido por mayoreo.</div>
+        </div>
+        <div class="cliente-card">
+          <div class="cc-title">💻 Compradores en Línea</div>
+          <div class="cc-desc">Usuarios de Instagram, TikTok y visitantes de nuestro sitio web que descubren el producto a través de redes sociales.</div>
+        </div>
+      </div>
+
+      <h3>4.2 Análisis FODA</h3>
+      <div class="foda-grid">
+        <div class="foda-cell foda-f">
+          <div class="foda-label">
+            <span class="foda-icon">F</span> Fortalezas
+          </div>
+          <ul>
+            <li>Producto 100% ecológico y diferenciado</li>
+            <li>Bajos costos de producción al reutilizar insumos</li>
+            <li>Canal digital propio con carrito de compras</li>
+            <li>Marca visual atractiva (logo, identidad)</li>
+            <li>Acceso directo al mercado escolar</li>
+          </ul>
+        </div>
+        <div class="foda-cell foda-d">
+          <div class="foda-label">
+            <span class="foda-icon">D</span> Debilidades
+          </div>
+          <ul>
+            <li>Experiencia limitada en ventas y administración</li>
+            <li>Capital inicial limitado</li>
+            <li>Tiempo reducido por carga académica</li>
+            <li>Dependencia de disponibilidad de aceites reciclados</li>
+            <li>Producción aún artesanal y a pequeña escala</li>
+          </ul>
+        </div>
+        <div class="foda-cell foda-o">
+          <div class="foda-label">
+            <span class="foda-icon">O</span> Oportunidades
+          </div>
+          <ul>
+            <li>Alta demanda en fechas festivas (Día de Muertos, Navidad, Candelaria)</li>
+            <li>Tendencia creciente por productos sustentables y artesanales</li>
+            <li>Potencial de ventas en línea a nivel local</li>
+            <li>Alianzas con otras microempresas escolares</li>
+          </ul>
+        </div>
+        <div class="foda-cell foda-a">
+          <div class="foda-label">
+            <span class="foda-icon">A</span> Amenazas
+          </div>
+          <ul>
+            <li>Competencia de supermercados y grandes cererías</li>
+            <li>Variación en precios de esencias y materiales</li>
+            <li>Calor que afecta almacenamiento de cera</li>
+            <li>Imitación del modelo por competidores</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 5 -->
+    <section class="section-card" id="sec5">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title-wrap">
+          <h2>Plan de Mercadotecnia</h2>
+          <p>Las 4 P's: Producto, Precio, Plaza y Promoción</p>
+        </div>
+      </div>
+
+      <h3>5.1 Producto</h3>
+      <p>
+        Velas artesanales elaboradas con aceites y mantecas reciclados del hogar, aromatizadas con esencias naturales, presentadas en vasos de vidrio reutilizados con etiqueta artesanal y cinta decorativa. Peso: <strong>130–180 g</strong> por pieza. Duración: <strong>40–65 horas</strong> según variedad.
+      </p>
+
+      <p>Disponibles en presentación individual y en <strong>sets de regalo (3 velas)</strong>.</p>
+
+      <div class="product-lines">
+        <div class="product-line">
+          <div class="pl-title">🌸 Línea Florales</div>
+          <div class="pl-items">Rosa &amp; Jazmín · Lavanda · Gardenia</div>
+        </div>
+        <div class="product-line">
+          <div class="pl-title">🌿 Línea Aromáticas</div>
+          <div class="pl-items">Eucalipto &amp; Menta · Sándalo · Romero</div>
+        </div>
+        <div class="product-line">
+          <div class="pl-title">🍂 Línea Especiadas</div>
+          <div class="pl-items">Canela &amp; Naranja · Vainilla &amp; Café · Jengibre</div>
+        </div>
+        <div class="product-line">
+          <div class="pl-title">🍃 Línea Frescas</div>
+          <div class="pl-items">Limón · Brisa Marina · Té Verde</div>
+        </div>
+      </div>
+
+      <h3>5.2 Precio</h3>
+      <div class="formula-box">
+        <div class="formula-label">Fórmula de Precio de Venta al Público</div>
+        PVP = Costo Variable + Costo Fijo Unitario + Margen de Utilidad
+        <div class="result">PVP = $14.50 + $3.00 + $47.50 = $65.00 (promedio)</div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th style="text-align:right">Costo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Aceite reciclado procesado (por vela)</td>
+              <td style="text-align:right">$5.00</td>
+            </tr>
+            <tr>
+              <td>Esencia aromática (por vela)</td>
+              <td style="text-align:right">$4.00</td>
+            </tr>
+            <tr>
+              <td>Mecha + vaso de vidrio reciclado</td>
+              <td style="text-align:right">$3.00</td>
+            </tr>
+            <tr>
+              <td>Etiqueta y decoración</td>
+              <td style="text-align:right">$2.50</td>
+            </tr>
+            <tr class="td-subtotal">
+              <td><strong>Costo Variable Unitario (CV)</strong></td>
+              <td style="text-align:right"><strong>$14.50</strong></td>
+            </tr>
+            <tr>
+              <td>Costos fijos prorrateados por unidad</td>
+              <td style="text-align:right">$3.00</td>
+            </tr>
+            <tr class="td-subtotal">
+              <td><strong>Costo Total Unitario</strong></td>
+              <td style="text-align:right"><strong>$17.50</strong></td>
+            </tr>
+            <tr>
+              <td>Margen de utilidad (≈270%)</td>
+              <td style="text-align:right">$47.50</td>
+            </tr>
+            <tr class="td-total">
+              <td><strong>Precio de Venta al Público (PVP)</strong></td>
+              <td style="text-align:right"><strong>$55.00 – $80.00</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <p>El precio varía según la línea de producto. <strong>Precio de entrada: $55.00</strong> (líneas básicas) · <strong>Precio premium: $80.00</strong> (sets de regalo y líneas especiales). <strong>Precio promedio: $65.00 MXN.</strong></p>
+      </div>
+
+      <h3>5.3 Plaza</h3>
+      <ul>
+        <li><strong>Punto de venta físico en la escuela:</strong> durante recesos, ferias y eventos institucionales.</li>
+        <li><strong>Venta bajo pedido vía WhatsApp:</strong> atención personalizada con entrega acordada.</li>
+        <li><strong>Tienda en línea:</strong> <em>oleumnatura.netlify.app</em> con carrito de compra y pago integrado vía Mercado Pago.</li>
+        <li><strong>Redes sociales:</strong> catálogo activo en Instagram y TikTok con enlace directo a la tienda.</li>
+        <li><strong>Venta de puerta en puerta</strong> en colonias aledañas al plantel.</li>
+      </ul>
+
+      <h3>5.4 Promoción <span style="font-size:0.75rem;color:var(--gray);font-family:'Lato',sans-serif;font-weight:400;">(Sección ya desarrollada — ver sitio web)</span></h3>
+      <div class="highlight-box">
+        <p>Esta sección fue desarrollada como el <strong>Proyecto Integrador de Promoción</strong>. El sitio web <em>oleumnatura.netlify.app</em> constituye el plan de promoción completo e incluye:</p>
+        <ul style="margin-top:8px;margin-bottom:0">
+          <li>Catálogo de 12 productos con fotografías y descripciones</li>
+          <li>Carrito de compra y pago en línea (Mercado Pago)</li>
+          <li>Marca visual: logo circular Óleum Natura con identidad dorada/café</li>
+          <li>Estrategia: "Lleva 3, paga 2.5" y sets de temporada</li>
+          <li>Contenido en redes: videos del proceso artesanal</li>
+          <li>Campaña ecológica: descuento por devolución de envase vacío</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 6 -->
+    <section class="section-card" id="sec6">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div class="section-title-wrap">
+          <h2>Plan de Operaciones</h2>
+          <p>Proveedores, proceso productivo y almacenamiento</p>
+        </div>
+      </div>
+
+      <h3>6.1 Selección de Proveedores</h3>
+      <p>Criterios de selección: precio unitario, calidad del insumo, tiempo de entrega y compra mínima requerida.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Proveedor</th>
+              <th>Tipo</th>
+              <th>Precio Unitario (est.)</th>
+              <th>Compra Mínima</th>
+              <th>Tiempo de Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-bold">Mercado Tepito / La Merced</td>
+              <td>Mayorista local</td>
+              <td>$3–5 MXN / mecha</td>
+              <td>50 pzas</td>
+              <td>1 día</td>
+            </tr>
+            <tr>
+              <td class="td-bold">Proveedor local de esencias</td>
+              <td>Especializado</td>
+              <td>$80–120 MXN / 100 ml</td>
+              <td>Sin mínimo</td>
+              <td>2–3 días</td>
+            </tr>
+            <tr>
+              <td class="td-bold">MercadoLibre (distribuidores)</td>
+              <td>En línea</td>
+              <td>Variable</td>
+              <td>Variable</td>
+              <td>3–5 días</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>6.2 Almacenamiento</h3>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="ic-label">Condición de almacén</div>
+          <div class="ic-value">≤25°C</div>
+          <div class="ic-sub">Lugar fresco, seco y sin luz solar directa</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Inventario mínimo</div>
+          <div class="ic-value">30 piezas</div>
+          <div class="ic-sub">Separadas por línea de producto en cajas de cartón</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Sistema de inventario</div>
+          <div class="ic-value">PEPS</div>
+          <div class="ic-sub">Primero en Entrar, Primero en Salir</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Organización</div>
+          <div class="ic-value">Por línea</div>
+          <div class="ic-sub">Florales · Aromáticas · Especiadas · Frescas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 7 -->
+    <section class="section-card" id="sec7">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div class="section-title-wrap">
+          <h2>Plan Financiero</h2>
+          <p>Inversión inicial, costos, punto de equilibrio y utilidad estimada</p>
+        </div>
+      </div>
+
+      <h3>7.1 Presupuesto de Inversión Inicial</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th style="text-align:center">Cantidad</th>
+              <th style="text-align:right">Costo Unitario</th>
+              <th style="text-align:right">Costo Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Aceites y grasas recicladas (proceso)</td>
+              <td style="text-align:center">5 litros</td>
+              <td style="text-align:right">$10.00</td>
+              <td style="text-align:right">$50.00</td>
+            </tr>
+            <tr>
+              <td>Esencias aromáticas (surtido)</td>
+              <td style="text-align:center">10 frascos 30 ml</td>
+              <td style="text-align:right">$45.00</td>
+              <td style="text-align:right">$450.00</td>
+            </tr>
+            <tr>
+              <td>Mechas de algodón</td>
+              <td style="text-align:center">100 pzas</td>
+              <td style="text-align:right">$1.50</td>
+              <td style="text-align:right">$150.00</td>
+            </tr>
+            <tr>
+              <td>Vasos de vidrio reciclados</td>
+              <td style="text-align:center">50 pzas</td>
+              <td style="text-align:right">$3.00</td>
+              <td style="text-align:right">$150.00</td>
+            </tr>
+            <tr>
+              <td>Etiquetas impresas (rollo)</td>
+              <td style="text-align:center">1 rollo</td>
+              <td style="text-align:right">$80.00</td>
+              <td style="text-align:right">$80.00</td>
+            </tr>
+            <tr>
+              <td>Colorantes para velas</td>
+              <td style="text-align:center">5 colores</td>
+              <td style="text-align:right">$25.00</td>
+              <td style="text-align:right">$125.00</td>
+            </tr>
+            <tr>
+              <td>Publicidad (redes, cartulinas)</td>
+              <td style="text-align:center">—</td>
+              <td style="text-align:right">—</td>
+              <td style="text-align:right">$50.00</td>
+            </tr>
+            <tr class="td-total">
+              <td><strong>TOTAL INVERSIÓN INICIAL</strong></td>
+              <td></td>
+              <td></td>
+              <td style="text-align:right"><strong>$1,055.00 MXN</strong></td>
+            </tr>
+            <tr class="td-subtotal">
+              <td><strong>Aportación por socio (5 socios)</strong></td>
+              <td></td>
+              <td></td>
+              <td style="text-align:right"><strong>$211.00 MXN c/u</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7.2 Costo Variable Unitario</h3>
+      <div class="highlight-box">
+        <p><strong>CV = $14.50 MXN por vela</strong> (ver desglose completo en Sección 5.2 — Precio)</p>
+      </div>
+
+      <h3>7.3 Costos Fijos Mensuales</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th style="text-align:right">Costo Mensual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Transporte para surtir materiales</td>
+              <td style="text-align:right">$120.00</td>
+            </tr>
+            <tr>
+              <td>Internet / datos móviles para redes sociales</td>
+              <td style="text-align:right">$80.00</td>
+            </tr>
+            <tr>
+              <td>Material de oficina (cuaderno, bolígrafos)</td>
+              <td style="text-align:right">$30.00</td>
+            </tr>
+            <tr class="td-total">
+              <td><strong>Total Costos Fijos Mensuales</strong></td>
+              <td style="text-align:right"><strong>$230.00 MXN</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7.4 Punto de Equilibrio</h3>
+      <div class="pe-box">
+        <div class="pe-title">Cálculo del Punto de Equilibrio (PE)</div>
+        <div class="pe-formula">PE = Costos Fijos ÷ (PVP − Costo Variable)</div>
+        <div class="pe-formula">PE = $230.00 ÷ ($65.00 − $14.50)</div>
+        <div class="pe-formula">PE = $230.00 ÷ $50.50</div>
+        <div class="pe-result">PE ≈ 5 velas / mes</div>
+      </div>
+      <p>Con sólo <strong>5 velas vendidas al mes</strong>, Óleum Natura cubre todos sus costos fijos. A partir de la sexta vela, cada unidad vendida genera utilidad pura.</p>
+
+      <h3>Proyección con 50 Velas / Mes</h3>
+      <div class="fin-summary">
+        <div class="fin-card">
+          <div class="fc-label">Ingresos totales</div>
+          <div class="fc-value">$3,250</div>
+        </div>
+        <div class="fin-card">
+          <div class="fc-label">Costos variables</div>
+          <div class="fc-value">$725</div>
+        </div>
+        <div class="fin-card">
+          <div class="fc-label">Costos fijos</div>
+          <div class="fc-value">$230</div>
+        </div>
+        <div class="fin-card highlight">
+          <div class="fc-label">Utilidad neta estimada</div>
+          <div class="fc-value">$2,295 / mes</div>
+        </div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gray);margin-top:8px">
+        Cálculo: $3,250 − $725 − $230 = <strong>$2,295 MXN de utilidad neta mensual estimada</strong>.
+      </p>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 8 -->
+    <section class="section-card" id="sec8">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <div class="section-title-wrap">
+          <h2>Cronograma de Actividades</h2>
+          <p>Diagrama de Gantt — primer mes de operaciones</p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="gantt-table">
+          <thead>
+            <tr>
+              <th style="width:48%">Actividad</th>
+              <th>Semana 1</th>
+              <th>Semana 2</th>
+              <th>Semana 3</th>
+              <th>Semana 4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Planeación y asignación de roles</td>
+              <td class="gantt-active"></td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+            </tr>
+            <tr>
+              <td>Cotización y compra con proveedores</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-active"></td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+            </tr>
+            <tr>
+              <td>Diseño de marca y etiquetas</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-active"></td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+            </tr>
+            <tr>
+              <td>Lanzamiento del sitio web y redes sociales</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-active"></td>
+              <td class="gantt-inactive">·</td>
+            </tr>
+            <tr>
+              <td>Campaña de promoción y preventa</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-active"></td>
+              <td class="gantt-inactive">·</td>
+            </tr>
+            <tr>
+              <td>Primera venta activa</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-active"></td>
+            </tr>
+            <tr>
+              <td>Registro de finanzas y balance</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-inactive">·</td>
+              <td class="gantt-active"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;gap:20px;margin-top:14px;font-size:0.78rem;color:var(--gray);">
+        <span><span style="display:inline-block;width:14px;height:14px;background:var(--gold);border-radius:2px;vertical-align:middle;margin-right:5px"></span> Semana activa</span>
+        <span><span style="display:inline-block;width:14px;height:14px;background:var(--gray-light);border-radius:2px;vertical-align:middle;margin-right:5px"></span> Semana inactiva</span>
+      </div>
+    </section>
+
+    <!-- ============================================================ SECCIÓN 9 -->
+    <section class="section-card" id="sec9">
+      <div class="section-header">
+        <div class="section-num">9</div>
+        <div class="section-title-wrap">
+          <h2>Contribuciones Fiscales de Personas Morales</h2>
+          <p>Cálculo de ISR y obligaciones tributarias</p>
+        </div>
+      </div>
+
+      <div class="pending-card">
+        <div class="pending-icon">📋</div>
+        <h3>Sección en proceso</h3>
+        <p>
+          Los cálculos de ISR y las contribuciones fiscales correspondientes a Personas Morales se agregarán en cuanto se cuente con los datos y la metodología proporcionados por el docente.
+        </p>
+        <span class="pending-tag">Pendiente — datos del docente</span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div style="text-align:center;padding:24px 0 8px;color:var(--gray);font-size:0.78rem;">
+      <p>Óleum Natura S.A. de C.V. · Plan de Negocios · Ciclo Escolar 2024–2025</p>
+      <p style="margin-top:4px">"Que la grasa engorde tu cartera"</p>
+    </div>
+
+  </div><!-- /doc-wrapper -->
+</main><!-- /main -->
+
+<script>
+  // Highlight active sidebar link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.sidebar nav a');
+
+  function onScroll() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top <= 100) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+</body>
+</html>
