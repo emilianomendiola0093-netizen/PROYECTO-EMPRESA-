@@ -349,6 +349,20 @@
     .td-total td { background: var(--gold-pale) !important; font-weight: 700; color: var(--brown-dark); }
     .td-subtotal td { background: rgba(212,160,23,0.1) !important; font-style: italic; color: var(--brown); }
 
+    /* ===================== CÉDULAS FISCALES ===================== */
+    .cedula-bloque { background:#fff; border:2px solid #333; border-radius:4px; padding:16px; margin-bottom:8px; }
+    .cedula-header-empresa { font-size:0.82rem; color:#333; margin-bottom:4px; }
+    .cedula-empresa-val { border-bottom:1px solid #333; min-width:180px; display:inline-block; }
+    .cedula-titulo-form { font-size:0.88rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:#1a1208; border-bottom:2px solid var(--gold); padding-bottom:4px; margin:6px 0 10px; }
+    .cedula-tabla { width:100%; border-collapse:collapse; font-family:'Lato',sans-serif; }
+    .cedula-tabla th, .cedula-tabla td { border:1px solid #bbb; padding:4px 6px; vertical-align:middle; }
+    .cedula-fila-header th, .cedula-fila-header td { background:#2c2c2c; color:#fff; font-weight:700; text-align:center; font-size:0.72rem; }
+    .cedula-concepto { text-align:left; font-size:0.78rem; background:#f9f6f0; }
+    .cedula-num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; font-size:0.76rem; }
+    .cedula-fila-subtotal td { background:rgba(212,160,23,0.18) !important; border-top:2px solid var(--gold); }
+    .cedula-fila-total td { background:var(--gold) !important; color:#1a1208 !important; font-weight:700; border-top:2px solid var(--brown); }
+    .cedula-fila-cu td { background:#f0f0f0 !important; font-style:italic; }
+
     /* ===================== FODA ===================== */
     .foda-grid {
       display: grid;
@@ -1877,6 +1891,466 @@
       <div class="highlight-box" style="margin-top:12px;">
         <p><strong>Nota:</strong> El ISR anual a enterar es $0.00 porque los pagos provisionales cubrieron exactamente el ISR anual determinado, lo cual es consecuencia directa de que el CU se calculó con base en los datos del ejercicio inmediato anterior (2025).</p>
       </div>
+    </section>
+
+    <!-- APÉNDICE: CÉDULAS FISCALES -->
+    <section id="apendice-cedulas" style="margin-top:48px;">
+      <h2 class="section-title"><span class="num">A</span>Cédulas Fiscales de Trabajo 2026</h2>
+      <div class="highlight-box" style="margin-bottom:24px;">
+        <p>Las siguientes cédulas corresponden al ejercicio fiscal teórico con datos proporcionados por el docente, cuyo propósito es aplicar los conocimientos del módulo de <strong>Contribuciones Fiscales de Personas Morales</strong>. Los importes no corresponden a la escala real de Óleum Natura.</p>
+      </div>
+
+      <!-- ══════════ CÉDULA 1 y 2: CU + PAGOS PROVISIONALES ══════════ -->
+      <div class="cedula-bloque">
+        <div class="cedula-header-empresa"><span>Empresa:</span> <span class="cedula-empresa-val">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="cedula-titulo-form">Cédulas 1 y 2 — Pagos Provisionales de ISR y Coeficiente de Utilidad — Ejercicio 2026</div>
+        <div style="overflow-x:auto;">
+          <table class="cedula-tabla" style="min-width:1180px;font-size:0.71rem;">
+            <thead>
+              <tr class="cedula-fila-header">
+                <td style="width:200px;background:#1a1208;"></td>
+                <th>Enero</th><th>Febrero</th><th>Marzo</th><th>Abril</th><th>Mayo</th><th>Junio</th>
+                <th>Julio</th><th>Agosto</th><th>Septiembre</th><th>Octubre</th><th>Noviembre</th><th>Diciembre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="cedula-concepto">Ingresos nominales del periodo</td>
+                <td class="cedula-num">1,850,326.00</td><td class="cedula-num">2,035,358.60</td><td class="cedula-num">2,238,894.46</td>
+                <td class="cedula-num">2,462,783.91</td><td class="cedula-num">2,709,062.30</td><td class="cedula-num">2,979,968.53</td>
+                <td class="cedula-num">3,277,965.38</td><td class="cedula-num">3,605,761.92</td><td class="cedula-num">3,966,338.11</td>
+                <td class="cedula-num">4,362,971.92</td><td class="cedula-num">4,799,269.11</td><td class="cedula-num">5,279,196.02</td>
+              </tr>
+              <tr><td class="cedula-concepto">Ingresos acumulados del periodo</td>
+                <td class="cedula-num">1,850,326.00</td><td class="cedula-num">3,885,684.60</td><td class="cedula-num">6,124,579.06</td>
+                <td class="cedula-num">8,587,362.97</td><td class="cedula-num">11,296,425.27</td><td class="cedula-num">14,276,393.80</td>
+                <td class="cedula-num">17,554,359.18</td><td class="cedula-num">21,160,121.10</td><td class="cedula-num">25,126,459.21</td>
+                <td class="cedula-num">29,489,431.13</td><td class="cedula-num">34,288,700.24</td><td class="cedula-num">39,567,896.26</td>
+              </tr>
+              <tr class="cedula-fila-cu"><td class="cedula-concepto">Coeficiente de utilidad</td>
+                <td class="cedula-num" colspan="12" style="text-align:center;font-weight:700;">0.2630 &nbsp;(mismo para todos los meses)</td>
+              </tr>
+              <tr><td class="cedula-concepto">Utilidad fiscal estimada</td>
+                <td class="cedula-num">486,683.41</td><td class="cedula-num">1,022,035.16</td><td class="cedula-num">1,610,922.08</td>
+                <td class="cedula-num">2,258,697.70</td><td class="cedula-num">2,971,250.88</td><td class="cedula-num">3,755,059.38</td>
+                <td class="cedula-num">4,617,248.72</td><td class="cedula-num">5,565,657.01</td><td class="cedula-num">6,608,906.12</td>
+                <td class="cedula-num">7,756,480.14</td><td class="cedula-num">9,018,811.56</td><td class="cedula-num">10,407,376.12</td>
+              </tr>
+              <tr><td class="cedula-concepto">PTU pagada</td>
+                <td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td>
+                <td class="cedula-num">245,600.00</td><td class="cedula-num">245,600.00</td><td class="cedula-num">245,600.00</td>
+                <td class="cedula-num">245,600.00</td><td class="cedula-num">245,600.00</td><td class="cedula-num">245,600.00</td>
+                <td class="cedula-num">245,600.00</td><td class="cedula-num">245,600.00</td>
+              </tr>
+              <tr><td class="cedula-concepto">Pérdidas fiscales</td>
+                <td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td>
+                <td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td>
+                <td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td>
+              </tr>
+              <tr class="cedula-fila-subtotal"><td class="cedula-concepto"><strong>Base gravable</strong></td>
+                <td class="cedula-num"><strong>486,683.41</strong></td><td class="cedula-num"><strong>1,022,035.16</strong></td><td class="cedula-num"><strong>1,610,922.08</strong></td>
+                <td class="cedula-num"><strong>2,258,697.70</strong></td><td class="cedula-num"><strong>2,725,650.88</strong></td><td class="cedula-num"><strong>3,509,459.38</strong></td>
+                <td class="cedula-num"><strong>4,371,648.72</strong></td><td class="cedula-num"><strong>5,320,057.01</strong></td><td class="cedula-num"><strong>6,363,306.12</strong></td>
+                <td class="cedula-num"><strong>7,510,880.14</strong></td><td class="cedula-num"><strong>8,773,211.56</strong></td><td class="cedula-num"><strong>10,161,776.12</strong></td>
+              </tr>
+              <tr><td class="cedula-concepto">Tasa ISR art. 9 LISR</td>
+                <td class="cedula-num" colspan="12" style="text-align:center;">30%</td>
+              </tr>
+              <tr class="cedula-fila-subtotal"><td class="cedula-concepto"><strong>ISR determinado</strong></td>
+                <td class="cedula-num"><strong>146,005.02</strong></td><td class="cedula-num"><strong>306,610.55</strong></td><td class="cedula-num"><strong>483,276.62</strong></td>
+                <td class="cedula-num"><strong>677,609.31</strong></td><td class="cedula-num"><strong>817,695.26</strong></td><td class="cedula-num"><strong>1,052,837.81</strong></td>
+                <td class="cedula-num"><strong>1,311,494.62</strong></td><td class="cedula-num"><strong>1,596,017.10</strong></td><td class="cedula-num"><strong>1,908,991.84</strong></td>
+                <td class="cedula-num"><strong>2,253,264.04</strong></td><td class="cedula-num"><strong>2,631,963.47</strong></td><td class="cedula-num"><strong>3,048,532.84</strong></td>
+              </tr>
+              <tr><td class="cedula-concepto">Pagos provisionales de ISR anteriores</td>
+                <td class="cedula-num">—</td><td class="cedula-num">146,005.02</td><td class="cedula-num">306,610.55</td>
+                <td class="cedula-num">483,276.62</td><td class="cedula-num">677,609.31</td><td class="cedula-num">817,695.26</td>
+                <td class="cedula-num">1,052,837.81</td><td class="cedula-num">1,311,494.62</td><td class="cedula-num">1,596,017.10</td>
+                <td class="cedula-num">1,908,991.84</td><td class="cedula-num">2,253,264.04</td><td class="cedula-num">2,631,963.47</td>
+              </tr>
+              <tr class="cedula-fila-total"><td class="cedula-concepto"><strong>ISR a enterar</strong></td>
+                <td class="cedula-num"><strong>146,005.02</strong></td><td class="cedula-num"><strong>160,605.53</strong></td><td class="cedula-num"><strong>176,666.07</strong></td>
+                <td class="cedula-num"><strong>194,332.69</strong></td><td class="cedula-num"><strong>140,085.95</strong></td><td class="cedula-num"><strong>235,142.55</strong></td>
+                <td class="cedula-num"><strong>258,656.81</strong></td><td class="cedula-num"><strong>284,522.48</strong></td><td class="cedula-num"><strong>312,974.74</strong></td>
+                <td class="cedula-num"><strong>344,272.20</strong></td><td class="cedula-num"><strong>378,699.43</strong></td><td class="cedula-num"><strong>416,569.37</strong></td>
+              </tr>
+              <tr><td class="cedula-concepto">Fecha de pago provisional ISR</td>
+                <td class="cedula-num" style="font-size:0.67rem;">17/02/2026</td><td class="cedula-num" style="font-size:0.67rem;">17/03/2026</td>
+                <td class="cedula-num" style="font-size:0.67rem;">17/04/2026</td><td class="cedula-num" style="font-size:0.67rem;">17/05/2026</td>
+                <td class="cedula-num" style="font-size:0.67rem;">17/06/2026</td><td class="cedula-num" style="font-size:0.67rem;">17/07/2026</td>
+                <td class="cedula-num" style="font-size:0.67rem;">17/08/2026</td><td class="cedula-num" style="font-size:0.67rem;">17/09/2026</td>
+                <td class="cedula-num" style="font-size:0.67rem;">19/10/2026</td><td class="cedula-num" style="font-size:0.67rem;">17/11/2026</td>
+                <td class="cedula-num" style="font-size:0.67rem;">17/12/2026</td><td class="cedula-num" style="font-size:0.67rem;">19/01/2027</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Determinación del CU -->
+        <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+          <div>
+            <p style="font-size:0.8rem;font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:4px;margin-bottom:8px;">Datos para determinar el CU ejercicio 2026</p>
+            <p style="font-size:0.76rem;font-style:italic;margin-bottom:8px;">CU = (Utilidad Fiscal + PTU pagada) ÷ Ingresos nominales</p>
+            <table class="cedula-tabla" style="font-size:0.78rem;">
+              <thead><tr class="cedula-fila-header"><th style="width:160px;"></th><th>Ejercicio 2024</th><th>Ejercicio 2025</th></tr></thead>
+              <tbody>
+                <tr><td class="cedula-concepto">Utilidad fiscal</td><td class="cedula-num">$958,600.00</td><td class="cedula-num">$1,032,600.00</td></tr>
+                <tr><td class="cedula-concepto">PTU</td><td class="cedula-num">$185,600.00</td><td class="cedula-num">$245,600.00</td></tr>
+                <tr><td class="cedula-concepto" style="font-size:0.7rem;color:var(--gray);">Fecha pago PTU</td><td class="cedula-num" style="font-size:0.7rem;">—</td><td class="cedula-num" style="font-size:0.7rem;">20/05/2026</td></tr>
+                <tr><td class="cedula-concepto">Ingresos nominales</td><td class="cedula-num">$3,825,600.00</td><td class="cedula-num">$4,859,600.00</td></tr>
+                <tr class="cedula-fila-subtotal"><td class="cedula-concepto"><strong>CU determinado</strong></td><td class="cedula-num">0.2990</td><td class="cedula-num"><strong>0.2630 ← aplica 2026</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="background:#fffbe8;border:1px solid var(--gold);border-radius:6px;padding:12px;font-size:0.8rem;">
+            <p style="font-weight:700;margin-bottom:6px;">Fundamento legal</p>
+            <p>Se aplica el CU del <strong>ejercicio inmediato anterior (2025 = 0.2630)</strong> conforme al Art. 14 LISR, párrafo primero. El CU de 2024 (0.2990) no se utiliza porque hay datos del ejercicio más reciente.</p>
+            <p style="margin-top:8px;">La PTU 2025 ($245,600) se vuelve deducible a partir de <strong>mayo 2026</strong>, mes en que efectivamente se pagó.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ CÉDULA 3: DEPRECIACIONES ══════════ -->
+      <div class="cedula-bloque" style="margin-top:28px;">
+        <div class="cedula-header-empresa"><span>Empresa:</span> <span class="cedula-empresa-val">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="cedula-titulo-form">Cédula 3 — Depreciaciones y Amortizaciones Actualizadas — Ejercicio 2026</div>
+        <p style="font-size:0.74rem;font-weight:700;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.04em;">Equipo de comunicación — Proyecto Final</p>
+        <div style="overflow-x:auto;">
+          <table class="cedula-tabla" style="min-width:1080px;font-size:0.7rem;">
+            <thead>
+              <tr class="cedula-fila-header">
+                <th>Fecha de<br>adquisición</th>
+                <th>No.<br>CFDI</th>
+                <th style="min-width:160px;">Descripción</th>
+                <th>Importe</th>
+                <th>%<br>Dep.<br>Anual</th>
+                <th>Importe<br>Dep.<br>Anual</th>
+                <th>No. de<br>meses<br>ejercicio</th>
+                <th>Importe<br>Dep.<br>Mensual</th>
+                <th>No. de<br>meses<br>de uso</th>
+                <th>Importe<br>Deducción<br>Histórica</th>
+                <th>INPC<br>fecha<br>adquisición</th>
+                <th>INPC<br>último mes<br>1ª mitad<br>ejercicio</th>
+                <th>Factor de<br>actualización<br>(diezmilésimo)</th>
+                <th>Importe<br>Depreciación<br>Actualizada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cedula-concepto">14/03/2024</td><td class="cedula-num">1825</td>
+                <td class="cedula-concepto">Camioneta marca Ford</td>
+                <td class="cedula-num">$458,600.00</td><td class="cedula-num">25%</td>
+                <td class="cedula-num">$114,650.00</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$9,554.17</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$114,650.04</td>
+                <td class="cedula-num">132.850</td><td class="cedula-num">144.500</td>
+                <td class="cedula-num">1.0877</td><td class="cedula-num"><strong>$124,704.85</strong></td>
+              </tr>
+              <tr>
+                <td class="cedula-concepto">18/09/2024</td><td class="cedula-num">1236</td>
+                <td class="cedula-concepto">LAPTOP MAC</td>
+                <td class="cedula-num">$135,820.00</td><td class="cedula-num">30%</td>
+                <td class="cedula-num">$40,746.00</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$3,395.50</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$40,746.00</td>
+                <td class="cedula-num">135.480</td><td class="cedula-num">144.500</td>
+                <td class="cedula-num">1.0666</td><td class="cedula-num"><strong>$43,459.68</strong></td>
+              </tr>
+              <tr>
+                <td class="cedula-concepto">12/02/2025</td><td class="cedula-num">745</td>
+                <td class="cedula-concepto">Radio de comunicación</td>
+                <td class="cedula-num">$86,742.00</td><td class="cedula-num">25%</td>
+                <td class="cedula-num">$21,685.50</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$1,807.13</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$21,685.44</td>
+                <td class="cedula-num">137.820</td><td class="cedula-num">144.500</td>
+                <td class="cedula-num">1.0485</td><td class="cedula-num"><strong>$22,737.18</strong></td>
+              </tr>
+              <tr>
+                <td class="cedula-concepto">15/04/2025</td><td class="cedula-num">1236</td>
+                <td class="cedula-concepto">Escritorio, archivero y librero</td>
+                <td class="cedula-num">$45,830.00</td><td class="cedula-num">10%</td>
+                <td class="cedula-num">$4,583.00</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$381.92</td><td class="cedula-num">12</td>
+                <td class="cedula-num">$4,583.04</td>
+                <td class="cedula-num">138.960</td><td class="cedula-num">144.500</td>
+                <td class="cedula-num">1.0399</td><td class="cedula-num"><strong>$4,765.90</strong></td>
+              </tr>
+              <tr>
+                <td class="cedula-concepto">14/05/2026</td><td class="cedula-num">1369</td>
+                <td class="cedula-concepto">Camioneta Frontier</td>
+                <td class="cedula-num">$650,900.00</td><td class="cedula-num">25%</td>
+                <td class="cedula-num">$162,725.00</td><td class="cedula-num">8</td>
+                <td class="cedula-num">$13,560.42</td><td class="cedula-num">8</td>
+                <td class="cedula-num">$108,483.36</td>
+                <td class="cedula-num">143.800</td><td class="cedula-num">144.500</td>
+                <td class="cedula-num">1.0049</td><td class="cedula-num"><strong>$109,014.93</strong></td>
+              </tr>
+              <tr class="cedula-fila-total">
+                <td colspan="9" style="text-align:right;padding-right:10px;">TOTALES</td>
+                <td class="cedula-num"><strong>$290,147.88</strong></td>
+                <td colspan="3" style="background:var(--gold);"></td>
+                <td class="cedula-num"><strong>$304,682.54</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.72rem;color:var(--gray);margin-top:8px;">
+          <em>Tasas LISR: Art. 34 — Vehículos 25% · Equipo comunicación 25% · Mobiliario 10% &nbsp;|&nbsp; Art. 35 — Equipo de cómputo 30%</em><br>
+          <em>INPC de referencia (última mitad 1ª mitad del ejercicio): Junio 2026 = 144.500 &nbsp;|&nbsp; Factor = INPC Jun 2026 ÷ INPC mes adquisición</em>
+        </p>
+      </div>
+
+      <!-- ══════════ CÉDULA 4: AJUSTE POR INFLACIÓN ══════════ -->
+      <div class="cedula-bloque" style="margin-top:28px;">
+        <div class="cedula-header-empresa"><span>Empresa:</span> <span class="cedula-empresa-val">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="cedula-titulo-form">Cédula 4 — Ajuste Anual por Inflación Acumulable o Deducible — Art. 44 LISR — Ejercicio 2026</div>
+
+        <p style="font-size:0.78rem;font-weight:700;border-bottom:1px solid #ccc;padding-bottom:3px;margin:8px 0 6px;">Determinación del saldo anual de créditos</p>
+        <div style="overflow-x:auto;">
+          <table class="cedula-tabla" style="min-width:980px;font-size:0.71rem;">
+            <thead>
+              <tr class="cedula-fila-header">
+                <th style="min-width:160px;">Concepto</th>
+                <th>Enero</th><th>Febrero</th><th>Marzo</th><th>Abril</th><th>Mayo</th><th>Junio</th>
+                <th>Julio</th><th>Agosto</th><th>Septiembre</th><th>Octubre</th><th>Noviembre</th><th>Diciembre</th><th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="cedula-concepto">Bancos</td>
+                <td class="cedula-num">175,890</td><td class="cedula-num">193,479</td><td class="cedula-num">212,827</td><td class="cedula-num">234,110</td>
+                <td class="cedula-num">257,521</td><td class="cedula-num">283,273</td><td class="cedula-num">311,600</td><td class="cedula-num">342,760</td>
+                <td class="cedula-num">377,036</td><td class="cedula-num">122,745</td><td class="cedula-num">135,020</td><td class="cedula-num">148,521</td>
+                <td class="cedula-num">2,794,782</td>
+              </tr>
+              <tr><td class="cedula-concepto">Clientes</td>
+                <td class="cedula-num">458,600</td><td class="cedula-num">504,460</td><td class="cedula-num">554,906</td><td class="cedula-num">610,397</td>
+                <td class="cedula-num">671,436</td><td class="cedula-num">738,580</td><td class="cedula-num">812,438</td><td class="cedula-num">893,682</td>
+                <td class="cedula-num">983,050</td><td class="cedula-num">1,081,355</td><td class="cedula-num">1,189,490</td><td class="cedula-num">1,308,439</td>
+                <td class="cedula-num">9,806,833</td>
+              </tr>
+              <tr><td class="cedula-concepto">Deudores diversos</td>
+                <td class="cedula-num">125,600</td><td class="cedula-num">138,160</td><td class="cedula-num">151,976</td><td class="cedula-num">167,174</td>
+                <td class="cedula-num">183,891</td><td class="cedula-num">202,280</td><td class="cedula-num">222,508</td><td class="cedula-num">244,759</td>
+                <td class="cedula-num">269,235</td><td class="cedula-num">296,158</td><td class="cedula-num">325,774</td><td class="cedula-num">358,351</td>
+                <td class="cedula-num">2,685,866</td>
+              </tr>
+              <tr><td class="cedula-concepto">Inversiones</td>
+                <td class="cedula-num">250,000</td><td class="cedula-num">275,000</td><td class="cedula-num">302,500</td><td class="cedula-num">332,750</td>
+                <td class="cedula-num">366,025</td><td class="cedula-num">402,628</td><td class="cedula-num">442,890</td><td class="cedula-num">487,179</td>
+                <td class="cedula-num">535,897</td><td class="cedula-num">589,487</td><td class="cedula-num">648,436</td><td class="cedula-num">713,279</td>
+                <td class="cedula-num">5,346,071</td>
+              </tr>
+              <tr><td class="cedula-concepto">Saldos a favor</td>
+                <td class="cedula-num">8,500</td><td class="cedula-num">9,350</td><td class="cedula-num">10,285</td><td class="cedula-num">11,314</td>
+                <td class="cedula-num">12,445</td><td class="cedula-num">13,689</td><td class="cedula-num">15,058</td><td class="cedula-num">16,564</td>
+                <td class="cedula-num">18,221</td><td class="cedula-num">20,043</td><td class="cedula-num">22,047</td><td class="cedula-num">24,251</td>
+                <td class="cedula-num">181,767</td>
+              </tr>
+              <tr class="cedula-fila-subtotal"><td class="cedula-concepto"><strong>Sumas</strong></td>
+                <td class="cedula-num"><strong>1,018,590</strong></td><td class="cedula-num"><strong>1,120,449</strong></td><td class="cedula-num"><strong>1,232,494</strong></td><td class="cedula-num"><strong>1,355,745</strong></td>
+                <td class="cedula-num"><strong>1,491,318</strong></td><td class="cedula-num"><strong>1,640,450</strong></td><td class="cedula-num"><strong>1,804,494</strong></td><td class="cedula-num"><strong>1,984,944</strong></td>
+                <td class="cedula-num"><strong>2,183,439</strong></td><td class="cedula-num"><strong>2,109,788</strong></td><td class="cedula-num"><strong>2,320,767</strong></td><td class="cedula-num"><strong>2,552,841</strong></td>
+                <td class="cedula-num"><strong>20,815,319</strong></td>
+              </tr>
+              <tr><td class="cedula-concepto">No. de meses</td><td colspan="12" style="text-align:center;">12</td><td></td></tr>
+              <tr class="cedula-fila-total"><td class="cedula-concepto"><strong>Promedio de los créditos</strong></td>
+                <td colspan="12" style="text-align:center;background:var(--gold);font-weight:700;">$1,734,609.92</td><td style="background:var(--gold);"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="font-size:0.78rem;font-weight:700;border-bottom:1px solid #ccc;padding-bottom:3px;margin:14px 0 6px;">Determinación del saldo anual de deudas</p>
+        <div style="overflow-x:auto;">
+          <table class="cedula-tabla" style="min-width:980px;font-size:0.71rem;">
+            <thead>
+              <tr class="cedula-fila-header">
+                <th style="min-width:180px;">Concepto</th>
+                <th>Enero</th><th>Febrero</th><th>Marzo</th><th>Abril</th><th>Mayo</th><th>Junio</th>
+                <th>Julio</th><th>Agosto</th><th>Septiembre</th><th>Octubre</th><th>Noviembre</th><th>Diciembre</th><th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="cedula-concepto">Proveedores</td>
+                <td class="cedula-num">350,600</td><td class="cedula-num">385,660</td><td class="cedula-num">424,226</td><td class="cedula-num">466,649</td>
+                <td class="cedula-num">513,313</td><td class="cedula-num">564,645</td><td class="cedula-num">621,109</td><td class="cedula-num">683,220</td>
+                <td class="cedula-num">751,542</td><td class="cedula-num">826,696</td><td class="cedula-num">909,366</td><td class="cedula-num">1,000,303</td>
+                <td class="cedula-num">7,497,329</td>
+              </tr>
+              <tr><td class="cedula-concepto">Acreedores diversos</td>
+                <td class="cedula-num">125,900</td><td class="cedula-num">138,490</td><td class="cedula-num">152,339</td><td class="cedula-num">167,573</td>
+                <td class="cedula-num">184,330</td><td class="cedula-num">202,763</td><td class="cedula-num">223,040</td><td class="cedula-num">245,343</td>
+                <td class="cedula-num">269,878</td><td class="cedula-num">296,866</td><td class="cedula-num">326,552</td><td class="cedula-num">359,207</td>
+                <td class="cedula-num">2,692,281</td>
+              </tr>
+              <tr><td class="cedula-concepto">Acreedores hipotecarios</td>
+                <td class="cedula-num">150,000</td><td class="cedula-num">165,000</td><td class="cedula-num">181,500</td><td class="cedula-num">199,650</td>
+                <td class="cedula-num">219,615</td><td class="cedula-num">241,577</td><td class="cedula-num">265,734</td><td class="cedula-num">292,308</td>
+                <td class="cedula-num">321,538</td><td class="cedula-num">353,692</td><td class="cedula-num">389,061</td><td class="cedula-num">427,968</td>
+                <td class="cedula-num">3,007,643</td>
+              </tr>
+              <tr><td class="cedula-concepto">Documentos por pagar</td>
+                <td class="cedula-num">250,000</td><td class="cedula-num">125,000</td><td class="cedula-num">125,000</td><td class="cedula-num">50,000</td>
+                <td class="cedula-num">50,000</td><td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td>
+                <td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td><td class="cedula-num">—</td>
+                <td class="cedula-num">600,000</td>
+              </tr>
+              <tr><td class="cedula-concepto">Aportaciones fut. aum. de capital</td>
+                <td class="cedula-num">150,000</td><td class="cedula-num">175,800</td><td class="cedula-num">175,800</td><td class="cedula-num">175,800</td>
+                <td class="cedula-num">175,800</td><td class="cedula-num">175,800</td><td class="cedula-num">175,800</td><td class="cedula-num">175,800</td>
+                <td class="cedula-num">175,800</td><td class="cedula-num">175,800</td><td class="cedula-num">175,800</td><td class="cedula-num">175,800</td>
+                <td class="cedula-num">2,083,800</td>
+              </tr>
+              <tr class="cedula-fila-subtotal"><td class="cedula-concepto"><strong>Sumas</strong></td>
+                <td class="cedula-num"><strong>1,026,500</strong></td><td class="cedula-num"><strong>989,950</strong></td><td class="cedula-num"><strong>1,058,865</strong></td><td class="cedula-num"><strong>1,059,672</strong></td>
+                <td class="cedula-num"><strong>1,143,058</strong></td><td class="cedula-num"><strong>1,184,785</strong></td><td class="cedula-num"><strong>1,285,683</strong></td><td class="cedula-num"><strong>1,396,671</strong></td>
+                <td class="cedula-num"><strong>1,518,758</strong></td><td class="cedula-num"><strong>1,653,054</strong></td><td class="cedula-num"><strong>1,800,779</strong></td><td class="cedula-num"><strong>1,963,278</strong></td>
+                <td class="cedula-num"><strong>16,081,053</strong></td>
+              </tr>
+              <tr><td class="cedula-concepto">No. de meses</td><td colspan="12" style="text-align:center;">12</td><td></td></tr>
+              <tr class="cedula-fila-total"><td class="cedula-concepto"><strong>Promedio de las deudas</strong></td>
+                <td colspan="12" style="text-align:center;background:var(--gold);font-weight:700;">$1,340,087.75</td><td style="background:var(--gold);"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Resultado inflación -->
+        <div style="margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;">
+          <table class="cedula-tabla" style="font-size:0.8rem;min-width:400px;">
+            <tbody>
+              <tr><td class="cedula-concepto">Promedio de créditos</td><td class="cedula-num">$1,734,609.92</td></tr>
+              <tr><td class="cedula-concepto">(–) Promedio de deudas</td><td class="cedula-num">$1,340,087.75</td></tr>
+              <tr class="cedula-fila-subtotal"><td class="cedula-concepto"><strong>Diferencia (créditos &gt; deudas)</strong></td><td class="cedula-num"><strong>$394,522.17</strong></td></tr>
+              <tr><td class="cedula-concepto">(×) Factor INPC</td><td class="cedula-num">0.0305</td></tr>
+              <tr><td class="cedula-concepto" style="font-size:0.68rem;color:var(--gray);">(INPC Dic 2026 145.500 – INPC Dic 2025 141.200) ÷ 141.200</td><td></td></tr>
+              <tr class="cedula-fila-total"><td class="cedula-concepto"><strong>Ajuste anual por inflación ACUMULABLE</strong></td><td class="cedula-num"><strong>$12,032.93</strong></td></tr>
+              <tr><td class="cedula-concepto">Ajuste anual por inflación deducible</td><td class="cedula-num">$0.00</td></tr>
+            </tbody>
+          </table>
+          <div style="background:#e8f5e9;border:1px solid #4caf50;border-radius:6px;padding:12px;font-size:0.8rem;">
+            <p style="font-weight:700;color:#2e7d32;margin-bottom:6px;">Resultado: Ajuste ACUMULABLE (ingreso)</p>
+            <p>El promedio de créditos ($1,734,609.92) supera al promedio de deudas ($1,340,087.75), por lo que el ajuste representa un <strong>ingreso acumulable</strong> para la empresa de <strong>$12,032.93</strong>.</p>
+            <p style="margin-top:6px;">Este importe se suma a los ingresos en la Cédula 6 de ISR anual.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ CÉDULA 5: PTU ══════════ -->
+      <div class="cedula-bloque" style="margin-top:28px;">
+        <div class="cedula-header-empresa"><span>Empresa:</span> <span class="cedula-empresa-val">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="cedula-titulo-form">Cédula 5 — Determinación de la PTU — Ejercicio 2026</div>
+        <table class="cedula-tabla" style="max-width:500px;font-size:0.83rem;margin-top:10px;">
+          <tbody>
+            <tr>
+              <td style="width:28px;text-align:center;color:var(--gray);font-size:0.7rem;border:none;background:#fff;"></td>
+              <td class="cedula-concepto">Utilidad fiscal más actualización de inversiones</td>
+              <td class="cedula-num">$10,176,310.78</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">Ajuste anual por inflación acumulable</td>
+              <td class="cedula-num">$12,032.93</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#2e7d32;border:none;background:#fff;">(+)</td>
+              <td class="cedula-concepto">Ajuste anual por inflación deducible</td>
+              <td class="cedula-num">$0.00</td>
+            </tr>
+            <tr class="cedula-fila-subtotal">
+              <td style="text-align:center;font-weight:700;border:none;background:rgba(212,160,23,0.18);">(=)</td>
+              <td class="cedula-concepto"><strong>Base para PTU</strong></td>
+              <td class="cedula-num"><strong>$10,164,277.85</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;border:none;background:#fff;">(×)</td>
+              <td class="cedula-concepto">% de PTU</td>
+              <td class="cedula-num">10%</td>
+            </tr>
+            <tr class="cedula-fila-total">
+              <td style="text-align:center;font-weight:700;background:var(--gold);border:none;">(=)</td>
+              <td class="cedula-concepto"><strong>PTU ejercicio 2026</strong></td>
+              <td class="cedula-num"><strong>$1,016,427.79</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.73rem;color:var(--gray);margin-top:10px;">
+          <em>Desglose: Utilidad fiscal $10,161,776.12 + Actualización de inversiones $14,534.66 = $10,176,310.78</em><br>
+          <em>La PTU 2026 ($1,016,427.79) se distribuirá a los trabajadores en mayo de 2027.</em>
+        </p>
+      </div>
+
+      <!-- ══════════ CÉDULA 6: ISR ANUAL ══════════ -->
+      <div class="cedula-bloque" style="margin-top:28px;">
+        <div class="cedula-header-empresa"><span>Empresa:</span> <span class="cedula-empresa-val">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div class="cedula-titulo-form">Cédula 6 — Determinación del ISR Anual 2026</div>
+        <table class="cedula-tabla" style="max-width:520px;font-size:0.83rem;margin-top:10px;">
+          <thead>
+            <tr class="cedula-fila-header"><th colspan="2">Concepto</th><th>Importe</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width:28px;text-align:center;border:none;background:#fff;"></td>
+              <td class="cedula-concepto">Ingresos acumulables</td><td class="cedula-num">$39,567,896.26</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#2e7d32;border:none;background:#fff;">(+)</td>
+              <td class="cedula-concepto">Ajuste anual por inflación acumulable</td><td class="cedula-num">$12,032.93</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">Deducciones autorizadas</td><td class="cedula-num">$28,867,870.53</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">Ajuste anual por inflación deducible</td><td class="cedula-num">$0.00</td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">Depreciaciones actualizadas</td><td class="cedula-num">$304,682.54</td>
+            </tr>
+            <tr class="cedula-fila-subtotal">
+              <td style="text-align:center;font-weight:700;background:rgba(212,160,23,0.18);border:none;">(=)</td>
+              <td class="cedula-concepto"><strong>Resultado fiscal</strong></td><td class="cedula-num"><strong>$10,407,376.12</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">PTU pagada (20/05/2026)</td><td class="cedula-num">$245,600.00</td>
+            </tr>
+            <tr class="cedula-fila-subtotal">
+              <td style="text-align:center;font-weight:700;background:rgba(212,160,23,0.18);border:none;">(=)</td>
+              <td class="cedula-concepto"><strong>Utilidad fiscal</strong></td><td class="cedula-num"><strong>$10,161,776.12</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">Pérdida fiscal actualizada de ejercicios anteriores</td><td class="cedula-num">$0.00</td>
+            </tr>
+            <tr class="cedula-fila-subtotal">
+              <td style="text-align:center;font-weight:700;background:rgba(212,160,23,0.18);border:none;">(=)</td>
+              <td class="cedula-concepto"><strong>Resultado fiscal</strong></td><td class="cedula-num"><strong>$10,161,776.12</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;border:none;background:#fff;">(×)</td>
+              <td class="cedula-concepto">Tasa del art. 9 LISR</td><td class="cedula-num">30%</td>
+            </tr>
+            <tr class="cedula-fila-subtotal">
+              <td style="text-align:center;font-weight:700;background:rgba(212,160,23,0.18);border:none;">(=)</td>
+              <td class="cedula-concepto"><strong>Impuesto anual ISR</strong></td><td class="cedula-num"><strong>$3,048,532.84</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align:center;font-weight:700;color:#c62828;border:none;background:#fff;">(–)</td>
+              <td class="cedula-concepto">Pagos provisionales de ISR</td><td class="cedula-num">$3,048,532.84</td>
+            </tr>
+            <tr class="cedula-fila-total">
+              <td style="text-align:center;font-weight:700;background:var(--gold);border:none;">(=)</td>
+              <td class="cedula-concepto"><strong>Impuesto sobre la renta anual a enterar</strong></td><td class="cedula-num"><strong>$0.00</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:12px;padding:10px 14px;background:#e8f5e9;border-left:4px solid #4caf50;border-radius:0 6px 6px 0;font-size:0.8rem;">
+          <strong>ISR anual a enterar = $0.00</strong> — Los pagos provisionales acumulados ($3,048,532.84) cubrieron exactamente el ISR anual determinado. Esto es consecuencia directa de haber aplicado el CU del ejercicio inmediato anterior (0.2630) conforme al Art. 14 LISR.
+        </div>
+      </div>
+
     </section>
 
     <!-- FOOTER -->
