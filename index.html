@@ -519,7 +519,8 @@
           <div class="contact-item"><span>🕐</span><div><strong>Horario</strong><p>Lun – Sáb, 9:00 a 20:00</p></div></div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" name="contacto" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contacto" />
         <div class="form-group">
           <label>Nombre completo</label>
           <input type="text" placeholder="Tu nombre" required />

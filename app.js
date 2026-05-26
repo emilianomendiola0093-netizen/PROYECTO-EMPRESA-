@@ -157,8 +157,126 @@ function toggleCart() {
   overlay.classList.toggle('show');
 }
 
-/* ---------- Checkout via WhatsApp ---------- */
-function checkout() {
+/* ---------- Checkout Modal ---------- */
+function showCheckoutModal() {
+  if (cart.length === 0) return;
+
+  const existing = document.getElementById('checkout-modal-overlay');
+  if (existing) existing.remove();
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  const overlay = document.createElement('div');
+  overlay.id = 'checkout-modal-overlay';
+  overlay.className = 'checkout-modal-overlay';
+  overlay.innerHTML = `
+    <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+      <button class="checkout-modal-close" onclick="closeCheckoutModal()" aria-label="Cerrar">&times;</button>
+      <h3 id="checkout-modal-title">🕯️ Finalizar Pedido</h3>
+      <p style="font-size:.85rem;color:#7A5C2A;margin-bottom:20px;">Total: <strong style="color:#5C3D11;font-size:1.1rem;">$${total}</strong></p>
+      <form id="checkout-modal-form" onsubmit="submitCheckoutModal(event)">
+        <div class="form-group">
+          <label for="cm-name">Nombre completo</label>
+          <input id="cm-name" type="text" name="payer_name" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="cm-email">Correo electrónico</label>
+          <input id="cm-email" type="email" name="payer_email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="cm-phone">Teléfono</label>
+          <input id="cm-phone" type="tel" name="payer_phone" placeholder="+52 55 0000-0000" />
+        </div>
+        <div class="checkout-modal-actions">
+          <button type="submit" class="btn-mp" id="btn-mp-submit">💳 Pagar con Mercado Pago</button>
+          <button type="button" class="btn-wsp" onclick="checkoutWhatsApp()">📱 WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeCheckoutModal();
+  });
+
+  document.body.appendChild(overlay);
+
+  // Trap focus on first field
+  setTimeout(() => {
+    const first = overlay.querySelector('input');
+    if (first) first.focus();
+  }, 50);
+}
+
+function closeCheckoutModal() {
+  const overlay = document.getElementById('checkout-modal-overlay');
+  if (overlay) overlay.remove();
+}
+
+async function submitCheckoutModal(e) {
+  e.preventDefault();
+  const form       = e.target;
+  const payerName  = form.payer_name.value.trim();
+  const payerEmail = form.payer_email.value.trim();
+  const payerPhone = form.payer_phone.value.trim();
+  const total      = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  const mpItems = cart.map(i => ({
+    title:      i.name,
+    quantity:   i.qty,
+    unit_price: i.price,
+  }));
+
+  const submitBtn = document.getElementById('btn-mp-submit');
+  submitBtn.textContent = 'Procesando…';
+  submitBtn.disabled = true;
+
+  // Always attempt to save the order to Sheets (fire-and-forget)
+  try {
+    fetch('/.netlify/functions/save-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items:       mpItems,
+        total,
+        payer_name:  payerName,
+        payer_email: payerEmail,
+        payer_phone: payerPhone,
+        status:      'pendiente',
+      }),
+    });
+  } catch (_) {
+    // Non-blocking — ignore errors
+  }
+
+  // Try Mercado Pago
+  try {
+    const res = await fetch('/.netlify/functions/create-preference', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: mpItems, payer_email: payerEmail }),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+
+    if (data.init_point) {
+      closeCheckoutModal();
+      window.location.href = data.init_point;
+      return;
+    }
+
+    throw new Error('No se recibió init_point');
+  } catch (err) {
+    console.warn('Mercado Pago no disponible, usando WhatsApp como fallback:', err.message);
+    closeCheckoutModal();
+    checkoutWhatsApp();
+  }
+}
+
+/* ---------- Checkout via WhatsApp (fallback) ---------- */
+function checkoutWhatsApp() {
   if (cart.length === 0) return;
 
   const lines = cart.map(i => `• ${i.name} x${i.qty} = $${i.price * i.qty}`).join('\n');
@@ -168,6 +286,12 @@ function checkout() {
   );
 
   window.open(`https://wa.me/5215512345678?text=${msg}`, '_blank');
+}
+
+/* ---------- Checkout (entry point called from cart button) ---------- */
+function checkout() {
+  if (cart.length === 0) return;
+  showCheckoutModal();
 }
 
 /* ---------- Contact Form ---------- */
