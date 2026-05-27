@@ -313,6 +313,20 @@ function handleSubmit(e) {
 
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const IS_DESKTOP = window.matchMedia('(pointer: fine)').matches && window.innerWidth >= 768;
+const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+
+/* SAFETY NET: si algo deja elementos invisibles, forzar visibilidad después de 2.5s */
+setTimeout(() => {
+  document.querySelectorAll(
+    '.about-card, .testi-card, .step, .step-arrow, .contact-item, .stat, .pillar-card, .impact-item, .product-card, .contact-info, .contact-form, .hero-eyebrow, .hero-title, .hero-slogan, .hero-desc, .hero-cta .btn, .hero-badges .badge, .compare-table tbody tr, .catalog .section-header'
+  ).forEach(el => {
+    const cs = getComputedStyle(el);
+    if (parseFloat(cs.opacity) < 0.1) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }
+  });
+}, 2500);
 
 /* Keep fadeInUp keyframe for filter animation */
 const _kfStyle = document.createElement('style');
@@ -333,10 +347,10 @@ const EASE = {
 };
 const APPLE_CSS_BEZIER = 'cubic-bezier(0.16, 1, 0.3, 1)';
 
-/* ---------- Lenis smooth scroll (Apple-like inertia) ---------- */
+/* ---------- Lenis smooth scroll — SOLO desktop ---------- */
 let lenis = null;
 function initLenis() {
-  if (!window.Lenis || REDUCED_MOTION) return;
+  if (!window.Lenis || REDUCED_MOTION || IS_TOUCH) return;
   lenis = new Lenis({
     duration: 1.3,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -416,6 +430,56 @@ function animateCounter(el, target, suffix, prefix, duration) {
   });
 }
 
+/* ---------- Mobile-safe animations: solo count-ups + fade simple con CSS ---------- */
+function runMobileAnimations() {
+  // Count-up para stats e impact-num (con IntersectionObserver para no depender de ScrollTrigger)
+  const counters = document.querySelectorAll('.stat .stat-num, .impact-num');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+
+      let target, prefix = '', suffix = '';
+      if (el.classList.contains('impact-num')) {
+        target = parseFloat(el.dataset.target);
+        suffix = el.dataset.suffix || '';
+        prefix = el.dataset.prefix || '';
+      } else {
+        const m = el.textContent.trim().match(/^([+]?)([\d.]+)(.*)$/);
+        if (!m) return;
+        prefix = m[1]; target = parseFloat(m[2]); suffix = m[3];
+      }
+      if (isNaN(target)) return;
+      animateCounter(el, target, suffix, prefix, 1.6);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(el => io.observe(el));
+
+  // Fade-in suave para cards al entrar en viewport (sin gsap.from que las deja invisibles)
+  const fadeEls = document.querySelectorAll(
+    '.about-card, .testi-card, .step, .pillar-card, .product-card, .impact-item'
+  );
+  fadeEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1)';
+  });
+  const fadeIO = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        if (entry.target.classList.contains('pillar-card')) entry.target.classList.add('in-view');
+        fadeIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  fadeEls.forEach(el => fadeIO.observe(el));
+}
+
 whenGSAP(() => {
   initLenis();
   if (REDUCED_MOTION) { initFallbackAnimations(); return; }
@@ -426,6 +490,13 @@ whenGSAP(() => {
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
+  }
+
+  /* En móvil: SOLO contadores + tilt + modal. NO animaciones de entrada
+     (causan secciones invisibles si ScrollTrigger no dispara con scroll táctil). */
+  if (!IS_DESKTOP) {
+    runMobileAnimations();
+    return;
   }
 
   /* Hero entrance */
