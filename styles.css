@@ -1653,3 +1653,39 @@ ul { list-style: none; }
   .candle-svg .candle-halo { animation: none !important; }
   .product-card.tilt-active { transform: none !important; }
 }
+
+/* ─── PRINT / PDF ──────────────────────────────────────────────────────────── */
+@media print {
+  /* Ocultar elementos interactivos y fijos */
+  .cart-fab,
+  .cart-count,
+  .cart-panel,
+  .cart-overlay,
+  .cart-toast,
+  .checkout-modal-overlay,
+  .quick-view-overlay,
+  nav,
+  .navbar,
+  #hero-3d,
+  .hero-particles,
+  .filter-bar,
+  .filter-btn { display: none !important; }
+
+  /* Quitar transformaciones 3D que pueden cortar contenido */
+  .product-card,
+  .pillar-card,
+  .about-card,
+  .step,
+  .testi-card {
+    transform: none !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,.15) !important;
+    break-inside: avoid;
+  }
+
+  /* Evitar cortes de página en medio de secciones */
+  section, .section { break-inside: avoid; }
+
+  /* Colores planos para ahorrar tinta */
+  body { background: #fff !important; color: #000 !important; }
+  a { color: #000 !important; text-decoration: none !important; }
+}

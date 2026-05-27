@@ -723,13 +723,44 @@
 
     /* ===================== PRINT ===================== */
     @media print {
-      .sidebar { display: none !important; }
-      .main { margin-left: 0 !important; padding: 0 !important; }
+      /* Ocultar navegación y elementos interactivos */
+      .sidebar,
+      .btn-back,
+      .btn-print { display: none !important; }
+
+      /* Contenido ocupa toda la página */
+      .main { margin-left: 0 !important; padding: 8px 16px !important; }
       .doc-wrapper { max-width: 100% !important; }
-      .section-card, .cover { box-shadow: none !important; border: 1px solid #ddd; break-inside: avoid; }
-      .btn-back, .btn-print { display: none !important; }
-      body { font-size: 12px; background: white; }
-      .foda-grid { break-inside: avoid; }
+      body { font-size: 11px; background: white; color: #000; }
+
+      /* Sombras y bordes limpios */
+      .section-card, .cover {
+        box-shadow: none !important;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* Evitar cortes en tablas y grids */
+      .foda-grid,
+      .cedula-bloque,
+      .table-wrap,
+      .pe-box,
+      .highlight-box,
+      .cover-meta { break-inside: avoid; page-break-inside: avoid; }
+
+      /* Tablas: sin scroll horizontal en print */
+      .cedula-tabla { font-size: 8px !important; }
+      [style*="overflow-x:auto"],
+      [style*="overflow-x: auto"] { overflow: visible !important; }
+
+      /* Colores para print */
+      .section-title { color: #333 !important; }
+      a { color: #000 !important; text-decoration: none !important; }
+
+      /* Saltos de página entre secciones principales */
+      section { page-break-before: auto; }
+      #apendice-cedulas { page-break-before: always; }
     }
 
     /* ===================== RESPONSIVE ===================== */
