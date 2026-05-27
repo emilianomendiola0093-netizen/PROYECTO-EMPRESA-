@@ -324,6 +324,47 @@ _kfStyle.textContent = `
 `;
 document.head.appendChild(_kfStyle);
 
+/* ---------- Apple-style easing curves ---------- */
+const EASE = {
+  apple:   'expo.out',                  // GSAP's expo.out matches Apple's signature feel
+  smooth:  'power4.out',
+  spring:  'elastic.out(1, 0.55)',
+  gentle:  'power2.inOut',
+};
+const APPLE_CSS_BEZIER = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+/* ---------- Lenis smooth scroll (Apple-like inertia) ---------- */
+let lenis = null;
+function initLenis() {
+  if (!window.Lenis || REDUCED_MOTION) return;
+  lenis = new Lenis({
+    duration: 1.3,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+    touchMultiplier: 1.2,
+    wheelMultiplier: 1.0,
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // Hook into anchor links to use Lenis scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+    }, true);
+  });
+}
+
 /* ---------- Wait for GSAP, then init scroll animations ---------- */
 function whenGSAP(cb) {
   if (window.gsap && window.ScrollTrigger) { cb(); return; }
@@ -353,29 +394,54 @@ function initFallbackAnimations() {
   document.querySelectorAll('.product-card, .about-card, .testi-card, .step, .contact-item, .stat, .pillar-card, .impact-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    el.style.transition = `opacity .9s ${APPLE_CSS_BEZIER}, transform .9s ${APPLE_CSS_BEZIER}`;
     io.observe(el);
   });
 }
 
+/* ---------- Counter helper that respects prefix/suffix and decimals ---------- */
+function animateCounter(el, target, suffix, prefix, duration) {
+  const isInt = Number.isInteger(target);
+  gsap.fromTo({ v: 0 }, { v: 0 }, {
+    v: target, duration: duration || 2.0, ease: EASE.apple,
+    onUpdate: function() {
+      const v = this.targets()[0].v;
+      const display = isInt ? Math.round(v) : v.toFixed(1);
+      el.textContent = (prefix || '') + display + (suffix || '');
+    },
+    onComplete: () => {
+      const display = isInt ? Math.round(target) : target.toFixed(1);
+      el.textContent = (prefix || '') + display + (suffix || '');
+    }
+  });
+}
+
 whenGSAP(() => {
+  initLenis();
   if (REDUCED_MOTION) { initFallbackAnimations(); return; }
   gsap.registerPlugin(ScrollTrigger);
 
+  // Lenis ↔ ScrollTrigger sync
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
   /* Hero entrance */
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  const heroTl = gsap.timeline({ defaults: { ease: EASE.apple } });
   heroTl
-    .from('.hero-eyebrow', { y: 30, opacity: 0, duration: 0.6 })
-    .from('.hero-title', { y: 40, opacity: 0, duration: 0.8 }, '-=0.3')
-    .from('.hero-slogan', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4')
-    .from('.hero-desc', { y: 20, opacity: 0, duration: 0.6 }, '-=0.4')
-    .from('.hero-cta .btn', { y: 20, opacity: 0, duration: 0.5, stagger: 0.12 }, '-=0.3')
-    .from('.hero-badges .badge', { y: 15, opacity: 0, duration: 0.4, stagger: 0.08 }, '-=0.2');
+    .from('.hero-eyebrow', { y: 30, opacity: 0, duration: 1.0 })
+    .from('.hero-title',   { y: 50, opacity: 0, duration: 1.2 }, '-=0.7')
+    .from('.hero-slogan',  { y: 25, opacity: 0, duration: 1.0 }, '-=0.8')
+    .from('.hero-desc',    { y: 25, opacity: 0, duration: 1.0 }, '-=0.8')
+    .from('.hero-cta .btn',     { y: 25, opacity: 0, duration: 0.9, stagger: 0.15 }, '-=0.7')
+    .from('.hero-badges .badge',{ y: 20, opacity: 0, duration: 0.7, stagger: 0.10 }, '-=0.6');
 
   /* About cards */
   gsap.from('.about-card', {
-    scrollTrigger: { trigger: '.about-grid', start: 'top 80%' },
-    y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out',
+    scrollTrigger: { trigger: '.about-grid', start: 'top 82%' },
+    y: 70, opacity: 0, duration: 1.2, stagger: 0.18, ease: EASE.apple,
   });
 
   /* Stats count-up */
@@ -390,100 +456,87 @@ whenGSAP(() => {
     const suffix = match[3];
     ScrollTrigger.create({
       trigger: stat, start: 'top 85%', once: true,
-      onEnter: () => {
-        gsap.to({ v: 0 }, {
-          v: target, duration: 1.6, ease: 'power2.out',
-          onUpdate: function() {
-            const v = this.targets()[0].v;
-            const display = Number.isInteger(target) ? Math.round(v) : v.toFixed(1);
-            numEl.textContent = prefix + display + suffix;
-          }
-        });
-      }
+      onEnter: () => animateCounter(numEl, target, suffix, prefix, 2.2)
     });
   });
 
   /* Pillars */
   gsap.from('.pillar-card', {
     scrollTrigger: { trigger: '.pillars-grid', start: 'top 80%' },
-    y: 50, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out',
+    y: 60, opacity: 0, duration: 1.1, stagger: 0.12, ease: EASE.apple,
     onComplete: () => document.querySelectorAll('.pillar-card').forEach(c => c.classList.add('in-view'))
   });
 
   /* Comparison rows */
   gsap.from('.compare-table tbody tr', {
     scrollTrigger: { trigger: '.compare-table', start: 'top 80%' },
-    y: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out',
+    y: 30, opacity: 0, duration: 0.8, stagger: 0.10, ease: EASE.apple,
   });
 
-  /* Impact counters */
+  /* Impact counters — respect data-prefix/data-suffix */
   document.querySelectorAll('.impact-num').forEach(el => {
     const target = parseFloat(el.dataset.target);
     const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    if (isNaN(target)) return;
     ScrollTrigger.create({
-      trigger: el, start: 'top 85%', once: true,
-      onEnter: () => {
-        gsap.to({ v: 0 }, {
-          v: target, duration: 1.8, ease: 'power2.out',
-          onUpdate: function() {
-            const v = this.targets()[0].v;
-            const display = Number.isInteger(target) ? Math.round(v) : v.toFixed(1);
-            el.textContent = display + suffix;
-          }
-        });
-      }
+      trigger: el, start: 'top 88%', once: true,
+      onEnter: () => animateCounter(el, target, suffix, prefix, 2.4)
     });
   });
 
   /* Catalog header */
   gsap.from('.catalog .section-header', {
     scrollTrigger: { trigger: '.catalog', start: 'top 80%' },
-    y: 40, opacity: 0, duration: 0.7
+    y: 50, opacity: 0, duration: 1.0, ease: EASE.apple
   });
 
   /* Product cards entrance */
   gsap.from('.product-card', {
     scrollTrigger: { trigger: '.products-grid', start: 'top 75%' },
-    y: 50, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power2.out',
+    y: 60, opacity: 0, duration: 1.0, stagger: 0.1, ease: EASE.apple,
   });
 
   /* Process steps */
   gsap.from('.step', {
     scrollTrigger: { trigger: '.steps', start: 'top 80%' },
-    y: 40, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out',
+    y: 50, opacity: 0, duration: 0.95, stagger: 0.18, ease: EASE.apple,
   });
   gsap.from('.step-arrow', {
     scrollTrigger: { trigger: '.steps', start: 'top 80%' },
-    scale: 0, opacity: 0, duration: 0.5, stagger: 0.15, delay: 0.3, ease: 'back.out(2)',
+    scale: 0, opacity: 0, duration: 0.7, stagger: 0.18, delay: 0.3, ease: EASE.spring,
   });
 
   /* Testimonials */
   gsap.from('.testi-card', {
     scrollTrigger: { trigger: '.testi-grid', start: 'top 80%' },
-    y: 40, opacity: 0, scale: 0.95, duration: 0.7, stagger: 0.15, ease: 'power2.out',
+    y: 50, opacity: 0, scale: 0.96, duration: 1.0, stagger: 0.18, ease: EASE.apple,
   });
 
   /* Contact */
   gsap.from('.contact-info', {
     scrollTrigger: { trigger: '.contact', start: 'top 75%' },
-    x: -50, opacity: 0, duration: 0.8, ease: 'power2.out',
+    x: -60, opacity: 0, duration: 1.1, ease: EASE.apple,
   });
   gsap.from('.contact-form', {
     scrollTrigger: { trigger: '.contact', start: 'top 75%' },
-    x: 50, opacity: 0, duration: 0.8, ease: 'power2.out',
+    x: 60, opacity: 0, duration: 1.1, ease: EASE.apple,
   });
 
-  /* Magnetic CTAs (desktop only) */
+  /* Magnetic CTAs (desktop only) — smoother lerp via GSAP */
   if (IS_DESKTOP) {
     document.querySelectorAll('.btn-primary, .hero-cta .btn').forEach(btn => {
+      const quickX = gsap.quickTo(btn, 'x', { duration: 0.6, ease: EASE.apple });
+      const quickY = gsap.quickTo(btn, 'y', { duration: 0.6, ease: EASE.apple });
       btn.addEventListener('mousemove', e => {
         const rect = btn.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(btn, { x: x * 0.25, y: y * 0.25, duration: 0.4, ease: 'power2.out' });
+        quickX(x * 0.3);
+        quickY(y * 0.3);
       });
       btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+        gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: EASE.spring });
       });
     });
   }
@@ -494,30 +547,67 @@ whenGSAP(() => {
   });
 });
 
-/* ---------- 3D TILT on product cards (desktop only) ---------- */
+/* ---------- 3D TILT on product cards — SMOOTH LERP version (Apple-like) ---------- */
 if (IS_DESKTOP && !REDUCED_MOTION) {
   document.querySelectorAll('.product-card').forEach(card => {
-    let frame = null;
+    const state = {
+      tx: 0, ty: 0,         // target rotations
+      cx: 0, cy: 0,         // current rotations (lerped)
+      tmx: 0.5, tmy: 0.5,   // target mouse position (0..1)
+      cmx: 0.5, cmy: 0.5,   // current mouse (lerped)
+      active: false,
+      raf: null,
+    };
+    const LERP = 0.10;       // lower = smoother, higher = snappier
+    const LERP_RETURN = 0.06;
+
+    function loop() {
+      const lerp = state.active ? LERP : LERP_RETURN;
+      state.cx  += (state.tx  - state.cx)  * lerp;
+      state.cy  += (state.ty  - state.cy)  * lerp;
+      state.cmx += (state.tmx - state.cmx) * lerp;
+      state.cmy += (state.tmy - state.cmy) * lerp;
+
+      card.style.setProperty('--rx', state.cx.toFixed(3) + 'deg');
+      card.style.setProperty('--ry', state.cy.toFixed(3) + 'deg');
+      card.style.setProperty('--mx', (state.cmx * 100).toFixed(2) + '%');
+      card.style.setProperty('--my', (state.cmy * 100).toFixed(2) + '%');
+
+      const stillMoving =
+        Math.abs(state.cx - state.tx) > 0.01 ||
+        Math.abs(state.cy - state.ty) > 0.01 ||
+        Math.abs(state.cmx - state.tmx) > 0.001 ||
+        Math.abs(state.cmy - state.tmy) > 0.001;
+
+      if (state.active || stillMoving) {
+        state.raf = requestAnimationFrame(loop);
+      } else {
+        state.raf = null;
+        card.classList.remove('tilt-active');
+      }
+    }
+
+    card.addEventListener('mouseenter', () => {
+      state.active = true;
+      card.classList.add('tilt-active');
+      if (!state.raf) state.raf = requestAnimationFrame(loop);
+    });
     card.addEventListener('mousemove', e => {
-      if (frame) cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        const rx = (y - 0.5) * -10;
-        const ry = (x - 0.5) * 10;
-        card.style.setProperty('--rx', rx + 'deg');
-        card.style.setProperty('--ry', ry + 'deg');
-        card.style.setProperty('--mx', (x * 100) + '%');
-        card.style.setProperty('--my', (y * 100) + '%');
-        card.classList.add('tilt-active');
-      });
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      state.tx = (y - 0.5) * -7;   // softer angle (was -10)
+      state.ty = (x - 0.5) * 7;
+      state.tmx = x;
+      state.tmy = y;
     });
     card.addEventListener('mouseleave', () => {
-      if (frame) cancelAnimationFrame(frame);
-      card.style.setProperty('--rx', '0deg');
-      card.style.setProperty('--ry', '0deg');
-      setTimeout(() => card.classList.remove('tilt-active'), 200);
+      state.active = false;
+      state.tx = 0;
+      state.ty = 0;
+      state.tmx = 0.5;
+      state.tmy = 0.5;
+      if (!state.raf) state.raf = requestAnimationFrame(loop);
     });
   });
 }
