@@ -1,0 +1,3629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="theme-color" content="#1A1208" />
+  <title>Óleum Natura – Velas Artesanales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+/* ================================================================
+   ÓLEUM NATURA — Estilos principales
+   ================================================================ */
+
+:root {
+  --gold:        #D4A017;
+  --gold-light:  #F0C842;
+  --gold-dark:   #A07810;
+  --cream:       #FDF8EF;
+  --cream-dark:  #F5EDD8;
+  --brown:       #5C3D11;
+  --brown-light: #8B6230;
+  --dark:        #1A1208;
+  --dark2:       #2C1E0A;
+  --green:       #2D6A4F;
+  --green-light: #52B788;
+  --white:       #FFFFFF;
+  --text:        #3D2B0A;
+  --text-light:  #7A5C2A;
+  --shadow:      0 8px 32px rgba(90,50,0,.15);
+  --shadow-deep: 0 20px 60px rgba(90,50,0,.25);
+  --radius:      16px;
+  --radius-sm:   10px;
+  --transition:  .55s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast:  .35s cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-apple:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smoother scroll baseline (Lenis takes over on desktop) */
+html { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+ul { list-style: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(26,18,8,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212,160,23,.2);
+  transition: var(--transition);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.logo-flame { font-size: 1.6rem; }
+.logo-text .accent { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+
+.nav-links a {
+  color: rgba(253,248,239,.8);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 100%;
+  height: 2px;
+  background: var(--gold);
+  transition: right var(--transition);
+}
+
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { right: 0; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 30% 50%, #3D2410 0%, #1A0E04 60%, #0D0803 100%);
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(212,160,23,.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(212,160,23,.05) 0%, transparent 40%);
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+  padding: 60px 24px 60px 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: .85rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.hero-title .gold { color: var(--gold); }
+
+.hero-slogan {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--gold-light);
+  margin-bottom: 24px;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: rgba(253,248,239,.7);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212,160,23,.12);
+  border: 1px solid rgba(212,160,23,.25);
+  color: var(--gold-light);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 60px 60px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Candle Scene --- */
+.candle-scene {
+  position: relative;
+  width: 320px;
+  height: 380px;
+  filter: drop-shadow(0 0 40px rgba(212,160,23,.3));
+}
+
+.candle {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candle-body {
+  border-radius: 8px 8px 4px 4px;
+  position: relative;
+}
+
+.candle-flame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.c1 { left: 50%; transform: translateX(-50%); bottom: 60px; z-index: 3; }
+.c1 .candle-body { width: 60px; height: 200px; background: linear-gradient(135deg, #F5EDD8 0%, #D4A017 50%, #A07810 100%); }
+.c1 .candle-flame { width: 20px; height: 40px; bottom: 0; }
+.c1 .candle-flame::before { content: ''; position: absolute; bottom: 0; width: 14px; height: 36px; background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFB830 40%, #FF6B00 80%, transparent); border-radius: 50% 50% 30% 30%; animation: flicker1 1.2s infinite alternate ease-in-out; }
+.c1 .flame-inner { position: absolute; bottom: 4px; width: 6px; height: 16px; background: radial-gradient(ellipse, white, #FFF5A0); border-radius: 50%; z-index: 1; animation: flicker1 1.2s infinite alternate ease-in-out; }
+
+.c2 { left: 20%; bottom: 60px; z-index: 2; }
+.c2 .candle-body { width: 46px; height: 150px; background: linear-gradient(135deg, #FDF8EF 0%, #C8956A 50%, #8B5E3C 100%); }
+.c2 .candle-flame { width: 16px; height: 32px; }
+.c2 .candle-flame::before { content: ''; position: absolute; bottom: 0; width: 12px; height: 28px; background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFB830 40%, #FF6B00 80%, transparent); border-radius: 50% 50% 30% 30%; animation: flicker2 1.5s infinite alternate ease-in-out; }
+.c2 .flame-inner { position: absolute; bottom: 4px; width: 5px; height: 12px; background: radial-gradient(ellipse, white, #FFF5A0); border-radius: 50%; z-index: 1; animation: flicker2 1.5s infinite alternate; }
+
+.c3 { right: 20%; bottom: 60px; z-index: 2; }
+.c3 .candle-body { width: 40px; height: 120px; background: linear-gradient(135deg, #FBEEDD 0%, #B8860B 50%, #7A5C1A 100%); }
+.c3 .candle-flame { width: 14px; height: 28px; }
+.c3 .candle-flame::before { content: ''; position: absolute; bottom: 0; width: 10px; height: 24px; background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFB830 40%, #FF6B00 80%, transparent); border-radius: 50% 50% 30% 30%; animation: flicker3 .9s infinite alternate ease-in-out; }
+.c3 .flame-inner { position: absolute; bottom: 3px; width: 4px; height: 10px; background: radial-gradient(ellipse, white, #FFF5A0); border-radius: 50%; z-index: 1; animation: flicker3 .9s infinite alternate; }
+
+.candle-glow {
+  position: absolute;
+  top: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, rgba(255,180,30,.4), transparent 70%);
+  border-radius: 50%;
+  animation: glow-pulse 2s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.surface {
+  position: absolute;
+  bottom: 40px; left: 0; right: 0;
+  height: 20px;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,.15), rgba(212,160,23,.3), rgba(212,160,23,.15), transparent);
+  border-radius: 4px;
+}
+
+@keyframes flicker1 {
+  0%   { transform: scaleX(1)   scaleY(1)   translateX(0); }
+  33%  { transform: scaleX(.9)  scaleY(1.1) translateX(1px); }
+  66%  { transform: scaleX(1.1) scaleY(.95) translateX(-1px); }
+  100% { transform: scaleX(.95) scaleY(1.05) translateX(.5px); }
+}
+@keyframes flicker2 {
+  0%   { transform: scaleX(1)   scaleY(1)   translateX(.5px); }
+  50%  { transform: scaleX(1.1) scaleY(.9)  translateX(-1px); }
+  100% { transform: scaleX(.9)  scaleY(1.1) translateX(0); }
+}
+@keyframes flicker3 {
+  0%   { transform: scaleX(.95) scaleY(1.05) translateX(0); }
+  40%  { transform: scaleX(1.1) scaleY(.95) translateX(1px); }
+  100% { transform: scaleX(1)   scaleY(1)   translateX(-.5px); }
+}
+@keyframes glow-pulse {
+  0%   { opacity: .5; transform: scale(1); }
+  100% { opacity: 1;  transform: scale(1.4); }
+}
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  box-shadow: 0 4px 20px rgba(212,160,23,.35);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212,160,23,.5);
+  filter: brightness(1.1);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: rgba(212,160,23,.5);
+  color: var(--cream);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: rgba(212,160,23,.1);
+  transform: translateY(-2px);
+}
+
+.btn.full { width: 100%; justify-content: center; }
+
+/* ================================================================
+   SECTION HEADERS
+   ================================================================ */
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.section-header.light h2 { color: var(--cream); }
+
+.section-tag {
+  display: inline-block;
+  background: rgba(212,160,23,.15);
+  color: var(--gold-dark);
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  border: 1px solid rgba(212,160,23,.3);
+}
+
+.section-header.light .section-tag {
+  background: rgba(212,160,23,.15);
+  color: var(--gold-light);
+  border-color: rgba(212,160,23,.3);
+}
+
+.section-desc {
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+.divider {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  margin: 0 auto 20px;
+  border-radius: 2px;
+}
+
+.gold-div { background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark)); }
+
+/* ================================================================
+   ABOUT
+   ================================================================ */
+.about {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(212,160,23,.1);
+}
+
+.about-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-deep); }
+
+.about-card.featured {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark2) 100%);
+  color: var(--cream);
+  border-color: var(--gold);
+}
+
+.about-card.featured h3 { color: var(--gold-light); }
+.about-card.featured p  { color: rgba(253,248,239,.8); }
+
+.about-icon { font-size: 2.5rem; margin-bottom: 16px; }
+
+.about-card h3 {
+  font-size: 1.3rem;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
+
+.about-card p { color: var(--text-light); line-height: 1.7; }
+
+/* ================================================================
+   STATS BAR
+   ================================================================ */
+.stats-bar {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark2) 100%);
+  padding: 48px 24px;
+  border-top: 1px solid rgba(212,160,23,.2);
+  border-bottom: 1px solid rgba(212,160,23,.2);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.stat { padding: 16px; }
+
+.stat-num {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: .85rem;
+  color: rgba(253,248,239,.7);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   CATALOG
+   ================================================================ */
+.catalog {
+  padding: 100px 0;
+  background: var(--cream-dark);
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 100px;
+  border: 2px solid rgba(92,61,17,.2);
+  background: transparent;
+  color: var(--text-light);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: .05em;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-color: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 4px 16px rgba(212,160,23,.3);
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(212,160,23,.08);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-deep);
+  border-color: rgba(212,160,23,.25);
+}
+
+.product-card.hidden { display: none; }
+
+.product-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.product-badge.eco { background: linear-gradient(135deg, var(--green-light), var(--green)); color: white; }
+.product-badge.nuevo { background: linear-gradient(135deg, #a855f7, #7c3aed); color: white; }
+
+.product-img-wrap { position: relative; overflow: hidden; }
+
+.product-img {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Category colour themes */
+.florales-1  { background: linear-gradient(135deg, #FFE4F0, #FFCCE0); }
+.florales-2  { background: linear-gradient(135deg, #EDE7FF, #D8CCFF); }
+.florales-3  { background: linear-gradient(135deg, #FFF0CC, #FFE09A); }
+.aromaticas-1 { background: linear-gradient(135deg, #CCFFE8, #99EED3); }
+.aromaticas-2 { background: linear-gradient(135deg, #EEE4D8, #D4C4A8); }
+.aromaticas-3 { background: linear-gradient(135deg, #DCFCE7, #A7F3D0); }
+.especiadas-1 { background: linear-gradient(135deg, #FFF3D4, #FFDB88); }
+.especiadas-2 { background: linear-gradient(135deg, #F5E6CC, #E8C880); }
+.especiadas-3 { background: linear-gradient(135deg, #FFEDD5, #FED7AA); }
+.frescas-1   { background: linear-gradient(135deg, #FFFBCC, #FFF08A); }
+.frescas-2   { background: linear-gradient(135deg, #CCEEFF, #99DDFF); }
+.frescas-3   { background: linear-gradient(135deg, #D4F4D4, #A8E6A8); }
+
+.img-candle {
+  font-size: 4.5rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.15));
+  transition: var(--transition);
+}
+
+.product-card:hover .img-candle { transform: scale(1.15) rotate(-3deg); }
+
+.product-info { padding: 24px; }
+
+.product-category {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: rgba(212,160,23,.1);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(212,160,23,.2);
+}
+
+.product-info h3 {
+  font-size: 1.3rem;
+  color: var(--brown);
+  margin: 12px 0 8px;
+}
+
+.product-desc {
+  font-size: .88rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-details {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.detail {
+  font-size: .75rem;
+  color: var(--text-light);
+  background: var(--cream);
+  padding: 3px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(92,61,17,.1);
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(92,61,17,.08);
+  padding-top: 16px;
+}
+
+.price-wrap { display: flex; align-items: baseline; gap: 8px; }
+
+.price-old {
+  font-size: .9rem;
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  color: var(--brown);
+}
+
+.btn-add {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  border: none;
+  border-radius: 100px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(212,160,23,.4);
+}
+
+.btn-add.added {
+  background: linear-gradient(135deg, var(--green-light), var(--green));
+  color: white;
+}
+
+/* ================================================================
+   PROCESS
+   ================================================================ */
+.process {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--dark2) 0%, #160D03 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212,160,23,.05), transparent 60%);
+}
+
+.steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 32px 20px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(212,160,23,.15);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.step:hover {
+  background: rgba(212,160,23,.08);
+  border-color: rgba(212,160,23,.4);
+  transform: translateY(-4px);
+}
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(212,160,23,.2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.step-icon { font-size: 2rem; margin-bottom: 12px; }
+
+.step h3 {
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: .88rem;
+  color: rgba(253,248,239,.6);
+  line-height: 1.6;
+}
+
+.step-arrow {
+  font-size: 2rem;
+  color: rgba(212,160,23,.4);
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   TESTIMONIALS
+   ================================================================ */
+.testimonials {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testi-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(212,160,23,.08);
+}
+
+.testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-deep); }
+
+.testi-card.featured {
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark2) 100%);
+  border-color: var(--gold-dark);
+}
+
+.testi-card.featured p  { color: rgba(253,248,239,.85); }
+.testi-card.featured .testi-author strong { color: var(--gold-light); }
+.testi-card.featured .testi-author span   { color: rgba(253,248,239,.5); }
+
+.testi-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+
+.testi-card p {
+  font-size: .92rem;
+  color: var(--text-light);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: var(--dark);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.testi-author strong { display: block; color: var(--brown); font-size: .95rem; }
+.testi-author span   { font-size: .8rem; color: var(--text-light); }
+
+/* ================================================================
+   CONTACT
+   ================================================================ */
+.contact {
+  padding: 100px 0;
+  background: var(--cream-dark);
+}
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-info .section-tag { margin-bottom: 12px; display: inline-block; }
+
+.contact-info h2 {
+  font-size: 2.2rem;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.contact-info > p {
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-items { display: flex; flex-direction: column; gap: 20px; }
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact-item > span { font-size: 1.5rem; flex-shrink: 0; }
+.contact-item strong { display: block; color: var(--brown); font-size: .95rem; margin-bottom: 2px; }
+.contact-item p { color: var(--text-light); font-size: .9rem; }
+
+.contact-form {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(212,160,23,.1);
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 8px;
+  letter-spacing: .04em;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid rgba(92,61,17,.12);
+  border-radius: var(--radius-sm);
+  font-family: 'Lato', sans-serif;
+  font-size: .95rem;
+  color: var(--text);
+  background: var(--cream);
+  transition: var(--transition);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(212,160,23,.08);
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer {
+  background: var(--dark);
+  padding: 64px 0 0;
+  border-top: 1px solid rgba(212,160,23,.15);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 48px;
+}
+
+.footer-brand .nav-logo { color: var(--cream); margin-bottom: 12px; }
+.footer-brand > p { color: var(--gold-light); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 8px; font-size: .95rem; }
+.footer-sub { color: rgba(253,248,239,.4); font-size: .85rem; }
+
+.footer-links h4 { color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 16px; font-size: 1rem; }
+.footer-links ul { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: rgba(253,248,239,.6); font-size: .9rem; transition: var(--transition); }
+.footer-links a:hover { color: var(--gold-light); padding-left: 4px; }
+
+.footer-social h4 { color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 16px; }
+.social-links { display: flex; flex-direction: column; gap: 10px; }
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(253,248,239,.7);
+  font-size: .88rem;
+  transition: var(--transition);
+  padding: 6px 0;
+}
+.social-btn:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(212,160,23,.1);
+  padding: 20px 24px;
+  text-align: center;
+  color: rgba(253,248,239,.35);
+  font-size: .82rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ================================================================
+   CART
+   ================================================================ */
+.cart-toast {
+  position: fixed;
+  bottom: 100px; right: 24px;
+  background: var(--brown);
+  color: var(--gold-light);
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: .9rem;
+  z-index: 2000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .3s ease;
+  pointer-events: none;
+  border: 1px solid var(--gold-dark);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+
+.cart-toast.show { opacity: 1; transform: translateY(0); }
+
+.cart-fab {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  border: none;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1500;
+  box-shadow: 0 8px 24px rgba(212,160,23,.4);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.cart-fab:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(212,160,23,.6); }
+
+.cart-count {
+  background: var(--brown);
+  color: var(--gold-light);
+  border-radius: 50%;
+  width: 20px; height: 20px;
+  font-size: .7rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px; right: 4px;
+}
+
+.cart-panel {
+  position: fixed;
+  right: -400px;
+  top: 0; bottom: 0;
+  width: 380px;
+  background: var(--white);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0,0,0,.3);
+  transition: right .4s cubic-bezier(.4,0,.2,1);
+}
+
+.cart-panel.open { right: 0; }
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(92,61,17,.1);
+  background: var(--cream);
+}
+
+.cart-header h3 { font-family: 'Playfair Display', serif; color: var(--brown); }
+.cart-header button { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-light); }
+
+.cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.cart-empty { text-align: center; color: var(--text-light); padding: 40px 0; font-style: italic; }
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(92,61,17,.07);
+  gap: 12px;
+}
+
+.cart-item-name { font-weight: 700; color: var(--brown); font-size: .95rem; }
+.cart-item-price { color: var(--text-light); font-size: .85rem; }
+.cart-item-remove {
+  background: none; border: none;
+  color: #ccc; cursor: pointer; font-size: 1rem;
+  transition: var(--transition);
+}
+.cart-item-remove:hover { color: #e53e3e; }
+
+.cart-footer {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(92,61,17,.1);
+  background: var(--cream);
+}
+
+.cart-total {
+  font-size: 1.1rem;
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+.cart-total strong { color: var(--gold-dark); font-size: 1.4rem; font-family: 'Playfair Display', serif; }
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+}
+
+.cart-overlay.show { opacity: 1; pointer-events: all; }
+
+/* ================================================================
+   PARTICLES (decorative dots in hero)
+   ================================================================ */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(212,160,23,.6), transparent);
+  animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1); opacity: .8; }
+  100% { transform: translateY(-120vh) scale(.3); opacity: 0; }
+}
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  .products-grid  { grid-template-columns: repeat(2, 1fr); }
+  .about-grid     { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid    { grid-template-columns: 1fr 1fr; }
+  .steps          { flex-wrap: wrap; }
+  .step-arrow     { display: none; }
+  .step           { flex: 1 1 calc(50% - 16px); }
+}
+
+@media (max-width: 768px) {
+  .nav-links      { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(26,18,8,.97); padding: 20px; gap: 0; }
+  .nav-links.open a { padding: 14px 24px; border-bottom: 1px solid rgba(212,160,23,.1); }
+  .hamburger      { display: flex; }
+
+  .hero           { flex-direction: column; padding-top: 70px; }
+  .hero-content   { padding: 40px 24px 0; text-align: center; max-width: 100%; }
+  .hero-cta       { justify-content: center; }
+  .hero-badges    { justify-content: center; }
+  .hero-visual    { padding: 24px; }
+  .candle-scene   { width: 240px; height: 280px; }
+
+  .about-grid     { grid-template-columns: 1fr; }
+  .stats-grid     { grid-template-columns: repeat(2, 1fr); }
+  .products-grid  { grid-template-columns: 1fr; }
+  .testi-grid     { grid-template-columns: 1fr; }
+  .contact-wrap   { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid    { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .steps          { flex-direction: column; }
+  .step           { flex: 1 1 100%; }
+  .cart-panel     { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+  .filter-tabs { gap: 8px; }
+  .filter-btn  { padding: 8px 16px; font-size: .8rem; }
+}
+
+/* ================================================================
+   CHECKOUT MODAL
+   ================================================================ */
+.checkout-modal-overlay { position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;display:flex;align-items:center;justify-content:center; }
+.checkout-modal { background:#fff;border-radius:16px;padding:40px;width:90%;max-width:440px;position:relative; }
+.checkout-modal h3 { font-family:'Playfair Display',serif;color:#5C3D11;margin-bottom:24px;font-size:1.5rem; }
+.checkout-modal .form-group { margin-bottom:16px; }
+.checkout-modal label { display:block;font-size:.85rem;font-weight:700;color:#5C3D11;margin-bottom:6px; }
+.checkout-modal input { width:100%;padding:10px 14px;border:2px solid rgba(92,61,17,.15);border-radius:10px;font-size:.95rem;font-family:'Lato',sans-serif; }
+.checkout-modal input:focus { outline:none;border-color:#D4A017; }
+.checkout-modal-close { position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#999; }
+.checkout-modal-actions { display:flex;gap:12px;margin-top:24px; }
+.btn-mp { background:linear-gradient(135deg,#009EE3,#0070A0);color:#fff;border:none;padding:14px 24px;border-radius:100px;font-family:'Lato',sans-serif;font-weight:700;cursor:pointer;flex:1;font-size:.9rem; }
+.btn-wsp { background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:14px 24px;border-radius:100px;font-family:'Lato',sans-serif;font-weight:700;cursor:pointer;flex:1;font-size:.9rem; }
+.btn-mp:disabled { opacity:.6;cursor:not-allowed; }
+
+/* ================================================================
+   ÓLEUM NATURA — UI/UX UPGRADE (Senior Pass)
+   ================================================================ */
+
+/* ---------- Hero 3D Canvas ---------- */
+#hero-3d {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+#hero-3d.ready { opacity: 1; }
+#hero-3d.ready ~ .hero-visual .candle-scene { opacity: 0.15; }
+@media (max-width: 767px) { #hero-3d { display: none; } }
+
+/* ---------- WHY US SECTION ---------- */
+.why-us {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--cream) 0%, #FFF 100%);
+  position: relative;
+  overflow: hidden;
+}
+.why-us::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(212,160,23,0.08), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin: 60px 0;
+}
+@media (max-width: 1024px) { .pillars-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .pillars-grid { grid-template-columns: 1fr 1fr; gap: 16px; } }
+
+.pillar-card {
+  background: #fff;
+  border: 1px solid rgba(212,160,23,0.15);
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  transition: transform .7s var(--ease-apple), box-shadow .7s var(--ease-apple), border-color .5s var(--ease-apple);
+  position: relative;
+  overflow: hidden;
+}
+.pillar-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(212,160,23,0.04) 100%);
+  opacity: 0;
+  transition: opacity .4s;
+}
+.pillar-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(92,61,17,0.18);
+  border-color: var(--gold);
+}
+.pillar-card:hover::before { opacity: 1; }
+.pillar-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 20px;
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.pillar-icon svg {
+  width: 100%; height: 100%;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  transition: stroke-dashoffset 1.5s ease;
+}
+.pillar-card.in-view .pillar-icon svg { stroke-dashoffset: 0; }
+.pillar-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--brown);
+  margin-bottom: 10px;
+}
+.pillar-card p {
+  font-size: 0.88rem;
+  color: #5C4A2E;
+  line-height: 1.55;
+}
+
+/* COMPARISON TABLE */
+.comparison-wrap {
+  margin-top: 70px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 40px -10px rgba(92,61,17,0.1);
+}
+.comparison-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--brown);
+  margin-bottom: 30px;
+}
+.comparison-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.compare-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.92rem;
+}
+.compare-table th,
+.compare-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(212,160,23,0.15);
+}
+.compare-table thead th {
+  background: var(--dark);
+  color: #FFF;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.compare-table thead th.criterio-col { background: var(--brown); text-align: left; }
+.compare-table thead th.us-col {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #1A1208;
+  position: relative;
+}
+.compare-table thead th.us-col::after {
+  content: '★';
+  position: absolute; top: 4px; right: 8px;
+  font-size: 0.8rem;
+}
+.compare-table tbody td:first-child {
+  font-weight: 700;
+  color: var(--brown);
+  background: rgba(212,160,23,0.04);
+}
+.compare-table tbody td.us-col {
+  background: rgba(212,160,23,0.12);
+  font-weight: 700;
+  color: var(--brown-dark, #3D2A0A);
+  text-align: center;
+}
+.compare-table tbody td:not(:first-child):not(.us-col) {
+  text-align: center;
+  color: #7A6B4F;
+}
+.compare-table tbody tr:hover td { background: rgba(212,160,23,0.06); }
+.compare-table tbody tr:hover td.us-col { background: rgba(212,160,23,0.2); }
+
+/* IMPACT STRIP */
+.impact-strip {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: linear-gradient(135deg, var(--brown) 0%, var(--dark) 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px -10px rgba(26,18,8,0.4);
+}
+@media (max-width: 768px) { .impact-strip { grid-template-columns: 1fr 1fr; } }
+.impact-item {
+  padding: 36px 20px;
+  text-align: center;
+  border-right: 1px solid rgba(212,160,23,0.2);
+  position: relative;
+}
+.impact-item:last-child { border-right: none; }
+@media (max-width: 768px) { .impact-item:nth-child(2) { border-right: none; } }
+.impact-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.impact-label {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.03em;
+}
+
+/* ---------- PRODUCT CARDS — SVG CANDLE + 3D TILT (Apple-style smooth) ---------- */
+.product-card {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transition: box-shadow .6s cubic-bezier(0.16, 1, 0.3, 1), transform .9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  /* Default transform: when JS isn't running the variables, no rotation */
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+}
+.product-card.tilt-active {
+  /* JS now drives transform via CSS vars every frame (lerped) — no CSS transition
+     interfering with per-frame updates. The browser composites GPU-side. */
+  transition: box-shadow .6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(212,160,23,0.28), transparent 60%);
+  opacity: 0;
+  transition: opacity .5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+.product-card:hover::after { opacity: 1; }
+.product-card:hover {
+  box-shadow: 0 30px 60px -20px rgba(92,61,17,0.25), 0 0 0 1px rgba(212,160,23,0.15);
+}
+
+.product-img-wrap {
+  position: relative;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--wax-top, #F5C2D8) 40%, white) 0%, color-mix(in srgb, var(--wax-bottom, #C44B7B) 25%, white) 100%);
+  padding: 30px 20px 20px;
+  overflow: hidden;
+}
+.product-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.35), transparent 60%);
+  pointer-events: none;
+}
+.candle-svg {
+  width: 110px;
+  height: 170px;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.18));
+  transition: transform .9s var(--ease-apple);
+}
+.product-card:hover .candle-svg { transform: translateY(-8px) scale(1.06); }
+.flame-outer {
+  transform-origin: 50px 52px;
+  animation: flameFlicker 1.4s ease-in-out infinite;
+}
+.flame-inner {
+  transform-origin: 50px 52px;
+  animation: flameFlicker 1.1s ease-in-out infinite reverse;
+}
+.candle-halo {
+  animation: haloPulse 3s ease-in-out infinite;
+  transform-origin: 50px 40px;
+}
+@keyframes flameFlicker {
+  0%,100% { transform: scaleY(1) scaleX(1) rotate(0deg); opacity: 0.95; }
+  25%     { transform: scaleY(1.08) scaleX(0.94) rotate(-2deg); opacity: 1; }
+  50%     { transform: scaleY(0.95) scaleX(1.06) rotate(1deg); opacity: 0.92; }
+  75%     { transform: scaleY(1.05) scaleX(0.97) rotate(-1deg); opacity: 1; }
+}
+@keyframes haloPulse {
+  0%,100% { opacity: 0.55; transform: scale(1); }
+  50%     { opacity: 0.85; transform: scale(1.15); }
+}
+
+.quick-view-btn {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(212,160,23,0.3);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brown);
+  z-index: 4;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity .3s, transform .3s, background .3s;
+}
+.quick-view-btn svg { width: 18px; height: 18px; }
+.product-card:hover .quick-view-btn { opacity: 1; transform: scale(1); }
+.quick-view-btn:hover { background: var(--gold); color: #fff; }
+
+/* ---------- QUICK VIEW MODAL ---------- */
+.qv-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,18,8,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.qv-overlay.open { display: flex; opacity: 1; }
+.qv-modal {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 880px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+  transform: scale(0.95) translateY(20px);
+  transition: transform .6s var(--ease-apple), opacity .5s var(--ease-apple);
+}
+.qv-overlay.open .qv-modal { transform: scale(1) translateY(0); }
+.qv-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.06);
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--brown);
+  z-index: 5;
+  transition: background .25s;
+}
+.qv-close:hover { background: rgba(212,160,23,0.25); }
+.qv-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+}
+@media (max-width: 720px) { .qv-grid { grid-template-columns: 1fr; } }
+.qv-visual {
+  background: linear-gradient(160deg, var(--wax-top, #F5C2D8) 0%, var(--wax-bottom, #C44B7B) 100%);
+  padding: 50px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 0 0 20px;
+}
+@media (max-width: 720px) { .qv-visual { border-radius: 20px 20px 0 0; padding: 40px 20px; } }
+.qv-visual .candle-svg {
+  width: 180px;
+  height: 280px;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
+}
+.qv-info { padding: 40px 36px; }
+.qv-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-weight: 700;
+}
+.qv-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--brown);
+  margin: 6px 0 14px;
+  line-height: 1.1;
+}
+.qv-story {
+  font-style: italic;
+  color: #5C4A2E;
+  margin-bottom: 22px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+.qv-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 14px;
+  background: rgba(212,160,23,0.08);
+  border-radius: 10px;
+}
+.qv-stat { text-align: center; }
+.qv-stat-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8B7355;
+  margin-bottom: 4px;
+}
+.qv-stat-val {
+  font-weight: 700;
+  color: var(--brown);
+  font-size: 0.9rem;
+}
+.qv-block { margin-bottom: 20px; }
+.qv-block h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brown);
+  margin-bottom: 8px;
+}
+.qv-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.qv-chip {
+  background: rgba(212,160,23,0.12);
+  color: var(--brown);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(212,160,23,0.3);
+}
+.qv-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.qv-list li {
+  padding-left: 18px;
+  position: relative;
+  font-size: 0.86rem;
+  color: #5C4A2E;
+  margin-bottom: 4px;
+}
+.qv-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+.qv-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 2px solid rgba(212,160,23,0.2);
+}
+.qv-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--brown);
+  font-weight: 900;
+}
+.qv-cta .btn { padding: 14px 26px; }
+
+/* ---------- Magnetic CTA ---------- */
+.btn-primary { will-change: transform; }
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .candle-svg .flame-outer,
+  .candle-svg .flame-inner,
+  .candle-svg .candle-halo { animation: none !important; }
+  .product-card.tilt-active { transform: none !important; }
+}
+
+</style>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+</head>
+<body>
+
+  <!-- ============================================================ NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-flame">🕯️</span>
+        <span class="logo-text">Óleum <span class="accent">Natura</span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#por-que">Por qué</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================ HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-particles" id="particles"></div>
+    <canvas id="hero-3d" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Velas Artesanales Ecológicas</p>
+      <h1 class="hero-title">Óleum <span class="gold">Natura</span></h1>
+      <p class="hero-slogan">"Que la grasa engorde tu cartera"</p>
+      <p class="hero-desc">
+        Transformamos aceites y mantecas reciclados del hogar en velas artesanales
+        únicas. Cuidamos el planeta mientras iluminamos tu espacio con aromas increíbles.
+      </p>
+      <div class="hero-cta">
+        <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+        <a href="#nosotros" class="btn btn-outline">Nuestra Historia</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><span>♻️</span> 100% Reciclado</div>
+        <div class="badge"><span>🌿</span> Eco-amigable</div>
+        <div class="badge"><span>🤲</span> Hecho a mano</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="candle-scene">
+        <div class="candle c1">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="candle c2">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="candle c3">
+          <div class="candle-body"></div>
+          <div class="candle-flame"><div class="flame-inner"></div></div>
+          <div class="candle-glow"></div>
+        </div>
+        <div class="surface"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ NOSOTROS -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestra Misión</span>
+        <h2>¿Quiénes somos?</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🌍</div>
+          <h3>Impacto Ambiental</h3>
+          <p>Reducimos la huella ecológica reutilizando aceites y grasas domésticas que de otro modo contaminarían el agua y el suelo.</p>
+        </div>
+        <div class="about-card featured">
+          <div class="about-icon">🕯️</div>
+          <h3>Arte & Propósito</h3>
+          <p>Cada vela es elaborada a mano con ingredientes naturales, combinando técnica artesanal con conciencia ambiental. El resultado: un producto único, sostenible y lleno de carácter.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💰</div>
+          <h3>Economía Circular</h3>
+          <p>Convertimos residuos en oportunidad de negocio, demostrando que ser sostenible también puede ser rentable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ STATS -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Ingredientes reciclados</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">Residuos generados</span></div>
+      <div class="stat"><span class="stat-num">+50h</span><span class="stat-label">Duración promedio</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Amor artesanal</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ POR QUÉ ÓLEUM NATURA -->
+  <section class="why-us" id="por-que">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Diferenciación</span>
+        <h2>¿Por qué <span class="gold">Óleum Natura</span>?</h2>
+        <div class="divider"></div>
+        <p class="section-desc">No vendemos velas. Rescatamos residuos y los convertimos en luz. Esto es lo que nos hace diferentes de cualquier vela industrial o artesanal genérica.</p>
+      </div>
+
+      <!-- 5 PILARES -->
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 20 C16 12, 24 8, 32 8 C40 8, 48 12, 48 20 L52 16 M48 20 L44 16"/>
+              <path d="M48 44 C48 52, 40 56, 32 56 C24 56, 16 52, 16 44 L12 48 M16 44 L20 48"/>
+            </svg>
+          </div>
+          <h3>100% Reciclado</h3>
+          <p>Aceites rescatados del hogar. La competencia usa parafina derivada del petróleo.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 56 C32 56, 12 44, 12 28 C12 20, 18 14, 26 14 C30 14, 32 18, 32 18 C32 18, 34 14, 38 14 C46 14, 52 20, 52 28 C52 44, 32 56, 32 56 Z"/>
+            </svg>
+          </div>
+          <h3>Cero Residuos</h3>
+          <p>Proceso de producción sin desperdicio. Hasta el vidrio del envase es reutilizable.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="32" r="20"/>
+              <path d="M32 18 L36 28 L46 28 L38 34 L42 44 L32 38 L22 44 L26 34 L18 28 L28 28 Z"/>
+            </svg>
+          </div>
+          <h3>Aromas Únicos</h3>
+          <p>Esencias seleccionadas a mano. Personalizamos tu vela con el aroma que tú elijas.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 52 L12 28 L32 12 L52 28 L52 52 Z"/>
+              <path d="M24 52 L24 36 L40 36 L40 52"/>
+            </svg>
+          </div>
+          <h3>Apoyo Local</h3>
+          <p>Comprar aquí financia un proyecto escolar real. Apoyas educación y emprendimiento.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="32" r="22"/>
+              <path d="M32 18 L32 32 L42 38"/>
+            </svg>
+          </div>
+          <h3>Mayor Duración</h3>
+          <p>40 a 65 horas de combustión. Las velas industriales duran solo 20 a 30 horas.</p>
+        </div>
+      </div>
+
+      <!-- TABLA COMPARATIVA -->
+      <div class="comparison-wrap">
+        <h3 class="comparison-title">Comparación honesta vs. la competencia</h3>
+        <div class="comparison-scroll">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th class="criterio-col">Criterio</th>
+                <th class="us-col">Óleum Natura</th>
+                <th>Velas Industriales</th>
+                <th>Artesanales Genéricas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Precio promedio</td><td class="us-col">$55 – $80</td><td>$90 – $250</td><td>$120 – $200</td></tr>
+              <tr><td>Materia prima</td><td class="us-col">Aceites reciclados ♻</td><td>Parafina del petróleo</td><td>Cera de soya/abeja</td></tr>
+              <tr><td>Impacto ecológico</td><td class="us-col">Negativo (limpia)</td><td>Alto (contaminante)</td><td>Bajo</td></tr>
+              <tr><td>Personalización</td><td class="us-col">Sí, total</td><td>No</td><td>Limitada</td></tr>
+              <tr><td>Variedad de aromas</td><td class="us-col">12+ y a pedido</td><td>3 – 5 fijos</td><td>6 – 8 fijos</td></tr>
+              <tr><td>Duración (horas)</td><td class="us-col">40 – 65</td><td>20 – 30</td><td>30 – 50</td></tr>
+              <tr><td>Origen</td><td class="us-col">Local CDMX</td><td>Importación masiva</td><td>Variable</td></tr>
+              <tr><td>Soporte a comunidad</td><td class="us-col">Escuela / estudiantes</td><td>Corporación</td><td>Particular</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- STRIP DE IMPACTO -->
+      <div class="impact-strip">
+        <div class="impact-item">
+          <div class="impact-num" data-target="180" data-suffix=" L">180 L</div>
+          <div class="impact-label">Aceite rescatado al año (proyectado)</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num" data-target="600" data-suffix="">600</div>
+          <div class="impact-label">Velas producidas al año</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num" data-target="100" data-suffix="%">100%</div>
+          <div class="impact-label">Mecha de algodón natural</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num" data-target="30" data-suffix="+" data-prefix="">30+</div>
+          <div class="impact-label">Estudiantes beneficiados</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CATÁLOGO -->
+  <section class="catalog" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestros Productos</span>
+        <h2>Catálogo de Velas</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Cada vela está elaborada con aceites y grasas recicladas del hogar, perfumadas con esencias naturales. Elige la tuya.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="florales">Florales</button>
+        <button class="filter-btn" data-filter="aromaticas">Aromáticas</button>
+        <button class="filter-btn" data-filter="especiadas">Especiadas</button>
+        <button class="filter-btn" data-filter="frescas">Frescas</button>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+
+        <!-- FLORALES -->
+        <div class="product-card" data-category="florales" data-id="p1">
+          <div class="product-badge">Más vendida</div>
+          <div class="product-img-wrap" style="--wax-top:#F5C2D8;--wax-bottom:#C44B7B;--flame-color:#FFB74D">
+            <button class="quick-view-btn" data-id="p1" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p1" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p1)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p1)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Rosa & Jazmín</h3>
+            <p class="product-desc">Un romance floral que llena el ambiente con dulzura y elegancia. Ideal para momentos de relajación y romance. Notas de pétalo fresco y jazmín nocturno.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~55 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$85</span>
+                <span class="price">$65</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Rosa & Jazmín', 65)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="florales" data-id="p2">
+          <div class="product-img-wrap" style="--wax-top:#D4BFE8;--wax-bottom:#7A5BA8;--flame-color:#B39DDB">
+            <button class="quick-view-btn" data-id="p2" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p2" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p2)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p2)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Lavanda Pura</h3>
+            <p class="product-desc">La fragancia clásica de la provenza francesa. Perfecta para el dormitorio, reduce el estrés y promueve el sueño tranquilo con su aroma suave y herbal.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~60 horas</span>
+              <span class="detail">🧪 160 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$60</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Lavanda Pura', 60)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="florales" data-id="p3">
+          <div class="product-img-wrap" style="--wax-top:#FFF8E1;--wax-bottom:#E6C547;--flame-color:#FFCC80">
+            <button class="quick-view-btn" data-id="p3" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p3" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p3)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p3)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Florales</span>
+            <h3>Gardenia & Ylang</h3>
+            <p class="product-desc">Sensual y profunda. El ylang ylang añade una nota exótica a la suavidad de la gardenia, creando una atmósfera íntima y cálida.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 140 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$70</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Gardenia & Ylang', 70)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AROMÁTICAS -->
+        <div class="product-card" data-category="aromaticas" data-id="p4">
+          <div class="product-badge eco">Eco Hit</div>
+          <div class="product-img-wrap" style="--wax-top:#B8E6D0;--wax-bottom:#2D6A4F;--flame-color:#80CBC4">
+            <button class="quick-view-btn" data-id="p4" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p4" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p4" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p4)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p4)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Eucalipto & Menta</h3>
+            <p class="product-desc">Revitalizante y purificadora. La combinación de eucalipto fresco con menta crea una sensación de limpieza y energía. Perfecta para espacios de trabajo.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 130 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$75</span>
+                <span class="price">$55</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Eucalipto & Menta', 55)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="aromaticas" data-id="p5">
+          <div class="product-img-wrap" style="--wax-top:#D7B899;--wax-bottom:#8B5A2B;--flame-color:#D4A017">
+            <button class="quick-view-btn" data-id="p5" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p5" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p5" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p5)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p5)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Sándalo & Cedro</h3>
+            <p class="product-desc">Un lujo amaderado con profundidad y carácter. El sándalo aporta calidez terrosa mientras el cedro añade frescura silvestre. Una vela para todo el día.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~65 horas</span>
+              <span class="detail">🧪 180 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$80</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Sándalo & Cedro', 80)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="aromaticas" data-id="p6">
+          <div class="product-img-wrap" style="--wax-top:#B5C9A4;--wax-bottom:#4A6B3A;--flame-color:#A5D6A7">
+            <button class="quick-view-btn" data-id="p6" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p6" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p6" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p6)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p6)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Aromáticas</span>
+            <h3>Romero & Salvia</h3>
+            <p class="product-desc">Herbal y reconfortante. El romero estimula la mente mientras la salvia purifica el espacio con su aroma antiguo y poderoso. Ideal para meditación.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$65</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Romero & Salvia', 65)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESPECIADAS -->
+        <div class="product-card" data-category="especiadas" data-id="p7">
+          <div class="product-badge nuevo">Nuevo</div>
+          <div class="product-img-wrap" style="--wax-top:#FFCC80;--wax-bottom:#BF360C;--flame-color:#FF6F00">
+            <button class="quick-view-btn" data-id="p7" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p7" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p7" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p7)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p7)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Canela & Naranja</h3>
+            <p class="product-desc">El clásico otoñal que evoca recuerdos cálidos. La canela envuelve con su dulzura picante mientras la naranja añade frescura cítrica. Un abrazo en forma de aroma.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~55 horas</span>
+              <span class="detail">🧪 160 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$70</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Canela & Naranja', 70)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="especiadas" data-id="p8">
+          <div class="product-img-wrap" style="--wax-top:#D7B894;--wax-bottom:#4E342E;--flame-color:#FFB300">
+            <button class="quick-view-btn" data-id="p8" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p8" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p8" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p8)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p8)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Vainilla & Café</h3>
+            <p class="product-desc">Una combinación irresistible para los amantes del café. La vainilla suaviza la intensidad del café tostado creando un ambiente acogedor y estimulante a la vez.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~60 horas</span>
+              <span class="detail">🧪 170 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$80</span>
+                <span class="price">$68</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Vainilla & Café', 68)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="especiadas" data-id="p9">
+          <div class="product-img-wrap" style="--wax-top:#E8C99B;--wax-bottom:#8D6E25;--flame-color:#FFA726">
+            <button class="quick-view-btn" data-id="p9" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p9" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p9" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p9)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p9)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Especiadas</span>
+            <h3>Jengibre & Clavo</h3>
+            <p class="product-desc">Picante, cálido y misterioso. El jengibre aporta energía mientras el clavo añade profundidad especiada. Una vela perfecta para noches frías.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 140 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$62</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Jengibre & Clavo', 62)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRESCAS -->
+        <div class="product-card" data-category="frescas" data-id="p10">
+          <div class="product-img-wrap" style="--wax-top:#F4E89C;--wax-bottom:#9CA744;--flame-color:#FFEB3B">
+            <button class="quick-view-btn" data-id="p10" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p10" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p10" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p10)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p10)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Limón & Albahaca</h3>
+            <p class="product-desc">Vibrante y llena de vida. El limón despeja la mente con su acidez brillante mientras la albahaca añade una nota herbal sofisticada. Para cocinas y espacios sociales.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~40 horas</span>
+              <span class="detail">🧪 130 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$58</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Limón & Albahaca', 58)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="frescas" data-id="p11">
+          <div class="product-badge">Popular</div>
+          <div class="product-img-wrap" style="--wax-top:#B3DFF5;--wax-bottom:#1E6091;--flame-color:#4FC3F7">
+            <button class="quick-view-btn" data-id="p11" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p11" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p11" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p11)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p11)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Brisa Marina</h3>
+            <p class="product-desc">Cierra los ojos y escucha el mar. Sal marina, notas acuáticas y un toque de coco crean la ilusión perfecta de estar frente al océano. Fresca e irresistible.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~50 horas</span>
+              <span class="detail">🧪 150 g</span>
+              <span class="detail">🌡 Lenta combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price-old">$72</span>
+                <span class="price">$60</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Brisa Marina', 60)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-category="frescas" data-id="p12">
+          <div class="product-img-wrap" style="--wax-top:#C5E1A5;--wax-bottom:#558B2F;--flame-color:#AED581">
+            <button class="quick-view-btn" data-id="p12" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p12" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p12" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p12)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p12)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
+            </div>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Frescas</span>
+            <h3>Verde Té & Pepino</h3>
+            <p class="product-desc">Minimalista y zen. El té verde japonés combinado con pepino fresco crea una fragancia limpia, serena y perfecta para espacios de bienestar y meditación.</p>
+            <div class="product-details">
+              <span class="detail">⏱ ~45 horas</span>
+              <span class="detail">🧪 135 g</span>
+              <span class="detail">🌡 Media combustión</span>
+            </div>
+            <div class="product-footer">
+              <div class="price-wrap">
+                <span class="price">$55</span>
+              </div>
+              <button class="btn-add" onclick="addToCart(this, 'Verde Té & Pepino', 55)">Agregar</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================ PROCESO -->
+  <section class="process" id="proceso">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Transparencia Total</span>
+        <h2>¿Cómo hacemos tus velas?</h2>
+        <div class="divider gold-div"></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-icon">🫙</div>
+          <h3>Recolección</h3>
+          <p>Recolectamos aceites y grasas usadas del hogar (aceite de cocina, manteca vegetal) que de otro modo irían al drenaje.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-icon">🔥</div>
+          <h3>Purificación</h3>
+          <p>Filtramos y tratamos los aceites para eliminar impurezas y olores, obteniendo una base limpia y lista para la vela.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-icon">🌺</div>
+          <h3>Aromatización</h3>
+          <p>Agregamos esencias naturales seleccionadas cuidadosamente para crear fragancias únicas y duraderas.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-icon">🕯️</div>
+          <h3>Moldeo & Acabado</h3>
+          <p>Vertemos la mezcla en moldes artesanales, colocamos la mecha y dejamos solidificar lentamente para garantizar calidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ TESTIMONIOS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Lo que dicen</span>
+        <h2>Clientes felices</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"La vela de Lavanda Pura es increíble. Desde que la tengo en mi cuarto duermo muchísimo mejor. El aroma dura toda la noche y es muy suave."</p>
+          <div class="testi-author"><div class="author-avatar">A</div><div><strong>Ana García</strong><span>Ciudad de México</span></div></div>
+        </div>
+        <div class="testi-card featured">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Me encanta saber que son hechas con aceites reciclados. Además de oler increíble, me siento bien contribuyendo al medio ambiente. La Canela & Naranja es mi favorita."</p>
+          <div class="testi-author"><div class="author-avatar">M</div><div><strong>María López</strong><span>Guadalajara</span></div></div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Pedí un set de regalo para mi mamá y quedó encantada. La presentación es hermosa y los aromas son genuinos, no artificiales. Definitivamente vuelvo a comprar."</p>
+          <div class="testi-author"><div class="author-avatar">C</div><div><strong>Carlos Ruiz</strong><span>Monterrey</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container contact-wrap">
+      <div class="contact-info">
+        <span class="section-tag">Escríbenos</span>
+        <h2>¿Tienes alguna pregunta?</h2>
+        <p>Nos encanta escucharte. Escríbenos para pedidos personalizados, pedidos al mayoreo o simplemente para saber más sobre nuestras velas.</p>
+        <div class="contact-items">
+          <div class="contact-item"><span>📱</span><div><strong>WhatsApp</strong><p>+52 55 1234-5678</p></div></div>
+          <div class="contact-item"><span>📧</span><div><strong>Email</strong><p>hola@oleumnatura.mx</p></div></div>
+          <div class="contact-item"><span>📍</span><div><strong>Ubicación</strong><p>Entrega a domicilio en toda la ciudad</p></div></div>
+          <div class="contact-item"><span>🕐</span><div><strong>Horario</strong><p>Lun – Sáb, 9:00 a 20:00</p></div></div>
+        </div>
+      </div>
+      <form class="contact-form" name="contacto" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contacto" />
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>Teléfono (opcional)</label>
+          <input type="tel" placeholder="+52 55 0000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea placeholder="¿En qué podemos ayudarte? Cuéntanos sobre tu pedido..." rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary full">Enviar Mensaje 🕯️</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================ FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-flame">🕯️</span><span class="logo-text">Óleum <span class="accent">Natura</span></span></div>
+        <p>"Que la grasa engorde tu cartera"</p>
+        <p class="footer-sub">Transformando residuos en luz y aroma desde 2024.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#catalogo">Florales</a></li>
+          <li><a href="#catalogo">Aromáticas</a></li>
+          <li><a href="#catalogo">Especiadas</a></li>
+          <li><a href="#catalogo">Frescas</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Síguenos</h4>
+        <div class="social-links">
+          <a href="#" class="social-btn">📸 Instagram</a>
+          <a href="#" class="social-btn">🎵 TikTok</a>
+          <a href="#" class="social-btn">📘 Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Óleum Natura · Todos los derechos reservados · Hecho con ♻️ y ❤️</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ CART TOAST -->
+  <div class="cart-toast" id="cart-toast">
+    <span id="toast-msg">¡Producto agregado!</span>
+  </div>
+
+  <!-- ============================================================ CART BUTTON -->
+  <button class="cart-fab" id="cart-fab" onclick="toggleCart()">
+    🛒 <span class="cart-count" id="cart-count">0</span>
+  </button>
+
+  <!-- ============================================================ CART PANEL -->
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+      <h3>🛒 Tu carrito</h3>
+      <button onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="cart-empty">Tu carrito está vacío</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cart-total">$0</strong></div>
+      <button class="btn btn-primary full" onclick="checkout()">Pedir por WhatsApp 📱</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+  <script type="application/json" id="products-data">
+{
+  "p1": {"name":"Rosa & Jazmín","category":"Florales","price":65,"oldPrice":85,"hours":55,"grams":150,"notes":["Pétalo fresco","Jazmín nocturno","Vainilla suave"],"mood":"Romance y relajación","ingredients":["Aceite reciclado purificado","Esencia natural de rosa","Aceite esencial de jazmín","Mecha de algodón orgánico"],"pairing":"Combina con cena íntima, baño caliente o tarde de lectura.","story":"Inspirada en jardines mexicanos al atardecer, esta vela une dos flores clásicas en un equilibrio cálido y femenino."},
+  "p2": {"name":"Lavanda Pura","category":"Florales","price":60,"hours":60,"grams":160,"notes":["Lavanda francesa","Bergamota","Madera blanca"],"mood":"Sueño y descanso","ingredients":["Aceite reciclado purificado","Aceite esencial de lavanda","Mecha de algodón orgánico"],"pairing":"Ideal en el dormitorio antes de dormir o durante una sesión de yoga.","story":"La fragancia clásica de la Provenza francesa, reinterpretada con aceite rescatado de cocinas mexicanas."},
+  "p3": {"name":"Gardenia & Ylang","category":"Florales","price":70,"hours":50,"grams":140,"notes":["Gardenia blanca","Ylang ylang","Ámbar suave"],"mood":"Sensualidad y misterio","ingredients":["Aceite reciclado purificado","Esencia natural de gardenia","Aceite esencial de ylang ylang","Mecha de algodón"],"pairing":"Para citas, noches de spa o ambientes que pidan profundidad.","story":"Dos flores exóticas en una sola vela: la inocencia de la gardenia con el calor sensual del ylang."},
+  "p4": {"name":"Eucalipto & Menta","category":"Aromáticas","price":55,"oldPrice":75,"hours":45,"grams":130,"notes":["Eucalipto fresco","Menta piperita","Romero"],"mood":"Energía y enfoque","ingredients":["Aceite reciclado purificado","Aceite esencial de eucalipto","Aceite esencial de menta","Mecha de algodón"],"pairing":"Perfecta para tu escritorio, estudio o sala de ejercicio.","story":"Inspirada en el aire de las montañas mexicanas, despeja la mente y oxigena el ambiente."},
+  "p5": {"name":"Sándalo & Cedro","category":"Aromáticas","price":80,"hours":65,"grams":180,"notes":["Sándalo indio","Cedro mexicano","Vetiver"],"mood":"Calidez y arraigo","ingredients":["Aceite reciclado purificado","Aceite esencial de sándalo","Aceite esencial de cedro","Mecha de algodón premium"],"pairing":"Salas amplias, oficinas masculinas o ceremonias de meditación.","story":"Madera sobre madera. Una vela seria, profunda y elegante. Para quienes prefieren los aromas que duran todo el día."},
+  "p6": {"name":"Romero & Salvia","category":"Aromáticas","price":65,"hours":50,"grams":150,"notes":["Romero fresco","Salvia blanca","Tomillo"],"mood":"Purificación y claridad","ingredients":["Aceite reciclado purificado","Aceite esencial de romero","Esencia de salvia","Mecha de algodón"],"pairing":"Ambientes de meditación, limpieza energética o estudio.","story":"Hierbas ancestrales usadas para purificar espacios desde tiempos prehispánicos. Tradición en forma de aroma."},
+  "p7": {"name":"Canela & Naranja","category":"Especiadas","price":70,"hours":55,"grams":160,"notes":["Canela de Ceilán","Naranja dulce","Clavo suave"],"mood":"Hogar y bienvenida","ingredients":["Aceite reciclado purificado","Esencia de canela","Aceite esencial de naranja","Mecha de algodón"],"pairing":"Sala en otoño/invierno, navidad, reuniones familiares.","story":"El aroma clásico de las posadas mexicanas. Una vela que huele a abrazo y a casa de la abuela."},
+  "p8": {"name":"Vainilla & Café","category":"Especiadas","price":68,"oldPrice":80,"hours":60,"grams":170,"notes":["Café tostado","Vainilla de Madagascar","Caramelo"],"mood":"Acogedor y estimulante","ingredients":["Aceite reciclado purificado","Esencia de café tostado","Aceite esencial de vainilla","Mecha de algodón"],"pairing":"Cafeterías caseras, mañanas lentas, ambientes de trabajo creativo.","story":"Para los que viven con el café en la mano. La intensidad del grano suavizada por la vainilla."},
+  "p9": {"name":"Jengibre & Clavo","category":"Especiadas","price":62,"hours":45,"grams":140,"notes":["Jengibre fresco","Clavo de olor","Pimienta rosa"],"mood":"Energía picante","ingredients":["Aceite reciclado purificado","Esencia de jengibre","Aceite esencial de clavo","Mecha de algodón"],"pairing":"Noches frías, ambientes asiáticos, cocinas con sazón.","story":"Especiada y atrevida. Una vela con carácter, perfecta para quienes huyen de lo dulzón."},
+  "p10":{"name":"Limón & Albahaca","category":"Frescas","price":58,"hours":40,"grams":130,"notes":["Limón siciliano","Albahaca italiana","Cidra"],"mood":"Frescura mediterránea","ingredients":["Aceite reciclado purificado","Aceite esencial de limón","Esencia de albahaca","Mecha de algodón"],"pairing":"Cocinas, balcones, comidas al aire libre.","story":"Una receta italiana convertida en aroma. Limpia, vibrante, sofisticada."},
+  "p11":{"name":"Brisa Marina","category":"Frescas","price":60,"oldPrice":72,"hours":50,"grams":150,"notes":["Sal marina","Coco fresco","Notas acuáticas"],"mood":"Calma oceánica","ingredients":["Aceite reciclado purificado","Esencias marinas","Aceite esencial de coco","Mecha de algodón"],"pairing":"Baños largos, días lluviosos, espacios costeros.","story":"Cierra los ojos y escucha el mar. Una invitación a Puerto Escondido sin salir de casa."},
+  "p12":{"name":"Verde Té & Pepino","category":"Frescas","price":55,"hours":45,"grams":135,"notes":["Té verde matcha","Pepino fresco","Bambú"],"mood":"Zen y bienestar","ingredients":["Aceite reciclado purificado","Esencia de té verde","Aceite esencial de pepino","Mecha de algodón"],"pairing":"Sesiones de meditación, baños relajantes, spa casero.","story":"Minimalismo japonés en versión vela. Limpia, serena, contemporánea."}
+}
+</script>
+
+<!-- QUICK VIEW MODAL -->
+<div class="qv-overlay" id="qv-overlay" aria-hidden="true">
+  <div class="qv-modal" role="dialog" aria-modal="true" aria-labelledby="qv-name">
+    <button class="qv-close" id="qv-close" aria-label="Cerrar">&times;</button>
+    <div class="qv-grid">
+      <div class="qv-visual" id="qv-visual"></div>
+      <div class="qv-info">
+        <span class="qv-category" id="qv-category"></span>
+        <h2 class="qv-name" id="qv-name"></h2>
+        <p class="qv-story" id="qv-story"></p>
+        <div class="qv-stats">
+          <div class="qv-stat"><span class="qv-stat-label">Duración</span><span class="qv-stat-val" id="qv-hours"></span></div>
+          <div class="qv-stat"><span class="qv-stat-label">Peso</span><span class="qv-stat-val" id="qv-grams"></span></div>
+          <div class="qv-stat"><span class="qv-stat-label">Mood</span><span class="qv-stat-val" id="qv-mood"></span></div>
+        </div>
+        <div class="qv-block">
+          <h4>Notas aromáticas</h4>
+          <div class="qv-chips" id="qv-notes"></div>
+        </div>
+        <div class="qv-block">
+          <h4>Ingredientes</h4>
+          <ul class="qv-list" id="qv-ingredients"></ul>
+        </div>
+        <div class="qv-block">
+          <h4>Combina con</h4>
+          <p id="qv-pairing"></p>
+        </div>
+        <div class="qv-cta">
+          <div class="qv-price">$<span id="qv-price"></span></div>
+          <button class="btn btn-primary" id="qv-add">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script defer>
+/* ================================================================
+   ÓLEUM NATURA — JavaScript
+   ================================================================ */
+
+/* ---------- Cart State ---------- */
+let cart = [];
+
+/* ---------- Navbar: scroll opacity & hamburger ---------- */
+const navbar    = document.querySelector('.navbar');
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.querySelector('.nav-links');
+
+window.addEventListener('scroll', () => {
+  navbar.style.background = window.scrollY > 40
+    ? 'rgba(26,18,8,.98)'
+    : 'rgba(26,18,8,.92)';
+});
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+  });
+});
+
+/* ---------- Smooth scroll for any anchor ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ---------- Hero Particles ---------- */
+function spawnParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+
+  function createParticle() {
+    const p    = document.createElement('div');
+    const size = Math.random() * 6 + 2;
+    p.classList.add('particle');
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random() * 100}%;
+      bottom:0;
+      animation-duration:${Math.random() * 8 + 6}s;
+      animation-delay:${Math.random() * 4}s;
+      opacity:${Math.random() * .6 + .2};
+    `;
+    container.appendChild(p);
+    setTimeout(() => p.remove(), 14000);
+  }
+
+  for (let i = 0; i < 20; i++) createParticle();
+  setInterval(createParticle, 700);
+}
+
+spawnParticles();
+
+/* ---------- Filter Tabs ---------- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards      = document.querySelectorAll('.product-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.classList.remove('hidden');
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = 'fadeInUp .4s ease forwards';
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+/* ---------- Add to Cart ---------- */
+function addToCart(btn, name, price) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  btn.textContent = '✓ Agregado';
+  btn.classList.add('added');
+  setTimeout(() => {
+    btn.textContent = 'Agregar';
+    btn.classList.remove('added');
+  }, 1800);
+
+  showToast(`¡${name} agregada al carrito!`);
+  updateCartUI();
+}
+
+function showToast(msg) {
+  const toast   = document.getElementById('cart-toast');
+  const toastMsg = document.getElementById('toast-msg');
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cart-count').textContent = count;
+
+  const itemsEl = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<p class="cart-empty">Tu carrito está vacío</p>';
+    totalEl.textContent = '$0';
+    return;
+  }
+
+  itemsEl.innerHTML = cart.map((item, idx) => `
+    <div class="cart-item">
+      <div>
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">x${item.qty} · $${item.price * item.qty}</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${idx})">✕</button>
+    </div>
+  `).join('');
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  totalEl.textContent = `$${total}`;
+}
+
+function removeFromCart(idx) {
+  cart.splice(idx, 1);
+  updateCartUI();
+}
+
+/* ---------- Cart Panel Toggle ---------- */
+function toggleCart() {
+  const panel   = document.getElementById('cart-panel');
+  const overlay = document.getElementById('cart-overlay');
+  panel.classList.toggle('open');
+  overlay.classList.toggle('show');
+}
+
+/* ---------- Checkout Modal ---------- */
+function showCheckoutModal() {
+  if (cart.length === 0) return;
+
+  const existing = document.getElementById('checkout-modal-overlay');
+  if (existing) existing.remove();
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  const overlay = document.createElement('div');
+  overlay.id = 'checkout-modal-overlay';
+  overlay.className = 'checkout-modal-overlay';
+  overlay.innerHTML = `
+    <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+      <button class="checkout-modal-close" onclick="closeCheckoutModal()" aria-label="Cerrar">&times;</button>
+      <h3 id="checkout-modal-title">🕯️ Finalizar Pedido</h3>
+      <p style="font-size:.85rem;color:#7A5C2A;margin-bottom:20px;">Total: <strong style="color:#5C3D11;font-size:1.1rem;">$${total}</strong></p>
+      <form id="checkout-modal-form" onsubmit="submitCheckoutModal(event)">
+        <div class="form-group">
+          <label for="cm-name">Nombre completo</label>
+          <input id="cm-name" type="text" name="payer_name" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="cm-email">Correo electrónico</label>
+          <input id="cm-email" type="email" name="payer_email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="cm-phone">Teléfono</label>
+          <input id="cm-phone" type="tel" name="payer_phone" placeholder="+52 55 0000-0000" />
+        </div>
+        <div class="checkout-modal-actions">
+          <button type="submit" class="btn-mp" id="btn-mp-submit">💳 Pagar con Mercado Pago</button>
+          <button type="button" class="btn-wsp" onclick="checkoutWhatsApp()">📱 WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeCheckoutModal();
+  });
+
+  document.body.appendChild(overlay);
+
+  // Trap focus on first field
+  setTimeout(() => {
+    const first = overlay.querySelector('input');
+    if (first) first.focus();
+  }, 50);
+}
+
+function closeCheckoutModal() {
+  const overlay = document.getElementById('checkout-modal-overlay');
+  if (overlay) overlay.remove();
+}
+
+async function submitCheckoutModal(e) {
+  e.preventDefault();
+  const form       = e.target;
+  const payerName  = form.payer_name.value.trim();
+  const payerEmail = form.payer_email.value.trim();
+  const payerPhone = form.payer_phone.value.trim();
+  const total      = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+  const mpItems = cart.map(i => ({
+    title:      i.name,
+    quantity:   i.qty,
+    unit_price: i.price,
+  }));
+
+  const submitBtn = document.getElementById('btn-mp-submit');
+  submitBtn.textContent = 'Procesando…';
+  submitBtn.disabled = true;
+
+  // Always attempt to save the order to Sheets (fire-and-forget)
+  try {
+    fetch('/.netlify/functions/save-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        items:       mpItems,
+        total,
+        payer_name:  payerName,
+        payer_email: payerEmail,
+        payer_phone: payerPhone,
+        status:      'pendiente',
+      }),
+    });
+  } catch (_) {
+    // Non-blocking — ignore errors
+  }
+
+  // Try Mercado Pago
+  try {
+    const res = await fetch('/.netlify/functions/create-preference', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: mpItems, payer_email: payerEmail }),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+
+    if (data.init_point) {
+      closeCheckoutModal();
+      window.location.href = data.init_point;
+      return;
+    }
+
+    throw new Error('No se recibió init_point');
+  } catch (err) {
+    console.warn('Mercado Pago no disponible, usando WhatsApp como fallback:', err.message);
+    closeCheckoutModal();
+    checkoutWhatsApp();
+  }
+}
+
+/* ---------- Checkout via WhatsApp (fallback) ---------- */
+function checkoutWhatsApp() {
+  if (cart.length === 0) return;
+
+  const lines = cart.map(i => `• ${i.name} x${i.qty} = $${i.price * i.qty}`).join('\n');
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const msg   = encodeURIComponent(
+    `Hola Óleum Natura! 🕯️ Quiero hacer el siguiente pedido:\n\n${lines}\n\nTotal: $${total}\n\n¿Pueden confirmar disponibilidad?`
+  );
+
+  window.open(`https://wa.me/5215512345678?text=${msg}`, '_blank');
+}
+
+/* ---------- Checkout (entry point called from cart button) ---------- */
+function checkout() {
+  if (cart.length === 0) return;
+  showCheckoutModal();
+}
+
+/* ---------- Contact Form ---------- */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✓ ¡Mensaje enviado!';
+  btn.style.background = 'linear-gradient(135deg, #52B788, #2D6A4F)';
+  setTimeout(() => {
+    btn.textContent = 'Enviar Mensaje 🕯️';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+/* ================================================================
+   ÓLEUM NATURA — UI/UX UPGRADE (Senior Pass)
+   ================================================================ */
+
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const IS_DESKTOP = window.matchMedia('(pointer: fine)').matches && window.innerWidth >= 768;
+const IS_TOUCH = window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+
+/* SAFETY NET: si algo deja elementos invisibles, forzar visibilidad después de 2.5s */
+setTimeout(() => {
+  document.querySelectorAll(
+    '.about-card, .testi-card, .step, .step-arrow, .contact-item, .stat, .pillar-card, .impact-item, .product-card, .contact-info, .contact-form, .hero-eyebrow, .hero-title, .hero-slogan, .hero-desc, .hero-cta .btn, .hero-badges .badge, .compare-table tbody tr, .catalog .section-header'
+  ).forEach(el => {
+    const cs = getComputedStyle(el);
+    if (parseFloat(cs.opacity) < 0.1) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }
+  });
+}, 2500);
+
+/* Keep fadeInUp keyframe for filter animation */
+const _kfStyle = document.createElement('style');
+_kfStyle.textContent = `
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+`;
+document.head.appendChild(_kfStyle);
+
+/* ---------- Apple-style easing curves ---------- */
+const EASE = {
+  apple:   'expo.out',                  // GSAP's expo.out matches Apple's signature feel
+  smooth:  'power4.out',
+  spring:  'elastic.out(1, 0.55)',
+  gentle:  'power2.inOut',
+};
+const APPLE_CSS_BEZIER = 'cubic-bezier(0.16, 1, 0.3, 1)';
+
+/* ---------- Lenis smooth scroll — SOLO desktop ---------- */
+let lenis = null;
+function initLenis() {
+  if (!window.Lenis || REDUCED_MOTION || IS_TOUCH) return;
+  lenis = new Lenis({
+    duration: 1.3,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    smoothTouch: false,
+    touchMultiplier: 1.2,
+    wheelMultiplier: 1.0,
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  // Hook into anchor links to use Lenis scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+    }, true);
+  });
+}
+
+/* ---------- Wait for GSAP, then init scroll animations ---------- */
+function whenGSAP(cb) {
+  if (window.gsap && window.ScrollTrigger) { cb(); return; }
+  let tries = 0;
+  const id = setInterval(() => {
+    if (window.gsap && window.ScrollTrigger) {
+      clearInterval(id);
+      cb();
+    } else if (++tries > 60) {
+      clearInterval(id);
+      console.warn('GSAP no cargó, usando fallback');
+      initFallbackAnimations();
+    }
+  }, 100);
+}
+
+function initFallbackAnimations() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        if (entry.target.classList.contains('pillar-card')) entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.product-card, .about-card, .testi-card, .step, .contact-item, .stat, .pillar-card, .impact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = `opacity .9s ${APPLE_CSS_BEZIER}, transform .9s ${APPLE_CSS_BEZIER}`;
+    io.observe(el);
+  });
+}
+
+/* ---------- Counter helper that respects prefix/suffix and decimals ---------- */
+function animateCounter(el, target, suffix, prefix, duration) {
+  const isInt = Number.isInteger(target);
+  gsap.fromTo({ v: 0 }, { v: 0 }, {
+    v: target, duration: duration || 2.0, ease: EASE.apple,
+    onUpdate: function() {
+      const v = this.targets()[0].v;
+      const display = isInt ? Math.round(v) : v.toFixed(1);
+      el.textContent = (prefix || '') + display + (suffix || '');
+    },
+    onComplete: () => {
+      const display = isInt ? Math.round(target) : target.toFixed(1);
+      el.textContent = (prefix || '') + display + (suffix || '');
+    }
+  });
+}
+
+/* ---------- Mobile-safe animations: solo count-ups + fade simple con CSS ---------- */
+function runMobileAnimations() {
+  // Count-up para stats e impact-num (con IntersectionObserver para no depender de ScrollTrigger)
+  const counters = document.querySelectorAll('.stat .stat-num, .impact-num');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+
+      let target, prefix = '', suffix = '';
+      if (el.classList.contains('impact-num')) {
+        target = parseFloat(el.dataset.target);
+        suffix = el.dataset.suffix || '';
+        prefix = el.dataset.prefix || '';
+      } else {
+        const m = el.textContent.trim().match(/^([+]?)([\d.]+)(.*)$/);
+        if (!m) return;
+        prefix = m[1]; target = parseFloat(m[2]); suffix = m[3];
+      }
+      if (isNaN(target)) return;
+      animateCounter(el, target, suffix, prefix, 1.6);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+  counters.forEach(el => io.observe(el));
+
+  // Fade-in suave para cards al entrar en viewport (sin gsap.from que las deja invisibles)
+  const fadeEls = document.querySelectorAll(
+    '.about-card, .testi-card, .step, .pillar-card, .product-card, .impact-item'
+  );
+  fadeEls.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .7s cubic-bezier(0.16,1,0.3,1), transform .7s cubic-bezier(0.16,1,0.3,1)';
+  });
+  const fadeIO = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        if (entry.target.classList.contains('pillar-card')) entry.target.classList.add('in-view');
+        fadeIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  fadeEls.forEach(el => fadeIO.observe(el));
+}
+
+whenGSAP(() => {
+  initLenis();
+  if (REDUCED_MOTION) { initFallbackAnimations(); return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Lenis ↔ ScrollTrigger sync
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* En móvil: SOLO contadores + tilt + modal. NO animaciones de entrada
+     (causan secciones invisibles si ScrollTrigger no dispara con scroll táctil). */
+  if (!IS_DESKTOP) {
+    runMobileAnimations();
+    return;
+  }
+
+  /* Hero entrance */
+  const heroTl = gsap.timeline({ defaults: { ease: EASE.apple } });
+  heroTl
+    .from('.hero-eyebrow', { y: 30, opacity: 0, duration: 1.0 })
+    .from('.hero-title',   { y: 50, opacity: 0, duration: 1.2 }, '-=0.7')
+    .from('.hero-slogan',  { y: 25, opacity: 0, duration: 1.0 }, '-=0.8')
+    .from('.hero-desc',    { y: 25, opacity: 0, duration: 1.0 }, '-=0.8')
+    .from('.hero-cta .btn',     { y: 25, opacity: 0, duration: 0.9, stagger: 0.15 }, '-=0.7')
+    .from('.hero-badges .badge',{ y: 20, opacity: 0, duration: 0.7, stagger: 0.10 }, '-=0.6');
+
+  /* About cards */
+  gsap.from('.about-card', {
+    scrollTrigger: { trigger: '.about-grid', start: 'top 82%' },
+    y: 70, opacity: 0, duration: 1.2, stagger: 0.18, ease: EASE.apple,
+  });
+
+  /* Stats count-up */
+  document.querySelectorAll('.stat').forEach(stat => {
+    const numEl = stat.querySelector('.stat-num');
+    if (!numEl) return;
+    const raw = numEl.textContent.trim();
+    const match = raw.match(/^([+]?)([\d.]+)(.*)$/);
+    if (!match) return;
+    const prefix = match[1];
+    const target = parseFloat(match[2]);
+    const suffix = match[3];
+    ScrollTrigger.create({
+      trigger: stat, start: 'top 85%', once: true,
+      onEnter: () => animateCounter(numEl, target, suffix, prefix, 2.2)
+    });
+  });
+
+  /* Pillars */
+  gsap.from('.pillar-card', {
+    scrollTrigger: { trigger: '.pillars-grid', start: 'top 80%' },
+    y: 60, opacity: 0, duration: 1.1, stagger: 0.12, ease: EASE.apple,
+    onComplete: () => document.querySelectorAll('.pillar-card').forEach(c => c.classList.add('in-view'))
+  });
+
+  /* Comparison rows */
+  gsap.from('.compare-table tbody tr', {
+    scrollTrigger: { trigger: '.compare-table', start: 'top 80%' },
+    y: 30, opacity: 0, duration: 0.8, stagger: 0.10, ease: EASE.apple,
+  });
+
+  /* Impact counters — respect data-prefix/data-suffix */
+  document.querySelectorAll('.impact-num').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    if (isNaN(target)) return;
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%', once: true,
+      onEnter: () => animateCounter(el, target, suffix, prefix, 2.4)
+    });
+  });
+
+  /* Catalog header */
+  gsap.from('.catalog .section-header', {
+    scrollTrigger: { trigger: '.catalog', start: 'top 80%' },
+    y: 50, opacity: 0, duration: 1.0, ease: EASE.apple
+  });
+
+  /* Product cards entrance */
+  gsap.from('.product-card', {
+    scrollTrigger: { trigger: '.products-grid', start: 'top 75%' },
+    y: 60, opacity: 0, duration: 1.0, stagger: 0.1, ease: EASE.apple,
+  });
+
+  /* Process steps */
+  gsap.from('.step', {
+    scrollTrigger: { trigger: '.steps', start: 'top 80%' },
+    y: 50, opacity: 0, duration: 0.95, stagger: 0.18, ease: EASE.apple,
+  });
+  gsap.from('.step-arrow', {
+    scrollTrigger: { trigger: '.steps', start: 'top 80%' },
+    scale: 0, opacity: 0, duration: 0.7, stagger: 0.18, delay: 0.3, ease: EASE.spring,
+  });
+
+  /* Testimonials */
+  gsap.from('.testi-card', {
+    scrollTrigger: { trigger: '.testi-grid', start: 'top 80%' },
+    y: 50, opacity: 0, scale: 0.96, duration: 1.0, stagger: 0.18, ease: EASE.apple,
+  });
+
+  /* Contact */
+  gsap.from('.contact-info', {
+    scrollTrigger: { trigger: '.contact', start: 'top 75%' },
+    x: -60, opacity: 0, duration: 1.1, ease: EASE.apple,
+  });
+  gsap.from('.contact-form', {
+    scrollTrigger: { trigger: '.contact', start: 'top 75%' },
+    x: 60, opacity: 0, duration: 1.1, ease: EASE.apple,
+  });
+
+  /* Magnetic CTAs (desktop only) — smoother lerp via GSAP */
+  if (IS_DESKTOP) {
+    document.querySelectorAll('.btn-primary, .hero-cta .btn').forEach(btn => {
+      const quickX = gsap.quickTo(btn, 'x', { duration: 0.6, ease: EASE.apple });
+      const quickY = gsap.quickTo(btn, 'y', { duration: 0.6, ease: EASE.apple });
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        quickX(x * 0.3);
+        quickY(y * 0.3);
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.8, ease: EASE.spring });
+      });
+    });
+  }
+
+  /* Refresh ScrollTrigger after filters */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => setTimeout(() => ScrollTrigger.refresh(), 100));
+  });
+});
+
+/* ---------- 3D TILT on product cards — SMOOTH LERP version (Apple-like) ---------- */
+if (IS_DESKTOP && !REDUCED_MOTION) {
+  document.querySelectorAll('.product-card').forEach(card => {
+    const state = {
+      tx: 0, ty: 0,         // target rotations
+      cx: 0, cy: 0,         // current rotations (lerped)
+      tmx: 0.5, tmy: 0.5,   // target mouse position (0..1)
+      cmx: 0.5, cmy: 0.5,   // current mouse (lerped)
+      active: false,
+      raf: null,
+    };
+    const LERP = 0.10;       // lower = smoother, higher = snappier
+    const LERP_RETURN = 0.06;
+
+    function loop() {
+      const lerp = state.active ? LERP : LERP_RETURN;
+      state.cx  += (state.tx  - state.cx)  * lerp;
+      state.cy  += (state.ty  - state.cy)  * lerp;
+      state.cmx += (state.tmx - state.cmx) * lerp;
+      state.cmy += (state.tmy - state.cmy) * lerp;
+
+      card.style.setProperty('--rx', state.cx.toFixed(3) + 'deg');
+      card.style.setProperty('--ry', state.cy.toFixed(3) + 'deg');
+      card.style.setProperty('--mx', (state.cmx * 100).toFixed(2) + '%');
+      card.style.setProperty('--my', (state.cmy * 100).toFixed(2) + '%');
+
+      const stillMoving =
+        Math.abs(state.cx - state.tx) > 0.01 ||
+        Math.abs(state.cy - state.ty) > 0.01 ||
+        Math.abs(state.cmx - state.tmx) > 0.001 ||
+        Math.abs(state.cmy - state.tmy) > 0.001;
+
+      if (state.active || stillMoving) {
+        state.raf = requestAnimationFrame(loop);
+      } else {
+        state.raf = null;
+        card.classList.remove('tilt-active');
+      }
+    }
+
+    card.addEventListener('mouseenter', () => {
+      state.active = true;
+      card.classList.add('tilt-active');
+      if (!state.raf) state.raf = requestAnimationFrame(loop);
+    });
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      state.tx = (y - 0.5) * -7;   // softer angle (was -10)
+      state.ty = (x - 0.5) * 7;
+      state.tmx = x;
+      state.tmy = y;
+    });
+    card.addEventListener('mouseleave', () => {
+      state.active = false;
+      state.tx = 0;
+      state.ty = 0;
+      state.tmx = 0.5;
+      state.tmy = 0.5;
+      if (!state.raf) state.raf = requestAnimationFrame(loop);
+    });
+  });
+}
+
+/* ---------- QUICK VIEW MODAL ---------- */
+const PRODUCTS_DATA = (() => {
+  try { return JSON.parse(document.getElementById('products-data').textContent); }
+  catch (e) { console.error('Products data load failed', e); return {}; }
+})();
+
+function openQuickView(id) {
+  const data = PRODUCTS_DATA[id];
+  if (!data) return;
+  const overlay = document.getElementById('qv-overlay');
+  const card = document.querySelector(`.product-card[data-id="${id}"]`);
+  const wrap = card ? card.querySelector('.product-img-wrap') : null;
+  const svgCopy = card ? card.querySelector('.candle-svg').cloneNode(true) : null;
+
+  document.getElementById('qv-category').textContent = data.category;
+  document.getElementById('qv-name').textContent = data.name;
+  document.getElementById('qv-story').textContent = data.story;
+  document.getElementById('qv-hours').textContent = '~' + data.hours + ' hrs';
+  document.getElementById('qv-grams').textContent = data.grams + ' g';
+  document.getElementById('qv-mood').textContent = data.mood;
+  document.getElementById('qv-pairing').textContent = data.pairing;
+  document.getElementById('qv-price').textContent = data.price;
+
+  const notesEl = document.getElementById('qv-notes');
+  notesEl.innerHTML = data.notes.map(n => `<span class="qv-chip">${n}</span>`).join('');
+  const ingrEl = document.getElementById('qv-ingredients');
+  ingrEl.innerHTML = data.ingredients.map(i => `<li>${i}</li>`).join('');
+
+  const visualEl = document.getElementById('qv-visual');
+  visualEl.innerHTML = '';
+  if (svgCopy) visualEl.appendChild(svgCopy);
+  if (wrap) {
+    const style = wrap.getAttribute('style') || '';
+    visualEl.setAttribute('style', style);
+  }
+
+  const addBtn = document.getElementById('qv-add');
+  addBtn.onclick = () => {
+    addToCart(addBtn, data.name, data.price);
+    closeQuickView();
+  };
+
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('qv-close').focus(), 100);
+}
+
+function closeQuickView() {
+  const overlay = document.getElementById('qv-overlay');
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.quick-view-btn');
+  if (btn) {
+    e.stopPropagation();
+    openQuickView(btn.dataset.id);
+  }
+});
+
+document.getElementById('qv-close')?.addEventListener('click', closeQuickView);
+document.getElementById('qv-overlay')?.addEventListener('click', e => {
+  if (e.target.id === 'qv-overlay') closeQuickView();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeQuickView();
+});
+
+/* ---------- THREE.JS HERO SCENE ---------- */
+function initHeroThree() {
+  if (!window.THREE || !IS_DESKTOP) return;
+  const canvas = document.getElementById('hero-3d');
+  if (!canvas) return;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  } catch (e) {
+    console.warn('WebGL no disponible'); return;
+  }
+
+  const hero = document.querySelector('.hero');
+  const w = hero.clientWidth;
+  const h = hero.clientHeight;
+  renderer.setSize(w, h, false);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+  camera.position.set(0, 1, 6);
+  camera.lookAt(0, 1, 0);
+
+  // Position canvas to right half
+  canvas.style.left = '50%';
+  canvas.style.width = '50%';
+
+  // Recompute on next frame
+  setTimeout(() => {
+    const w2 = canvas.clientWidth;
+    const h2 = canvas.clientHeight;
+    renderer.setSize(w2, h2, false);
+    camera.aspect = w2 / h2;
+    camera.updateProjectionMatrix();
+  }, 50);
+
+  // Lights
+  const ambient = new THREE.AmbientLight(0xfff0d0, 0.5);
+  scene.add(ambient);
+  const flameLight = new THREE.PointLight(0xffaa44, 2.5, 8, 1.8);
+  flameLight.position.set(0, 2.6, 0.5);
+  scene.add(flameLight);
+  const fillLight = new THREE.DirectionalLight(0xffeec0, 0.7);
+  fillLight.position.set(3, 4, 5);
+  scene.add(fillLight);
+
+  // Candle body
+  const candleGroup = new THREE.Group();
+  const waxGeo = new THREE.CylinderGeometry(0.85, 0.9, 2.6, 48, 1);
+  const waxMat = new THREE.MeshPhysicalMaterial({
+    color: 0xf5e6c8, roughness: 0.4, metalness: 0.05,
+    clearcoat: 0.4, clearcoatRoughness: 0.3,
+    emissive: 0xffd699, emissiveIntensity: 0.18,
+  });
+  const wax = new THREE.Mesh(waxGeo, waxMat);
+  wax.position.y = 0;
+  candleGroup.add(wax);
+
+  // Top disc (slight indent)
+  const topGeo = new THREE.CylinderGeometry(0.78, 0.85, 0.1, 48);
+  const topMat = new THREE.MeshPhysicalMaterial({ color: 0xe8d2a4, roughness: 0.6 });
+  const top = new THREE.Mesh(topGeo, topMat);
+  top.position.y = 1.35;
+  candleGroup.add(top);
+
+  // Wick
+  const wickGeo = new THREE.CylinderGeometry(0.03, 0.03, 0.3, 8);
+  const wickMat = new THREE.MeshBasicMaterial({ color: 0x2a1810 });
+  const wick = new THREE.Mesh(wickGeo, wickMat);
+  wick.position.y = 1.55;
+  candleGroup.add(wick);
+
+  // Flame (procedural sprite-like)
+  const flameGeo = new THREE.SphereGeometry(0.18, 16, 16);
+  flameGeo.scale(1, 2.2, 1);
+  const flameMat = new THREE.MeshBasicMaterial({
+    color: 0xffaa33, transparent: true, opacity: 0.92
+  });
+  const flame = new THREE.Mesh(flameGeo, flameMat);
+  flame.position.y = 1.95;
+  candleGroup.add(flame);
+
+  const flameCoreGeo = new THREE.SphereGeometry(0.08, 12, 12);
+  flameCoreGeo.scale(1, 1.8, 1);
+  const flameCoreMat = new THREE.MeshBasicMaterial({ color: 0xfff8a0 });
+  const flameCore = new THREE.Mesh(flameCoreGeo, flameCoreMat);
+  flameCore.position.y = 1.93;
+  candleGroup.add(flameCore);
+
+  // Glow halo (sprite)
+  const haloMat = new THREE.SpriteMaterial({ color: 0xffaa44, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending });
+  const halo = new THREE.Sprite(haloMat);
+  halo.scale.set(3.5, 3.5, 1);
+  halo.position.y = 2;
+  candleGroup.add(halo);
+
+  // Base/surface reflection plate
+  const baseGeo = new THREE.CircleGeometry(2.5, 32);
+  const baseMat = new THREE.MeshBasicMaterial({ color: 0x2a1810, transparent: true, opacity: 0.25 });
+  const base = new THREE.Mesh(baseGeo, baseMat);
+  base.rotation.x = -Math.PI / 2;
+  base.position.y = -1.32;
+  candleGroup.add(base);
+
+  candleGroup.position.y = 0.2;
+  scene.add(candleGroup);
+
+  // Floating particles
+  const partCount = 80;
+  const partGeo = new THREE.BufferGeometry();
+  const positions = new Float32Array(partCount * 3);
+  for (let i = 0; i < partCount; i++) {
+    positions[i*3]   = (Math.random() - 0.5) * 5;
+    positions[i*3+1] = (Math.random() - 0.5) * 4;
+    positions[i*3+2] = (Math.random() - 0.5) * 3;
+  }
+  partGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const partMat = new THREE.PointsMaterial({ color: 0xffd877, size: 0.04, transparent: true, opacity: 0.7, blending: THREE.AdditiveBlending });
+  const particles = new THREE.Points(partGeo, partMat);
+  scene.add(particles);
+
+  // Mouse parallax
+  let mouseX = 0, mouseY = 0;
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.6;
+    mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.4;
+  });
+
+  // Resize
+  window.addEventListener('resize', () => {
+    const w2 = canvas.clientWidth;
+    const h2 = canvas.clientHeight;
+    if (w2 === 0 || h2 === 0) return;
+    renderer.setSize(w2, h2, false);
+    camera.aspect = w2 / h2;
+    camera.updateProjectionMatrix();
+  });
+
+  // Animation loop
+  let t = 0;
+  function animate() {
+    t += 0.016;
+    candleGroup.rotation.y += 0.004;
+    const flicker = 1 + Math.sin(t * 18) * 0.08 + Math.sin(t * 11) * 0.05;
+    flame.scale.set(flicker, 0.95 + 0.08 * Math.sin(t * 14), flicker);
+    flameCore.scale.set(flicker * 0.9, 0.95 + 0.06 * Math.sin(t * 17), flicker * 0.9);
+    flameLight.intensity = 2.3 + Math.sin(t * 12) * 0.6;
+    halo.material.opacity = 0.22 + Math.sin(t * 8) * 0.05;
+
+    const positions = particles.geometry.attributes.position.array;
+    for (let i = 0; i < partCount; i++) {
+      positions[i*3+1] += 0.005;
+      if (positions[i*3+1] > 2.5) positions[i*3+1] = -2;
+    }
+    particles.geometry.attributes.position.needsUpdate = true;
+
+    camera.position.x = mouseX * 0.8;
+    camera.position.y = 1 + mouseY * 0.4;
+    camera.lookAt(0, 1, 0);
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  canvas.classList.add('ready');
+}
+
+if (document.readyState === 'complete') {
+  setTimeout(initHeroThree, 200);
+} else {
+  window.addEventListener('load', () => setTimeout(initHeroThree, 200));
+}
+
+</script>
+</body>
+</html>

@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="theme-color" content="#1A1208" />
   <title>Óleum Natura – Velas Artesanales</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 </head>
 <body>
 
@@ -21,6 +27,7 @@
       <ul class="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#por-que">Por qué</a></li>
         <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -34,6 +41,7 @@
   <!-- ============================================================ HERO -->
   <section class="hero" id="inicio">
     <div class="hero-particles" id="particles"></div>
+    <canvas id="hero-3d" aria-hidden="true"></canvas>
     <div class="hero-content">
       <p class="hero-eyebrow">Velas Artesanales Ecológicas</p>
       <h1 class="hero-title">Óleum <span class="gold">Natura</span></h1>
@@ -112,6 +120,118 @@
     </div>
   </section>
 
+  <!-- ============================================================ POR QUÉ ÓLEUM NATURA -->
+  <section class="why-us" id="por-que">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Diferenciación</span>
+        <h2>¿Por qué <span class="gold">Óleum Natura</span>?</h2>
+        <div class="divider"></div>
+        <p class="section-desc">No vendemos velas. Rescatamos residuos y los convertimos en luz. Esto es lo que nos hace diferentes de cualquier vela industrial o artesanal genérica.</p>
+      </div>
+
+      <!-- 5 PILARES -->
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 20 C16 12, 24 8, 32 8 C40 8, 48 12, 48 20 L52 16 M48 20 L44 16"/>
+              <path d="M48 44 C48 52, 40 56, 32 56 C24 56, 16 52, 16 44 L12 48 M16 44 L20 48"/>
+            </svg>
+          </div>
+          <h3>100% Reciclado</h3>
+          <p>Aceites rescatados del hogar. La competencia usa parafina derivada del petróleo.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 56 C32 56, 12 44, 12 28 C12 20, 18 14, 26 14 C30 14, 32 18, 32 18 C32 18, 34 14, 38 14 C46 14, 52 20, 52 28 C52 44, 32 56, 32 56 Z"/>
+            </svg>
+          </div>
+          <h3>Cero Residuos</h3>
+          <p>Proceso de producción sin desperdicio. Hasta el vidrio del envase es reutilizable.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="32" r="20"/>
+              <path d="M32 18 L36 28 L46 28 L38 34 L42 44 L32 38 L22 44 L26 34 L18 28 L28 28 Z"/>
+            </svg>
+          </div>
+          <h3>Aromas Únicos</h3>
+          <p>Esencias seleccionadas a mano. Personalizamos tu vela con el aroma que tú elijas.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 52 L12 28 L32 12 L52 28 L52 52 Z"/>
+              <path d="M24 52 L24 36 L40 36 L40 52"/>
+            </svg>
+          </div>
+          <h3>Apoyo Local</h3>
+          <p>Comprar aquí financia un proyecto escolar real. Apoyas educación y emprendimiento.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="32" cy="32" r="22"/>
+              <path d="M32 18 L32 32 L42 38"/>
+            </svg>
+          </div>
+          <h3>Mayor Duración</h3>
+          <p>40 a 65 horas de combustión. Las velas industriales duran solo 20 a 30 horas.</p>
+        </div>
+      </div>
+
+      <!-- TABLA COMPARATIVA -->
+      <div class="comparison-wrap">
+        <h3 class="comparison-title">Comparación honesta vs. la competencia</h3>
+        <div class="comparison-scroll">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th class="criterio-col">Criterio</th>
+                <th class="us-col">Óleum Natura</th>
+                <th>Velas Industriales</th>
+                <th>Artesanales Genéricas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Precio promedio</td><td class="us-col">$55 – $80</td><td>$90 – $250</td><td>$120 – $200</td></tr>
+              <tr><td>Materia prima</td><td class="us-col">Aceites reciclados ♻</td><td>Parafina del petróleo</td><td>Cera de soya/abeja</td></tr>
+              <tr><td>Impacto ecológico</td><td class="us-col">Negativo (limpia)</td><td>Alto (contaminante)</td><td>Bajo</td></tr>
+              <tr><td>Personalización</td><td class="us-col">Sí, total</td><td>No</td><td>Limitada</td></tr>
+              <tr><td>Variedad de aromas</td><td class="us-col">12+ y a pedido</td><td>3 – 5 fijos</td><td>6 – 8 fijos</td></tr>
+              <tr><td>Duración (horas)</td><td class="us-col">40 – 65</td><td>20 – 30</td><td>30 – 50</td></tr>
+              <tr><td>Origen</td><td class="us-col">Local CDMX</td><td>Importación masiva</td><td>Variable</td></tr>
+              <tr><td>Soporte a comunidad</td><td class="us-col">Escuela / estudiantes</td><td>Corporación</td><td>Particular</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- STRIP DE IMPACTO -->
+      <div class="impact-strip">
+        <div class="impact-item">
+          <div class="impact-num" data-target="180" data-suffix=" L">180 L</div>
+          <div class="impact-label">Aceite rescatado al año (proyectado)</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num" data-target="600" data-suffix="">600</div>
+          <div class="impact-label">Velas producidas al año</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num" data-target="100" data-suffix="%">100%</div>
+          <div class="impact-label">Mecha de algodón natural</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num" data-target="30" data-suffix="+" data-prefix="">30+</div>
+          <div class="impact-label">Estudiantes beneficiados</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================================================ CATÁLOGO -->
   <section class="catalog" id="catalogo">
     <div class="container">
@@ -134,11 +254,32 @@
       <div class="products-grid" id="products-grid">
 
         <!-- FLORALES -->
-        <div class="product-card" data-category="florales">
+        <div class="product-card" data-category="florales" data-id="p1">
           <div class="product-badge">Más vendida</div>
-          <div class="product-img-wrap">
-            <div class="product-img florales-1">
-              <div class="img-candle">🌹</div>
+          <div class="product-img-wrap" style="--wax-top:#F5C2D8;--wax-bottom:#C44B7B;--flame-color:#FFB74D">
+            <button class="quick-view-btn" data-id="p1" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p1" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p1)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p1)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -160,10 +301,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="florales">
-          <div class="product-img-wrap">
-            <div class="product-img florales-2">
-              <div class="img-candle">🌸</div>
+        <div class="product-card" data-category="florales" data-id="p2">
+          <div class="product-img-wrap" style="--wax-top:#D4BFE8;--wax-bottom:#7A5BA8;--flame-color:#B39DDB">
+            <button class="quick-view-btn" data-id="p2" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p2" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p2)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p2)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -184,10 +346,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="florales">
-          <div class="product-img-wrap">
-            <div class="product-img florales-3">
-              <div class="img-candle">🌺</div>
+        <div class="product-card" data-category="florales" data-id="p3">
+          <div class="product-img-wrap" style="--wax-top:#FFF8E1;--wax-bottom:#E6C547;--flame-color:#FFCC80">
+            <button class="quick-view-btn" data-id="p3" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p3" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p3)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p3)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -209,11 +392,32 @@
         </div>
 
         <!-- AROMÁTICAS -->
-        <div class="product-card" data-category="aromaticas">
+        <div class="product-card" data-category="aromaticas" data-id="p4">
           <div class="product-badge eco">Eco Hit</div>
-          <div class="product-img-wrap">
-            <div class="product-img aromaticas-1">
-              <div class="img-candle">🌿</div>
+          <div class="product-img-wrap" style="--wax-top:#B8E6D0;--wax-bottom:#2D6A4F;--flame-color:#80CBC4">
+            <button class="quick-view-btn" data-id="p4" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p4" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p4" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p4)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p4)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -235,10 +439,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="aromaticas">
-          <div class="product-img-wrap">
-            <div class="product-img aromaticas-2">
-              <div class="img-candle">🌳</div>
+        <div class="product-card" data-category="aromaticas" data-id="p5">
+          <div class="product-img-wrap" style="--wax-top:#D7B899;--wax-bottom:#8B5A2B;--flame-color:#D4A017">
+            <button class="quick-view-btn" data-id="p5" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p5" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p5" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p5)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p5)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -259,10 +484,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="aromaticas">
-          <div class="product-img-wrap">
-            <div class="product-img aromaticas-3">
-              <div class="img-candle">🍃</div>
+        <div class="product-card" data-category="aromaticas" data-id="p6">
+          <div class="product-img-wrap" style="--wax-top:#B5C9A4;--wax-bottom:#4A6B3A;--flame-color:#A5D6A7">
+            <button class="quick-view-btn" data-id="p6" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p6" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p6" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p6)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p6)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -284,11 +530,32 @@
         </div>
 
         <!-- ESPECIADAS -->
-        <div class="product-card" data-category="especiadas">
+        <div class="product-card" data-category="especiadas" data-id="p7">
           <div class="product-badge nuevo">Nuevo</div>
-          <div class="product-img-wrap">
-            <div class="product-img especiadas-1">
-              <div class="img-candle">🍂</div>
+          <div class="product-img-wrap" style="--wax-top:#FFCC80;--wax-bottom:#BF360C;--flame-color:#FF6F00">
+            <button class="quick-view-btn" data-id="p7" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p7" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p7" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p7)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p7)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -309,10 +576,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="especiadas">
-          <div class="product-img-wrap">
-            <div class="product-img especiadas-2">
-              <div class="img-candle">☕</div>
+        <div class="product-card" data-category="especiadas" data-id="p8">
+          <div class="product-img-wrap" style="--wax-top:#D7B894;--wax-bottom:#4E342E;--flame-color:#FFB300">
+            <button class="quick-view-btn" data-id="p8" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p8" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p8" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p8)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p8)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -334,10 +622,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="especiadas">
-          <div class="product-img-wrap">
-            <div class="product-img especiadas-3">
-              <div class="img-candle">🫚</div>
+        <div class="product-card" data-category="especiadas" data-id="p9">
+          <div class="product-img-wrap" style="--wax-top:#E8C99B;--wax-bottom:#8D6E25;--flame-color:#FFA726">
+            <button class="quick-view-btn" data-id="p9" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p9" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p9" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p9)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p9)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -359,10 +668,31 @@
         </div>
 
         <!-- FRESCAS -->
-        <div class="product-card" data-category="frescas">
-          <div class="product-img-wrap">
-            <div class="product-img frescas-1">
-              <div class="img-candle">🍋</div>
+        <div class="product-card" data-category="frescas" data-id="p10">
+          <div class="product-img-wrap" style="--wax-top:#F4E89C;--wax-bottom:#9CA744;--flame-color:#FFEB3B">
+            <button class="quick-view-btn" data-id="p10" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p10" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p10" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p10)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p10)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -383,11 +713,32 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="frescas">
+        <div class="product-card" data-category="frescas" data-id="p11">
           <div class="product-badge">Popular</div>
-          <div class="product-img-wrap">
-            <div class="product-img frescas-2">
-              <div class="img-candle">🌊</div>
+          <div class="product-img-wrap" style="--wax-top:#B3DFF5;--wax-bottom:#1E6091;--flame-color:#4FC3F7">
+            <button class="quick-view-btn" data-id="p11" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p11" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p11" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p11)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p11)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -409,10 +760,31 @@
           </div>
         </div>
 
-        <div class="product-card" data-category="frescas">
-          <div class="product-img-wrap">
-            <div class="product-img frescas-3">
-              <div class="img-candle">🍃</div>
+        <div class="product-card" data-category="frescas" data-id="p12">
+          <div class="product-img-wrap" style="--wax-top:#C5E1A5;--wax-bottom:#558B2F;--flame-color:#AED581">
+            <button class="quick-view-btn" data-id="p12" aria-label="Vista rápida">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            </button>
+            <div class="product-img">
+              <svg class="candle-svg" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="waxG_p12" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--wax-top)"/>
+                    <stop offset="100%" stop-color="var(--wax-bottom)"/>
+                  </linearGradient>
+                  <radialGradient id="glowG_p12" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="var(--flame-color)" stop-opacity="0.6"/>
+                    <stop offset="100%" stop-color="var(--flame-color)" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <ellipse class="candle-halo" cx="50" cy="40" rx="40" ry="35" fill="url(#glowG_p12)"/>
+                <rect class="candle-body-svg" x="22" y="60" width="56" height="85" rx="6" fill="url(#waxG_p12)"/>
+                <ellipse cx="50" cy="60" rx="28" ry="5" fill="var(--wax-top)" opacity="0.85"/>
+                <ellipse cx="50" cy="60" rx="22" ry="3" fill="rgba(0,0,0,0.15)"/>
+                <line x1="50" y1="58" x2="50" y2="50" stroke="#3a2a14" stroke-width="2"/>
+                <ellipse class="flame-outer" cx="50" cy="40" rx="7" ry="12" fill="var(--flame-color)" opacity="0.9"/>
+                <ellipse class="flame-inner" cx="50" cy="42" rx="3.5" ry="7" fill="#FFF59D"/>
+              </svg>
             </div>
           </div>
           <div class="product-info">
@@ -519,7 +891,8 @@
           <div class="contact-item"><span>🕐</span><div><strong>Horario</strong><p>Lun – Sáb, 9:00 a 20:00</p></div></div>
         </div>
       </div>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" name="contacto" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contacto" />
         <div class="form-group">
           <label>Nombre completo</label>
           <input type="text" placeholder="Tu nombre" required />
@@ -608,6 +981,59 @@
   </div>
   <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
 
-  <script src="app.js"></script>
+  <script type="application/json" id="products-data">
+{
+  "p1": {"name":"Rosa & Jazmín","category":"Florales","price":65,"oldPrice":85,"hours":55,"grams":150,"notes":["Pétalo fresco","Jazmín nocturno","Vainilla suave"],"mood":"Romance y relajación","ingredients":["Aceite reciclado purificado","Esencia natural de rosa","Aceite esencial de jazmín","Mecha de algodón orgánico"],"pairing":"Combina con cena íntima, baño caliente o tarde de lectura.","story":"Inspirada en jardines mexicanos al atardecer, esta vela une dos flores clásicas en un equilibrio cálido y femenino."},
+  "p2": {"name":"Lavanda Pura","category":"Florales","price":60,"hours":60,"grams":160,"notes":["Lavanda francesa","Bergamota","Madera blanca"],"mood":"Sueño y descanso","ingredients":["Aceite reciclado purificado","Aceite esencial de lavanda","Mecha de algodón orgánico"],"pairing":"Ideal en el dormitorio antes de dormir o durante una sesión de yoga.","story":"La fragancia clásica de la Provenza francesa, reinterpretada con aceite rescatado de cocinas mexicanas."},
+  "p3": {"name":"Gardenia & Ylang","category":"Florales","price":70,"hours":50,"grams":140,"notes":["Gardenia blanca","Ylang ylang","Ámbar suave"],"mood":"Sensualidad y misterio","ingredients":["Aceite reciclado purificado","Esencia natural de gardenia","Aceite esencial de ylang ylang","Mecha de algodón"],"pairing":"Para citas, noches de spa o ambientes que pidan profundidad.","story":"Dos flores exóticas en una sola vela: la inocencia de la gardenia con el calor sensual del ylang."},
+  "p4": {"name":"Eucalipto & Menta","category":"Aromáticas","price":55,"oldPrice":75,"hours":45,"grams":130,"notes":["Eucalipto fresco","Menta piperita","Romero"],"mood":"Energía y enfoque","ingredients":["Aceite reciclado purificado","Aceite esencial de eucalipto","Aceite esencial de menta","Mecha de algodón"],"pairing":"Perfecta para tu escritorio, estudio o sala de ejercicio.","story":"Inspirada en el aire de las montañas mexicanas, despeja la mente y oxigena el ambiente."},
+  "p5": {"name":"Sándalo & Cedro","category":"Aromáticas","price":80,"hours":65,"grams":180,"notes":["Sándalo indio","Cedro mexicano","Vetiver"],"mood":"Calidez y arraigo","ingredients":["Aceite reciclado purificado","Aceite esencial de sándalo","Aceite esencial de cedro","Mecha de algodón premium"],"pairing":"Salas amplias, oficinas masculinas o ceremonias de meditación.","story":"Madera sobre madera. Una vela seria, profunda y elegante. Para quienes prefieren los aromas que duran todo el día."},
+  "p6": {"name":"Romero & Salvia","category":"Aromáticas","price":65,"hours":50,"grams":150,"notes":["Romero fresco","Salvia blanca","Tomillo"],"mood":"Purificación y claridad","ingredients":["Aceite reciclado purificado","Aceite esencial de romero","Esencia de salvia","Mecha de algodón"],"pairing":"Ambientes de meditación, limpieza energética o estudio.","story":"Hierbas ancestrales usadas para purificar espacios desde tiempos prehispánicos. Tradición en forma de aroma."},
+  "p7": {"name":"Canela & Naranja","category":"Especiadas","price":70,"hours":55,"grams":160,"notes":["Canela de Ceilán","Naranja dulce","Clavo suave"],"mood":"Hogar y bienvenida","ingredients":["Aceite reciclado purificado","Esencia de canela","Aceite esencial de naranja","Mecha de algodón"],"pairing":"Sala en otoño/invierno, navidad, reuniones familiares.","story":"El aroma clásico de las posadas mexicanas. Una vela que huele a abrazo y a casa de la abuela."},
+  "p8": {"name":"Vainilla & Café","category":"Especiadas","price":68,"oldPrice":80,"hours":60,"grams":170,"notes":["Café tostado","Vainilla de Madagascar","Caramelo"],"mood":"Acogedor y estimulante","ingredients":["Aceite reciclado purificado","Esencia de café tostado","Aceite esencial de vainilla","Mecha de algodón"],"pairing":"Cafeterías caseras, mañanas lentas, ambientes de trabajo creativo.","story":"Para los que viven con el café en la mano. La intensidad del grano suavizada por la vainilla."},
+  "p9": {"name":"Jengibre & Clavo","category":"Especiadas","price":62,"hours":45,"grams":140,"notes":["Jengibre fresco","Clavo de olor","Pimienta rosa"],"mood":"Energía picante","ingredients":["Aceite reciclado purificado","Esencia de jengibre","Aceite esencial de clavo","Mecha de algodón"],"pairing":"Noches frías, ambientes asiáticos, cocinas con sazón.","story":"Especiada y atrevida. Una vela con carácter, perfecta para quienes huyen de lo dulzón."},
+  "p10":{"name":"Limón & Albahaca","category":"Frescas","price":58,"hours":40,"grams":130,"notes":["Limón siciliano","Albahaca italiana","Cidra"],"mood":"Frescura mediterránea","ingredients":["Aceite reciclado purificado","Aceite esencial de limón","Esencia de albahaca","Mecha de algodón"],"pairing":"Cocinas, balcones, comidas al aire libre.","story":"Una receta italiana convertida en aroma. Limpia, vibrante, sofisticada."},
+  "p11":{"name":"Brisa Marina","category":"Frescas","price":60,"oldPrice":72,"hours":50,"grams":150,"notes":["Sal marina","Coco fresco","Notas acuáticas"],"mood":"Calma oceánica","ingredients":["Aceite reciclado purificado","Esencias marinas","Aceite esencial de coco","Mecha de algodón"],"pairing":"Baños largos, días lluviosos, espacios costeros.","story":"Cierra los ojos y escucha el mar. Una invitación a Puerto Escondido sin salir de casa."},
+  "p12":{"name":"Verde Té & Pepino","category":"Frescas","price":55,"hours":45,"grams":135,"notes":["Té verde matcha","Pepino fresco","Bambú"],"mood":"Zen y bienestar","ingredients":["Aceite reciclado purificado","Esencia de té verde","Aceite esencial de pepino","Mecha de algodón"],"pairing":"Sesiones de meditación, baños relajantes, spa casero.","story":"Minimalismo japonés en versión vela. Limpia, serena, contemporánea."}
+}
+</script>
+
+<!-- QUICK VIEW MODAL -->
+<div class="qv-overlay" id="qv-overlay" aria-hidden="true">
+  <div class="qv-modal" role="dialog" aria-modal="true" aria-labelledby="qv-name">
+    <button class="qv-close" id="qv-close" aria-label="Cerrar">&times;</button>
+    <div class="qv-grid">
+      <div class="qv-visual" id="qv-visual"></div>
+      <div class="qv-info">
+        <span class="qv-category" id="qv-category"></span>
+        <h2 class="qv-name" id="qv-name"></h2>
+        <p class="qv-story" id="qv-story"></p>
+        <div class="qv-stats">
+          <div class="qv-stat"><span class="qv-stat-label">Duración</span><span class="qv-stat-val" id="qv-hours"></span></div>
+          <div class="qv-stat"><span class="qv-stat-label">Peso</span><span class="qv-stat-val" id="qv-grams"></span></div>
+          <div class="qv-stat"><span class="qv-stat-label">Mood</span><span class="qv-stat-val" id="qv-mood"></span></div>
+        </div>
+        <div class="qv-block">
+          <h4>Notas aromáticas</h4>
+          <div class="qv-chips" id="qv-notes"></div>
+        </div>
+        <div class="qv-block">
+          <h4>Ingredientes</h4>
+          <ul class="qv-list" id="qv-ingredients"></ul>
+        </div>
+        <div class="qv-block">
+          <h4>Combina con</h4>
+          <p id="qv-pairing"></p>
+        </div>
+        <div class="qv-cta">
+          <div class="qv-price">$<span id="qv-price"></span></div>
+          <button class="btn btn-primary" id="qv-add">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script defer src="app.js"></script>
 </body>
 </html>
